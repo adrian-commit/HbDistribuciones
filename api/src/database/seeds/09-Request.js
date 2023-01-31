@@ -1,0 +1,26 @@
+'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up (queryInterface, Sequelize) {
+   
+    await queryInterface.bulkInsert('requests', [
+      {
+        id: 1,
+        seller: 2,
+        client: 1,
+        track: 'fecha',
+        comission: 5000,
+        discount: 8000,
+        total: 43482.6,
+        send: false,
+        status: 0
+      }
+    ], {});
+  
+  },
+
+  async down (queryInterface, Sequelize) {
+   await queryInterface.bulkDelete('requests', null, {});
+  }
+};
