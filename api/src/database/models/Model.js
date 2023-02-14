@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       category: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       }
   }
 

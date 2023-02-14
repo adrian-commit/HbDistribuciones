@@ -11,36 +11,36 @@ module.exports = (sequelize, DataTypes) => {
       },
       seller: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       },
       client: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       },
       track: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
       },
       comission: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       discount: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       total: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       },
       send: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
         default: false
       },
       status:{
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         default: 0
       }
   }

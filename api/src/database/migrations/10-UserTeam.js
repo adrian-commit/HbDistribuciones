@@ -2,39 +2,36 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('products', { 
+    await queryInterface.createTable('usersTeams', { 
       id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true 
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: true
-      },
-      sku: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        unique: true
-      },
-      model: {
+      userId: {
         type: Sequelize.BIGINT,
         allowNull: true,
         references: {
-          model:'models',
+          model:'users',
           field:'id'
         },
         onUpdate:'set null',
         onDelete:'set null'
       },
-      price: {
+      teamId: {
         type: Sequelize.BIGINT,
-        allowNull: true
+        allowNull: true,
+        references: {
+          model:'teams',
+          field:'id'
+        },
+        onUpdate:'set null',
+        onDelete:'set null'
       }
     });
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('products');
+    await queryInterface.dropTable('usersTeams');
   }
 };

@@ -28,13 +28,14 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(alias, cols, config);
 
   User.associate = function(models){
+    
     User.belongsToMany(models.Team, {
       as:'teams',
       through:'usersTeams',
       foreignKey:'userId',
       otherKey:'teamId',
       timestamps: false
-    })
+    }),
 
     User.hasMany(models.Request,{
       as:'requests',
@@ -42,4 +43,6 @@ module.exports = (sequelize, DataTypes) => {
     })
 
   }
+
+  return User;
 };

@@ -9,11 +9,18 @@ module.exports = {
         primaryKey: true 
       },
       product: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.BIGINT,
+        allowNull: true,
+        references: {
+          model:'products',
+          field:'id'
+        },
+        onUpdate:'set null',
+        onDelete:'set null'
       },
       stock: {
         type: Sequelize.BIGINT,
+        allowNull: true,
         default: 0
       }
     });

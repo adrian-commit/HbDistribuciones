@@ -10,36 +10,48 @@ module.exports = {
       },
       seller: {
         type: Sequelize.BIGINT,
-        allowNull: false
+        allowNull: true,
+        references: {
+          model:'users',
+          field:'id'
+        },
+        onUpdate:'set null',
+        onDelete:'set null'
       },
       client: {
         type: Sequelize.BIGINT,
-        allowNull: false
+        allowNull: true,
+        references: {
+          model:'clients',
+          field:'id'
+        },
+        onUpdate:'set null',
+        onDelete:'set null'
       },
       track: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
       },
       comission: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       discount: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       total: {
         type: Sequelize.BIGINT,
-        allowNull: false
+        allowNull: true
       },
       send: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
-        default: false
+        allowNull: true,
+        default: true
       },
       status:{
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         default: 0
       }
     });

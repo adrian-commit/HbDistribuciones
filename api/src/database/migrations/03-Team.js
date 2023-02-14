@@ -10,11 +10,11 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       level: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         default: 0
       }
     });

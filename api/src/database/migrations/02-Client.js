@@ -10,16 +10,16 @@ module.exports = {
       },
       email: {
         type: Sequelize.TEXT,
-        allowNull: false,
+        allowNull: true,
         unique: true
       },
       address: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: true
       },
       phone: {
         type: Sequelize.BIGINT,
-        allowNull: false,
+        allowNull: true,
         unique: true
       }
     });

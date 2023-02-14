@@ -11,25 +11,25 @@ module.exports = (sequelize, DataTypes) => {
       },
       product: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       },
       request: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       },
       price: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       },
       quntity: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       }
   }
 
   let config = {
       tableName: 'items',
-      timestamps: false,
+      timestamps: false
   }
 
   const Item = sequelize.define(alias, cols, config);

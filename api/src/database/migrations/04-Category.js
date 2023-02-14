@@ -10,12 +10,18 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true
       },
       sub: {
         type: Sequelize.BIGINT,
-        allowNull: false
+        allowNull: true
+        // references: {
+        //   model:'categories',
+        //   field:'id'
+        // },
+        // onUpdate:'set null',
+        // onDelete:'set null'
       }
     });
   },

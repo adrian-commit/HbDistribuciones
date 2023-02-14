@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true
       },
       sub: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       }
   }
 
@@ -32,16 +32,16 @@ module.exports = (sequelize, DataTypes) => {
     Category.hasMany(models.Model, {
       as:'models',
       foreignKey:'category'
-    }),
-
-    Category.hasMany(models.Category,{
-      as:'subCategories',
-      foreignKey:'sub'
     })
 
-    Category.belongsTo(models.Category,{
-      as:'mainCategory',
-      foreignKey:'id'
-    })
+    // Category.hasMany(Category,{
+    //   as:'subCategories',
+    //   foreignKey:'sub'
+    // })
+
+    // Category.belongsTo(Category,{
+    //   as:'category',
+    //   foreignKey:'sub'
+    // })
   }
 };

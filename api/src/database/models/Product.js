@@ -11,20 +11,20 @@ module.exports = (sequelize, DataTypes) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       sku: {
         type: DataTypes.BIGINT,
-        allowNull: false,
+        allowNull: true,
         unique: true
       },
       model: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       },
       price: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
       }
   }
 

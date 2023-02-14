@@ -11,10 +11,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       product: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       stock: {
         type: DataTypes.BIGINT,
+        allowNull: true,
         default: 0
       }
   }

@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       level: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         default: 0
       }
   }

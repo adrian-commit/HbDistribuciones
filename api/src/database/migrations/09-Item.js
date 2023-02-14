@@ -10,19 +10,31 @@ module.exports = {
       },
       product: {
         type: Sequelize.BIGINT,
-        allowNull: false
+        allowNull: true,
+        references: {
+          model:'products',
+          field:'id'
+        },
+        onUpdate:'set null',
+        onDelete:'set null'
       },
       request: {
         type: Sequelize.BIGINT,
-        allowNull: false
+        allowNull: true,
+        references: {
+          model:'requests',
+          field:'id'
+        },
+        onUpdate:'set null',
+        onDelete:'set null'
       },
       price: {
         type: Sequelize.BIGINT,
-        allowNull: false
+        allowNull: true
       },
-      quntity: {
+      quantity: {
         type: Sequelize.BIGINT,
-        allowNull: false
+        allowNull: true
       }
     });
   },
