@@ -1,0 +1,22 @@
+html(lang='en')
+    head 
+        title API HBD  
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")   
+    body    
+        h1 API HBDistribuciones
+        section
+            fieldset
+                form(action='/api/users', method='GET')
+                    button(type='submit') Go User's list
+                    
+            fieldset
+                p Create User
+                form(action="/api/users/create", method="post") 
+                        label(for="id") 
+                        input(name='id' type="number")
+                        button Send
+            fieldset 
+            fieldset 
+
