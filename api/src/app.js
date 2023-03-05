@@ -24,6 +24,4 @@ app.use('/api/users', require('./routes/users.routes'));
 // app.use('/api/quantities', require('./routes/quantities.routes'));
 // app.use('/api/items', require('./routes/items.routes'));
 // app.use('/api/requests', require('./routes/requests.routes'));
-
-//--RUTAS RELACIONES--//
-// app.use('/api/usuarios/equipos', require('./routes/usersTeams'));
+// app.use('/api/users/teams', require('./routes/usersTeams.routes'));
