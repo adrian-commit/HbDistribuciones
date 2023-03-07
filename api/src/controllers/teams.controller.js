@@ -1,9 +1,10 @@
-const {User} = require('../database/models');
+const {Team} = require('../database/models');
+
 module.exports = {
     list: async (req,res) => {
         try {
-            let users = await User.findAll();
-            return res.send(users);           
+            let teams = await Team.findAll();
+            return res.send(teams);           
         } catch (error) {
             return res.send(error.msg);
         }
@@ -11,8 +12,8 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let user = await User.findByPk(req.params.id);
-            return res.send(user);           
+            let team = await Team.findByPk(req.params.id);
+            return res.send(team);           
         } catch (error) {
             return res.send(error.msg);
         }
@@ -20,11 +21,12 @@ module.exports = {
 
     create: async (req,res) => {
         try {
-            let newUser = await User.create({
+            let newTeam = await Team.create({
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                level: req.body.level
             })
-            return res.send(newUser);
+            return res.send(newTeam);
         } catch (error) {
             return res.send(error.msg);
         }

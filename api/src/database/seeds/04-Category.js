@@ -9,14 +9,6 @@ module.exports = {
         id: 1,
         name: 'BISAGRAS',
         sub: 0
-<<<<<<< HEAD
-=======
-      },
-      {
-        id: 2,
-        name: 'BISAGRAS PARABOLICAS',
-        sub: 1
->>>>>>> ef973c7c7550e19da7448c52cc8785f1e377aace
       }
     ], {});
   

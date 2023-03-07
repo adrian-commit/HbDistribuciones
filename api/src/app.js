@@ -16,10 +16,10 @@ app.set('views', resolve(__dirname , './views'));
 //--RUTAS--//
 app.use('/api', require('./routes/index.routes'));
 app.use('/api/users', require('./routes/users.routes'));
-// app.use('/api/clients', require('./routes/clients.routes'));
-// app.use('/api/teams', require('./routes/teams.routes'));
-// app.use('/api/categories', require('./routes/categories.routes'));
-// app.use('/api/models', require('./routes/models.routes'));
+app.use('/api/clients', require('./routes/clients.routes'));
+app.use('/api/teams', require('./routes/teams.routes'));
+app.use('/api/categories', require('./routes/categories.routes'));
+app.use('/api/models', require('./routes/models.routes'));
 // app.use('/api/products', require('./routes/products.routes'));
 // app.use('/api/quantities', require('./routes/quantities.routes'));
 // app.use('/api/items', require('./routes/items.routes'));

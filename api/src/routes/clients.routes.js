@@ -1,4 +1,4 @@
-/* const {list,showOne} = require('../controllers/clients.controller');
+const {list,showOne} = require('../controllers/clients.controller');
 const {Router} = require('express');
 const router = Router();
 
@@ -8,4 +8,4 @@ router.get('/show/:id', showOne)
 // router.put('/update/:id', update)
 // router.delete('/delete', deleteClient)
 
-module.exports = router; */
+module.exports = router; 

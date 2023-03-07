@@ -1,41 +1,42 @@
 'use strict';
 
-module.exports = {
-  async up (queryInterface, Sequelize) {
+/** @type {import('sequelize-cli').Migration} */
 
-    await queryInterface.createTable('teamsusers', { 
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('teamsUsers', {
       id: {
-        type: Sequelize.INTEGER ,
+        type: Sequelize.INTEGER,
         autoIncrement: true,
-        primaryKey: true 
+        primaryKey: true
       },
       teamId: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        /* references: {
-          model:Team,
-          key: 'id',
+        references: {
+          model: {
+            tableName: 'teams'
+          },
+          key: 'id'
         },
         onDelete: 'set null',
-        onUpdate: 'set null', */
+        onUpdate: 'set null'
       },
       userId: {
         type: Sequelize.INTEGER,
         allowNull: true,
-       /*  references: {
-          model:User,
-          key: 'id',
+        references: {
+          model: {
+            tableName: 'users'
+          },
+          key: 'id'
         },
         onDelete: 'set null',
-        onUpdate: 'set null',
-      */}
+        onUpdate: 'set null'
+      }
     });
-
   },
-
-  async down (queryInterface, Sequelize) {
-
-    await queryInterface.dropTable('teamsusers');
-
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('teamsUsers');
   }
 };

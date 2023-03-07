@@ -1,5 +1,6 @@
 'use strict';
 
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('requests', { 
@@ -10,49 +11,37 @@ module.exports = {
       },
       seller: {
         type: Sequelize.BIGINT,
-        allowNull: true,
-        references: {
-          model:'users',
-          field:'id'
-        },
-        onUpdate:'set null',
-        onDelete:'set null'
+        allowNull: false
       },
       client: {
         type: Sequelize.BIGINT,
-        allowNull: true,
-        references: {
-          model:'clients',
-          field:'id'
-        },
-        onUpdate:'set null',
-        onDelete:'set null'
+        allowNull: false
       },
       track: {
         type: Sequelize.DATE,
-        allowNull: true
+        allowNull: false
       },
       comission: {
         type: Sequelize.INTEGER,
-        allowNull: true
+        allowNull: false
       },
       discount: {
         type: Sequelize.INTEGER,
-        allowNull: true
+        allowNull: false
       },
       total: {
         type: Sequelize.BIGINT,
-        allowNull: true
+        allowNull: false
       },
       send: {
         type: Sequelize.BOOLEAN,
-        allowNull: true,
-        default: true
+        allowNull: false,
+        defaultValue: false
       },
       status:{
         type: Sequelize.INTEGER,
-        allowNull: true,
-        default: 0
+        allowNull: false,
+        defaultValue: 0
       }
     });
   },
