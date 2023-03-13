@@ -17,7 +17,7 @@ module.exports = {
       level: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        default: 0
+        defaultValue: 0
       } 
     });
   },

@@ -9,14 +9,6 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true 
       },
-      seller: {
-        type: Sequelize.BIGINT,
-        allowNull: false
-      },
-      client: {
-        type: Sequelize.BIGINT,
-        allowNull: false
-      },
       track: {
         type: Sequelize.DATE,
         allowNull: false
@@ -44,9 +36,31 @@ module.exports = {
         defaultValue: 0
       }
     });
+    await queryInterface.addColumn('requests','client',{
+      type: Sequelize.BIGINT,
+      allowNull: true,
+      references: {
+        model:'clients',
+        key:'id'
+      },
+      onUpdate:'set null',
+      onDelete:'set null'
+    });
+    await queryInterface.addColumn('requests','seller',{
+      type: Sequelize.BIGINT,
+      allowNull: true,
+      references: {
+        model:'users',
+        key:'id'
+      },
+      onUpdate:'set null',
+      onDelete:'set null'
+    });
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.removeColumn('requests','client');
+    await queryInterface.removeColumn('requests','seller');
     await queryInterface.dropTable('requests');
   }
 };

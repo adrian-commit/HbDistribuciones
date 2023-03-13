@@ -26,9 +26,31 @@ module.exports = {
         allowNull: false
       }
     });
+    await queryInterface.addColumn('items','product',{
+      type: Sequelize.BIGINT,
+      allowNull: true,
+      references: {
+        model:'products',
+        key:'id'
+      },
+      onUpdate:'set null',
+      onDelete:'set null'
+    });
+    await queryInterface.addColumn('requests','request',{
+      type: Sequelize.BIGINT,
+      allowNull: true,
+      references: {
+        model:'requests',
+        key:'id'
+      },
+      onUpdate:'set null',
+      onDelete:'set null'
+    });
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.removeColumn('requests','product');
+    await queryInterface.removeColumn('requests','request');
     await queryInterface.dropTable('items');
   }
 };

@@ -9,18 +9,25 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true 
       },
-      product: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       stock: {
         type: Sequelize.BIGINT,
-        default: 0
+        defaultValue: 0
       }
     });
+    await queryInterface.addColumn('quantities','product',{
+      type: Sequelize.BIGINT,
+      allowNull: true,
+      references: {
+        model:'products',
+        key:'id'
+      },
+      onUpdate:'set null',
+      onDelete:'set null'
+    })
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.removeColumn('quantities','product');
     await queryInterface.dropTable('quantities');
   }
 };

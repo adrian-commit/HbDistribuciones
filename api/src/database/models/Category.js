@@ -8,6 +8,14 @@ module.exports = (sequelize, DataTypes) => {
         as: 'models',
         foreignKey: 'category'
       });
+      Category.hasMany(models.Category, {
+        as:'subcategories',
+        foreignKey:'sub'
+      });
+      Category.belongsTo(models.Category,{
+        as:'mainCategory',
+        foreignKey:'sub'
+      })
     }
   };
 
