@@ -18,18 +18,25 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      model: {
-        type: Sequelize.BIGINT,
-        allowNull: false
-      },
       price: {
         type: Sequelize.BIGINT,
         allowNull: false
       }
     });
+    await queryInterface.addColumn('products','model',{
+      type: Sequelize.BIGINT,
+      allowNull: true,
+      references: {
+        model:'models',
+        key:'id'
+      },
+      onUpdate:'set null',
+      onDelete:'set null'
+    })
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.removeColumn('products','model')
     await queryInterface.dropTable('products');
   }
 };

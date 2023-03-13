@@ -14,14 +14,21 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      category: {
-        type: Sequelize.BIGINT,
-        allowNull: false
-      }
     });
+    await queryInterface.addColumn('models','category',{
+        type: Sequelize.BIGINT,
+        allowNull: true,
+        references:{
+          model:'categories',
+          key:'id'
+        },
+        onUpdate:'set null',
+        onDelete:'set null'
+    })
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.removeColumn('models','category');
     await queryInterface.dropTable('models');
   }
 };
