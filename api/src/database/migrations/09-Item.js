@@ -9,14 +9,6 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true 
       },
-      product: {
-        type: Sequelize.BIGINT,
-        allowNull: false
-      },
-      request: {
-        type: Sequelize.BIGINT,
-        allowNull: false
-      },
       price: {
         type: Sequelize.BIGINT,
         allowNull: false
@@ -36,7 +28,7 @@ module.exports = {
       onUpdate:'set null',
       onDelete:'set null'
     });
-    await queryInterface.addColumn('requests','request',{
+    await queryInterface.addColumn('items','request',{
       type: Sequelize.BIGINT,
       allowNull: true,
       references: {

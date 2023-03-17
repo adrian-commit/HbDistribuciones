@@ -4,17 +4,17 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
    
-    await queryInterface.bulkInsert('models', [
+    await queryInterface.bulkInsert('modelss', [
       {
         id: 1,
         name: 'LIBRO HIERRO BRONZEADO',
-        category: 1
+        categoryId: 1
       }
     ], {});
   
   },
 
   async down (queryInterface, Sequelize) {
-   await queryInterface.bulkDelete('models', null, {});
+   await queryInterface.bulkDelete('modelss', null, {});
   }
 };

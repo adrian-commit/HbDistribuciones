@@ -3,8 +3,10 @@ const {ModelStock} = require('../database/models');
 module.exports = {
     list: async (req,res) => {
         try {
-            let models = await ModelStock.findAll();
-            return res.send(models);           
+            console.log('no pasé')
+            let modelSs = await ModelStock.findAll();
+            console.log('modelSs')
+            return res.send(modelSs);           
         } catch (error) {
             return res.send(error.msg);
         }

@@ -6,37 +6,39 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('teamsUsers', {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true
       },
       teamId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: true,
         references: {
-          model: {
-            tableName: 'teams'
-          },
+          model: 'teams',
           key: 'id'
         },
         onDelete: 'set null',
         onUpdate: 'set null'
       },
       userId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: true,
         references: {
-          model: {
-            tableName: 'users'
-          },
+          model:'users',
           key: 'id'
         },
         onDelete: 'set null',
         onUpdate: 'set null'
       }
     });
+    await queryInterface.addConstraint('teamsUsers', {
+      fields: ['userId','teamId'],
+      type:'unique',
+      name:'user_team_unique_constrait'
+    })
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeConstraint('teamsUsers','user_team_unique_constrait');
     await queryInterface.dropTable('teamsUsers');
   }
 };

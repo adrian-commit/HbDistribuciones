@@ -8,8 +8,14 @@ module.exports = {
       {
         id: 1,
         name: 'BISAGRAS',
-        sub: 0
-      }
+        sub: null
+      },
+      {
+        id: 2,
+        name: 'BISAGRAS CURVAS PLATEADAS',
+        sub: 1
+      },
+      
     ], {});
   
   },

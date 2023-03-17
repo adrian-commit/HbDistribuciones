@@ -27,7 +27,7 @@ module.exports = {
       type: Sequelize.BIGINT,
       allowNull: true,
       references: {
-        model:'models',
+        model:'modelss',
         key:'id'
       },
       onUpdate:'set null',

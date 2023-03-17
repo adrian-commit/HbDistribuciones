@@ -4,7 +4,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('models', { 
+    await queryInterface.createTable('modelss', { 
       id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false
       },
     });
-    await queryInterface.addColumn('models','category',{
+    await queryInterface.addColumn('modelss','categoryId',{
         type: Sequelize.BIGINT,
         allowNull: true,
         references:{
@@ -28,7 +28,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.removeColumn('models','category');
-    await queryInterface.dropTable('models');
+    await queryInterface.removeColumn('modelss','categoryId');
+    await queryInterface.dropTable('modelss');
   }
 };

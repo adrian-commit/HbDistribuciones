@@ -3,6 +3,7 @@ module.exports = {
     list: async (req,res) => {
         try {
             let users = await User.findAll();
+            console.log('proceso finalizado');
             return res.send(users);           
         } catch (error) {
             return res.send(error.msg);
@@ -11,7 +12,13 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let user = await User.findByPk(req.params.id);
+            let user = await User.findByPk(req.params.id,{include: [
+                {
+                    model: Team,
+                    as:'teams',
+                    attributes: ['name']
+                }
+            ]});
             return res.send(user);           
         } catch (error) {
             return res.send(error.msg);

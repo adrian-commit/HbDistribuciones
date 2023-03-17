@@ -3,8 +3,8 @@ const {Client} = require('../database/models')
 module.exports = {
     list: async (req,res) => {
         try {
-            let clients = Client.findAll();
-            res.send(clients);           
+            let clients = await Client.findAll();
+            res.json(clients);           
         } catch (error) {
             res.send(error.msg);
         }
