@@ -19,10 +19,6 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      product: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       stock: {
         type: DataTypes.BIGINT,
         defaultValue: 0,

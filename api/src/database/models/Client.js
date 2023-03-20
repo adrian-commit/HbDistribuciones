@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Client.hasMany(models.Request, {
         as: 'requests',
-        foreignKey: 'client'
+        foreignKey: 'clientId'
       });
     }
   };

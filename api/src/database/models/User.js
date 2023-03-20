@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       })
   
       User.hasMany(models.Request,{
-        as:'user',
-        foreingKey:'seller'
+        as:'orders',
+        foreingKey:'sellerId'
       })
     }
   };

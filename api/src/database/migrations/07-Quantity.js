@@ -14,7 +14,7 @@ module.exports = {
         defaultValue: 0
       }
     });
-    await queryInterface.addColumn('quantities','product',{
+    await queryInterface.addColumn('quantities','productId',{
       type: Sequelize.BIGINT,
       allowNull: true,
       references: {
@@ -27,7 +27,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.removeColumn('quantities','product');
+    await queryInterface.removeColumn('quantities','productId');
     await queryInterface.dropTable('quantities');
   }
 };

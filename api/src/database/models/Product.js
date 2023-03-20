@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Product.belongsTo(models.ModelStock, {
         as: 'models',
-        foreignKey: 'modelId'
+        foreignKey: 'model'
       });
       Product.hasOne(models.Quantity, {
         as: 'quantity',
@@ -34,10 +34,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BIGINT,
       allowNull: false,
       unique: true
-    },
-    modelId: {
-      type: DataTypes.BIGINT,
-      allowNull: false
     },
     price: {
       type: DataTypes.BIGINT,

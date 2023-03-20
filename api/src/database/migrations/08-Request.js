@@ -36,7 +36,7 @@ module.exports = {
         defaultValue: 0
       }
     });
-    await queryInterface.addColumn('requests','client',{
+    await queryInterface.addColumn('requests','clientId',{
       type: Sequelize.BIGINT,
       allowNull: true,
       references: {
@@ -46,7 +46,7 @@ module.exports = {
       onUpdate:'set null',
       onDelete:'set null'
     });
-    await queryInterface.addColumn('requests','seller',{
+    await queryInterface.addColumn('requests','sellerId',{
       type: Sequelize.BIGINT,
       allowNull: true,
       references: {
@@ -59,8 +59,8 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.removeColumn('requests','client');
-    await queryInterface.removeColumn('requests','seller');
+    await queryInterface.removeColumn('requests','clientId');
+    await queryInterface.removeColumn('requests','sellerId');
     await queryInterface.dropTable('requests');
   }
 };

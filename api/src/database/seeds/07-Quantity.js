@@ -7,12 +7,12 @@ module.exports = {
     await queryInterface.bulkInsert('quantities', [
       {
         id: 1,
-        product: 1,
+        productId: 1,
         stock: 2000
       },
       {
         id: 2,
-        product: 2,
+        productId: 2,
         stock: 2200
       }
     ], {});

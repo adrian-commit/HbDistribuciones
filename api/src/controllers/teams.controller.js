@@ -6,7 +6,7 @@ module.exports = {
             let teams = await Team.findAll();
             return res.send(teams);           
         } catch (error) {
-            return res.send(error.msg);
+            return res.send(error.original.sqlMessage);
         }
     },
 
@@ -15,7 +15,7 @@ module.exports = {
             let team = await Team.findByPk(req.params.id);
             return res.send(team);           
         } catch (error) {
-            return res.send(error.msg);
+            return res.send(error.original.sqlMessage);
         }
     },
 

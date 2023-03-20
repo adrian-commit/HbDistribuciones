@@ -3,19 +3,19 @@ const {Client} = require('../database/models')
 module.exports = {
     list: async (req,res) => {
         try {
-            let clients = await Client.findAll();
+            let clients = await Client.findAll({include:{all:true}});
             res.json(clients);           
         } catch (error) {
-            res.send(error.msg);
+            res.send(error.original.sqlMessage);
         }
     },
 
     showOne: async (req,res) => {
         try {
-            let client = Client.findByPk(req.params.id);
+            let client = await Client.findByPk(req.params.id);
             res.send(client);           
         } catch (error) {
-            res.send(error.msg);
+            res.send(error.original.sqlMessage);
         }
     }
 

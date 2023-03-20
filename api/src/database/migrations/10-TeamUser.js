@@ -34,11 +34,11 @@ module.exports = {
     await queryInterface.addConstraint('teamsUsers', {
       fields: ['userId','teamId'],
       type:'unique',
-      name:'user_team_unique_constrait'
+      name:'userTeamRestrict'
     })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeConstraint('teamsUsers','user_team_unique_constrait');
+    await queryInterface.removeConstraint('teamsUsers','userTeamRestrict');
     await queryInterface.dropTable('teamsUsers');
   }
 };

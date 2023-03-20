@@ -23,14 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true 
     },
-    product: {
-      type: DataTypes.BIGINT,
-      allowNull: false
-    },
-    request: {
-      type: DataTypes.BIGINT,
-      allowNull: false
-    },
     price: {
       type: DataTypes.BIGINT,
       allowNull: false

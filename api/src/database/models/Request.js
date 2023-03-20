@@ -7,15 +7,15 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Request.hasOne(models.Item,{
         as: 'item',
-        foreignKey: 'request'
+        foreignKey: 'requestId'
       });
       Request.belongsTo(models.Client,{
-        as: 'clients',
+        as: 'client',
         foreignKey: 'clientId'
       });
       Request.belongsTo(models.User,{
-        as: 'users',
-        foreignKey: 'userId'
+        as: 'seller',
+        foreignKey: 'sellerId'
       });
     }
   };
@@ -25,14 +25,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BIGINT,
       autoIncrement: true,
       primaryKey: true 
-    },
-    seller: {
-      type: DataTypes.BIGINT,
-      allowNull: false
-    },
-    client: {
-      type: DataTypes.BIGINT,
-      allowNull: false
     },
     track: {
       type: DataTypes.DATE,
