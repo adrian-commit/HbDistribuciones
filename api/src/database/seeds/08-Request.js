@@ -9,7 +9,7 @@ module.exports = {
         id: 1,
         sellerId: 2,
         clientId: 1,
-        track: 'fecha',
+        track: '2022-05-16',
         comission: 5000,
         discount: 8000,
         total: 43482.6,

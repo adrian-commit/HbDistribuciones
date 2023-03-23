@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   class Request extends Model {
     static associate(models) {
       Request.hasOne(models.Item,{
-        as: 'item',
+        as: 'inventory',
         foreignKey: 'requestId'
       });
       Request.belongsTo(models.Client,{
-        as: 'client',
+        as: 'customer',
         foreignKey: 'clientId'
       });
       Request.belongsTo(models.User,{

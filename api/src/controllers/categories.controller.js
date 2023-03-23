@@ -3,7 +3,13 @@ const {Category, Model} = require('../database/models');
 module.exports = {
     list: async (req,res) => {
         try {
-            let categories = await Category.findAll({include:{all:true}});
+            let categories = await Category.findAll({
+                include:{
+                    all:true
+                },
+                subQuery: false,
+                required:true
+            });
             return res.send(categories);           
         } catch (error) {
             return res.send(error.original.sqlMessage);

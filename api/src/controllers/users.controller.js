@@ -2,7 +2,7 @@ const {User} = require('../database/models');
 module.exports = {
     list: async (req,res) => {
         try {
-            let users = await User.findAll({subQuery: false, include:{all:true},attributes:['id','email']});
+            let users = await User.findAll({include:{all:true}});
             console.log('proceso finalizado');
             return res.send(users);           
         } catch (error) {
