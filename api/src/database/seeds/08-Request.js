@@ -7,7 +7,7 @@ module.exports = {
     await queryInterface.bulkInsert('requests', [
       {
         id: 1,
-        sellerId: 2,
+        UserId: 2,
         clientId: 1,
         track: '2022-05-16',
         comission: 5000,

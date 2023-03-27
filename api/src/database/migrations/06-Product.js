@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false
       },
       sku: {
-        type: Sequelize.BIGINT,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true
       },

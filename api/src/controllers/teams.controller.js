@@ -3,10 +3,10 @@ const {Team} = require('../database/models');
 module.exports = {
     list: async (req,res) => {
         try {
-            let teams = await Team.findAll();
+            let teams = await Team.findAll({include:{ all:true }});
             return res.send(teams);           
         } catch (error) {
-            return res.send(error.original.sqlMessage);
+            return res.send(error);
         }
     },
 
@@ -15,7 +15,7 @@ module.exports = {
             let team = await Team.findByPk(req.params.id);
             return res.send(team);           
         } catch (error) {
-            return res.send(error.original.sqlMessage);
+            return res.send(error);
         }
     },
 

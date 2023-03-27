@@ -12,7 +12,7 @@ module.exports = {
             });
             return res.send(categories);           
         } catch (error) {
-            return res.send(error.original.sqlMessage);
+            return res.send(error);
         }
     },
 
@@ -21,7 +21,7 @@ module.exports = {
             let category = await Category.findByPk(req.params.id, {include:{all:true}});
             return res.send(category);           
         } catch (error) {
-            return res.send(error.original.sqlMessage);
+            return res.send(error);
         }
     },
     

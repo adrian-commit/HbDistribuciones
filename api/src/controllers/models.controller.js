@@ -8,7 +8,7 @@ module.exports = {
             console.log('modelSs')
             return res.send(modelSs);           
         } catch (error) {
-            return res.send(error.original.sqlMessage);
+            return res.send(error);
         }
     },
 
@@ -17,7 +17,7 @@ module.exports = {
             let model = await ModelStock.findByPk(req.params.id);
             return res.send(model);           
         } catch (error) {
-            return res.send(error.original.sqlMessage);
+            return res.send(error);
         }
     },
     

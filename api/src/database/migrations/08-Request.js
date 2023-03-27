@@ -46,7 +46,7 @@ module.exports = {
       onUpdate:'set null',
       onDelete:'set null'
     });
-    await queryInterface.addColumn('requests','sellerId',{
+    await queryInterface.addColumn('requests','UserId',{
       type: Sequelize.BIGINT,
       allowNull: true,
       references: {

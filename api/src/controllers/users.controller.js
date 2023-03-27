@@ -15,7 +15,7 @@ module.exports = {
             let user = await User.findByPk(req.params.id);
             return res.send(user);           
         } catch (error) {
-            return res.send(error.original.sqlMessage);
+            return res.send(error);
         }
     },
 

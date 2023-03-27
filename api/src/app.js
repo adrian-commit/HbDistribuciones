@@ -3,6 +3,10 @@ const {resolve} = require('path');
 const express = require('express');
 const app = express();
 const router = express.Router();
+const { sequelize } = require('./database/models');
+
+// sequelize.authenticate();
+// sequelize.sync({ alter: true });
 
 //corriendo el puerto
 const PORT = process.env.PORT || 5050;
@@ -23,8 +27,8 @@ app.use('/api/clients', require('./routes/clients.routes'));
 app.use('/api/teams', require('./routes/teams.routes'));
 app.use('/api/categories', require('./routes/categories.routes'));
 app.use('/api/models', require('./routes/models.routes'));
-// app.use('/api/products', require('./routes/products.routes'));
+app.use('/api/products', require('./routes/products.routes'));
 // app.use('/api/quantities', require('./routes/quantities.routes'));
 // app.use('/api/items', require('./routes/items.routes'));
-// app.use('/api/requests', require('./routes/requests.routes'));
+app.use('/api/requests', require('./routes/requests.routes'));
 // app.use('/api/users/teams', require('./routes/usersTeams.routes'));

@@ -5,7 +5,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Request extends Model {
     static associate(models) {
-      Request.hasOne(models.Item,{
+      Request.hasMany(models.Item,{
         as: 'inventory',
         foreignKey: 'requestId'
       });
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Request.belongsTo(models.User,{
         as: 'seller',
-        foreignKey: 'sellerId'
+        foreignKey: 'UserId'
       });
     }
   };
