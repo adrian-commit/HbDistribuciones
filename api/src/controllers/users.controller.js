@@ -27,7 +27,43 @@ module.exports = {
             })
             return res.send(newUser);
         } catch (error) {
-            return res.send(error.msg);
+            return res.send(error);
+        }
+    },
+
+    update: async (req,res) => {
+        try {
+            let user = await User.findByPk(req.params.id);
+            user.update({
+                email: req.body.email ? req.body.email : user.email,
+                password: req.body.password ? req.body.password : user.password
+            })
+            return res.send('usuario Actualizado');
+        } catch (error) {
+            return res.send(error);
+        } 
+    },
+
+    deleteUser: async (req,res) => {
+        try {
+            let user = await User.findByPk(req.body.id);
+            user.destroy();
+            return res.send('Usuario eliminado');
+        } catch (error) {
+            return res.send(error);
+        }
+    },
+
+    access: async (req,res) => {
+        let userByEmail = await User.findOne({where:{email:req.body.email}});
+        if (!userByEmail) {
+            return res.send('Correo no registrado');
+        }
+        // return res.send(userByEmail.password);
+        if (userByEmail.password != req.body.password) {
+            return res.send('Credenciales incorrectas');
+        } else {
+            return res.send('Acceso condecido');
         }
     }
 }

@@ -3,10 +3,6 @@ const {resolve} = require('path');
 const express = require('express');
 const app = express();
 const router = express.Router();
-const { sequelize } = require('./database/models');
-
-// sequelize.authenticate();
-// sequelize.sync({ alter: true });
 
 //corriendo el puerto
 const PORT = process.env.PORT || 5050;
