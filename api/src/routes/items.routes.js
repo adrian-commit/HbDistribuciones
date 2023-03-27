@@ -1,4 +1,4 @@
-const {list,showOne} = require('../controllers/quantities.controller');
+const {list,showOne} = require('../controllers/items.controller');
 const {Router} = require('express');
 const router = Router();
 
