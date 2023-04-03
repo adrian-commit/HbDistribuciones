@@ -34,10 +34,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    discount: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     total: {
       type: DataTypes.BIGINT,
       allowNull: false

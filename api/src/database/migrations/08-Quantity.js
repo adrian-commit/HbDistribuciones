@@ -23,10 +23,21 @@ module.exports = {
       },
       onUpdate:'set null',
       onDelete:'set null'
+    }),
+    await queryInterface.addColumn('quantities','placeId',{
+      type: Sequelize.BIGINT,
+      allowNull: true,
+      references: {
+        model:'warehouses',
+        key:'id'
+      },
+      onUpdate:'set null',
+      onDelete:'set null'
     })
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.removeColumn('quantities','placeId');
     await queryInterface.removeColumn('quantities','productId');
     await queryInterface.dropTable('quantities');
   }

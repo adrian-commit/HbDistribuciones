@@ -6,8 +6,12 @@ module.exports = (sequelize, DataTypes) => {
   class Quantity extends Model {
     static associate(models) {
       Quantity.belongsTo(models.Product, {
-        as: 'merch',
+        as: 'object',
         foreignKey: 'productId',
+      });
+      Quantity.belongsTo(models.Warehouse, {
+        as: 'stockHouses',
+        foreignKey: 'placeId',
       });
     }
   }
@@ -21,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       stock: {
         type: DataTypes.BIGINT,
-        defaultValue: 0,
+        defaultValue: 0
       },
     },
     {

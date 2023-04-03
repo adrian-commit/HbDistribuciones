@@ -24,6 +24,7 @@ app.use('/api/teams', require('./routes/teams.routes'));
 app.use('/api/categories', require('./routes/categories.routes'));
 app.use('/api/models', require('./routes/models.routes'));
 app.use('/api/products', require('./routes/products.routes'));
+// app.use('/api/warehouses', require('./routes/warehouses.routes'));
 app.use('/api/quantities', require('./routes/quantities.routes'));
 app.use('/api/items', require('./routes/items.routes'));
 app.use('/api/requests', require('./routes/requests.routes'));

@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     static associate(models) {
       Product.belongsTo(models.ModelStock, {
-        as: 'models',
+        as: 'template',
         foreignKey: 'model'
       });
-      Product.hasOne(models.Quantity, {
-        as: 'quantity',
+      Product.hasMany(models.Quantity, {
+        as: 'quantities',
         foreignKey: 'productId'
       });
       Product.hasOne(models.Item, {
@@ -38,6 +38,11 @@ module.exports = (sequelize, DataTypes) => {
     price: {
       type: DataTypes.BIGINT,
       allowNull: false
+    },
+    discount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     }
   }, {
     sequelize,

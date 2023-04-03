@@ -21,6 +21,11 @@ module.exports = {
       price: {
         type: Sequelize.BIGINT,
         allowNull: false
+      },
+      discount: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
       }
     });
     await queryInterface.addColumn('products','model',{

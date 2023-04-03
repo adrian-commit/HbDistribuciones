@@ -8,12 +8,14 @@ module.exports = {
       {
         id: 1,
         productId: 1,
-        stock: 2000
+        stock: 2000,
+        placeId: 1
       },
       {
         id: 2,
-        productId: 2,
-        stock: 2200
+        productId: 1,
+        stock: 2200,
+        placeId: 2
       }
     ], {});
   

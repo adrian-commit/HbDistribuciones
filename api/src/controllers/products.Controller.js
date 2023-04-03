@@ -17,5 +17,45 @@ module.exports = {
         } catch (error) {
             return res.send(error);
         }
+    },
+
+    create: async (req,res) => {
+        try {
+            let newProduct = await Product.create({
+                name: req.body.name,
+                sku: req.body.sku,
+                price: Number(req.body.price),
+                model: Number(req.body.model) 
+            })
+            return res.send(newProduct);
+        } catch (error) {
+            return res.send(error);
+        }
+    },
+
+    update: async (req,res) => {
+        try {
+            let product = await Product.findByPk(req.params.id);
+            product.update({
+                name: req.body.name ? req.body.name : product.name,
+                sku: req.body.sku ? req.body.sku : product.sku,
+                discount: req.body.discount ? req.body.discount : product.discount,
+                price: req.body.price ? req.body.price: product.price,
+                model: req.body.model ? req.body.model : product.model
+            });
+            return res.send('Producto Actualizado');
+        } catch (error) {
+            return res.send(error);
+        } 
+    },
+
+    deleteProduct: async (req,res) => {
+        try {
+            let product = await Product.findByPk(req.body.id);
+            product.destroy();
+            return res.send('Producto eliminado');
+        } catch (error) {
+            return res.send(error);
+        }
     }
 }
