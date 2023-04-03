@@ -22,13 +22,35 @@ module.exports = {
     create: async (req,res) => {
         try {
             let newTeam = await Team.create({
-                email: req.body.email,
-                password: req.body.password,
+                name: req.body.name,
                 level: req.body.level
             })
             return res.send(newTeam);
         } catch (error) {
             return res.send(error.msg);
+        }
+    },
+
+    update: async (req,res) => {
+        try {
+            let team = await Team.findByPk(req.params.id);
+            team.update({
+                name: req.body.name ? req.body.name : team.name,
+                level: req.body.level ? req.body.level : team.level
+            });
+            return res.send('Equipo Actualizado');
+        } catch (error) {
+            return res.send(error);
+        } 
+    },
+
+    deleteTeam: async (req,res) => {
+        try {
+            let team = await Team.findByPk(req.body.id);
+            team.destroy();
+            return res.send('Equipo eliminado');
+        } catch (error) {
+            return res.send(error);
         }
     }
 }
