@@ -10,8 +10,8 @@
     "sql:drop": "sequelize db:drop",
     "sql:migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "sql:seed": "sequelize db:seed:undo:all && sequelize db:seed:all",
-    "db:mg": "sequelize migration:generate --name=User",
-    "db:sd": "sequelize seed:generate --name=Request",
+    "db:mg": "sequelize migration:generate --name=ProductImage",
+    "db:sd": "sequelize seed:generate --name=ProductImage",
     "sq-db": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
   },
   "keywords": [],
