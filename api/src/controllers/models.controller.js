@@ -1,11 +1,25 @@
-const {ModelStock} = require('../database/models');
+const {ModelStock, Product,ProductImage} = require('../database/models');
 
 module.exports = {
     list: async (req,res) => {
         try {
-            console.log('no pasé')
-            let modelSs = await ModelStock.findAll({include:{all:true}});
-            console.log('modelSs')
+            let modelSs = await ModelStock.findAll({
+                attributes: { exclude: ['categoryId','class']},
+                include: [
+                    {
+                        as:'products',
+                        model: Product,
+                        attributes: { exclude: ['discount', 'model']},
+                        include: [
+                            {
+                            as:'image',
+                            model:ProductImage,
+                            attributes: ['img']
+                            }
+                        ]
+                    }
+                ]
+            });
             return res.send(modelSs);           
         } catch (error) {
             return res.send(error);
@@ -25,7 +39,7 @@ module.exports = {
         try {
             let newModel = await ModelStock.create({
                 name: req.body.name,
-                categoryId: req.body.categoryId
+                categoryId: Number(req.body.categoryId)
             })
             return res.send(newModel);
         } catch (error) {
@@ -38,7 +52,7 @@ module.exports = {
             let model = await ModelStock.findByPk(req.params.id);
             model.update({
                 name: req.body.name ? req.body.name : model.name,
-                categoryId: req.body.categoryId ? req.body.categoryId : model.categoryId
+                categoryId: Number(req.body.categoryId) ? Number(req.body.categoryId) : model.categoryId
             });
             return res.send('Modelo Actualizado');
         } catch (error) {

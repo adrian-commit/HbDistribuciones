@@ -14,7 +14,7 @@ module.exports = {
     create: async (req,res) => {
         try {
             let newImg = await ProductImage.create({
-                img: String(req.file.filename),
+                img: req.file.filename,
                 productId: Number(req.body.productId)
             })
             return res.send(newImg);

@@ -22,10 +22,10 @@ module.exports = {
     create: async (req,res) => {
         try {
             let newRequest = await Request.create({
-                track: Date(req.body.track),
+                track: req.body.track,
                 comission: Number(req.body.comission),
                 total: Number(req.body.total),
-                send: Boolean(req.body.send),
+                send: req.body.send,
                 status: Number(req.body.status),
                 clientId : Number(req.body.clientId),
                 UserId: Number(req.body.userId)
@@ -40,10 +40,10 @@ module.exports = {
         try {
             let request = await Request.findByPk(req.params.id);
             let data = {
-                track: Date(req.body.track) ? Date(req.body.track) : request.track,
+                track: req.body.track ? req.body.track : request.track,
                 comission: Number(req.body.comission) ? Number(req.body.comission) : request.comission,
                 total: Number(req.body.total) ? Number(req.body.total) : request.total,
-                send: Boolean(req.body.send) == true ? true : false,
+                send: req.body.send == true ? true : false,
                 status: Number(req.body.status) ? Number(req.body.status) : request.status,
                 clientId : Number(req.body.clientId) ? Number(req.body.clientId) : request.clientId,
                 UserId: Number(req.body.userId) ? Number(req.body.userId) : request.userId

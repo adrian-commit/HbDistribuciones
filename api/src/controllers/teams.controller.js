@@ -1,9 +1,14 @@
-const {Team} = require('../database/models');
+const {Team, User} = require('../database/models');
 
 module.exports = {
     list: async (req,res) => {
         try {
-            let teams = await Team.findAll({include:{ all:true }});
+            let teams = await Team.findAll({include:[{
+                as:'users',
+                model: User,
+                attributes: { exclude:['teamsUsers','password']},
+                through: { attributes: []}
+            }]});
             return res.send(teams);           
         } catch (error) {
             return res.send(error);
@@ -12,7 +17,12 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let team = await Team.findByPk(req.params.id,{include:{all:true}});
+            let team = await Team.findByPk(req.params.id,{include:[{
+                as:'users',
+                model: User,
+                attributes: { exclude:['teamsUsers','password']},
+                through: { attributes: []}
+            }]});
             return res.send(team);           
         } catch (error) {
             return res.send(error);
@@ -23,7 +33,7 @@ module.exports = {
         try {
             let newTeam = await Team.create({
                 name: req.body.name,
-                level: req.body.level
+                level: Number(req.body.level)
             })
             return res.send(newTeam);
         } catch (error) {
@@ -36,7 +46,7 @@ module.exports = {
             let team = await Team.findByPk(req.params.id);
             team.update({
                 name: req.body.name ? req.body.name : team.name,
-                level: req.body.level ? req.body.level : team.level
+                level: Number(req.body.level) ? Number(req.body.level) : team.level
             });
             return res.send('Equipo Actualizado');
         } catch (error) {

@@ -19,9 +19,11 @@ module.exports = {
         allowNull: false
       } 
     });
+    await queryInterface.addIndex('users',['id'])
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.removeIndex('users',['users_id'])
     await queryInterface.dropTable('users');
   }
 };

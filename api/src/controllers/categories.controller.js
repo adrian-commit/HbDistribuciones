@@ -1,14 +1,10 @@
-const {Category, Model} = require('../database/models');
+const {Category, ModelStock} = require('../database/models');
 
 module.exports = {
     list: async (req,res) => {
         try {
             let categories = await Category.findAll({
-                include:{
-                    all:true
-                },
-                subQuery: false,
-                required:true
+                attributes: { exclude:['mainCategory', 'sub']}
             });
             return res.send(categories);           
         } catch (error) {
@@ -18,7 +14,15 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let category = await Category.findByPk(req.params.id, {include:{all:true}});
+            let category = await Category.findByPk(req.params.id, {
+                attributes: { exclude:['mainCategory','sub']},
+                include:[
+                    {
+                        as:'subcategories',
+                        model: Category,
+                        attributes:{ exclude: ['sub']}
+                    }
+                ]});
             return res.send(category);           
         } catch (error) {
             return res.send(error);
@@ -29,7 +33,7 @@ module.exports = {
         try {
             let newCategory = await Category.create({
                 name: req.body.name,
-                sub: req.body.sub
+                sub: Number(req.body.sub)
             })
             return res.send(newCategory);
         } catch (error) {
@@ -42,7 +46,7 @@ module.exports = {
             let category = await Category.findByPk(req.params.id);
             category.update({
                 name: req.body.name ? req.body.name : category.name,
-                sub: req.body.sub ? req.body.sub : category.sub
+                sub: Number(req.body.sub) ? Number(req.body.sub) : category.sub
             });
             return res.send('Categoría Actualizada');
         } catch (error) {

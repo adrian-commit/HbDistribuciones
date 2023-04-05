@@ -12,7 +12,7 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let client = await Client.findByPk(req.params.id);
+            let client = await Client.findByPk(req.params.id, {include:{all:true}});
             res.send(client);           
         } catch (error) {
             res.send(error);
@@ -24,7 +24,7 @@ module.exports = {
             let newClient = await Client.create({
                 email: req.body.email,
                 address: req.body.address,
-                phone: req.body.phone
+                phone: Number(req.body.phone)
             })
             return res.send(newClient);
         } catch (error) {
@@ -38,7 +38,7 @@ module.exports = {
             client.update({
                 email: req.body.email ? req.body.email : client.email,
                 address: req.body.address ? req.body.address : client.address,
-                phone: req.body.phone ? req.body.phone : client.phone
+                phone: Number(req.body.phone) ? Number(req.body.phone) : client.phone
             });
             return res.send('Cliente Actualizado');
         } catch (error) {

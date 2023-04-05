@@ -22,8 +22,8 @@ module.exports = {
     create: async (req,res) => {
         try {
             let newPlace = await Warehouse.create({
-                name: String(req.body.name),
-                address: String(req.body.address),
+                name: req.body.name,
+                address: req.body.address,
                 phone: Number(req.body.phone)
             })
             return res.send(newPlace);
@@ -36,8 +36,8 @@ module.exports = {
         try {
             let place = await Warehouse.findByPk(req.params.id);
             place.update({
-                name: String(req.body.name) ? String(req.body.name) : place.name,
-                address: String(req.body.address) ? String(req.body.address) : place.address,
+                name: req.body.name ? req.body.name : place.name,
+                address: req.body.address ? req.body.address : place.address,
                 phone: Number(req.body.phone) ? Number(req.body.phone) : place.phone
             });
             return res.send('Lugar Actualizado');

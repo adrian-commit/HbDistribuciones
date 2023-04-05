@@ -40,8 +40,8 @@ module.exports = {
                 name: req.body.name ? req.body.name : product.name,
                 sku: req.body.sku ? req.body.sku : product.sku,
                 discount: req.body.discount ? req.body.discount : product.discount,
-                price: req.body.price ? req.body.price: product.price,
-                model: req.body.model ? req.body.model : product.model
+                price: Number(req.body.price) ? Number(req.body.price): product.price,
+                model: Number(req.body.model) ? Number(req.body.model) : product.model
             });
             return res.send('Producto Actualizado');
         } catch (error) {
