@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'userId',
         otherKey:'teamId',
         timestamps: false
-      })
+      });
   
       User.hasMany(models.Request,{
         as:'orders',
         foreingKey:'UserId'
-      })
+      });
     }
   };
 

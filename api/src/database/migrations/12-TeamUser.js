@@ -31,14 +31,14 @@ module.exports = {
         onUpdate: 'set null'
       }
     });
-    await queryInterface.addConstraint('teamsUsers', {
-      fields: ['userId','teamId'],
-      type:'unique',
-      name:'userTeamRestrict'
-    })
+    // await queryInterface.addConstraint('teamsUsers', {
+    //   fields: ['userId','teamId'],
+    //   type:'unique',
+    //   name:'userTeamRestrict'
+    // })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeConstraint('teamsUsers','userTeamRestrict');
+    // await queryInterface.removeConstraint('teamsUsers','userTeamRestrict');
     await queryInterface.dropTable('teamsUsers');
   }
 };

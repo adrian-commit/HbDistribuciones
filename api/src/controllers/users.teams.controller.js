@@ -6,8 +6,8 @@ module.exports = {
         try {
             let user = await User.findByPk(req.body.userId)
             let team = await Team.findByPk(req.body.teamId)
-            await user.addEquipos(team)
-            return res.status(201).send({ok:true});
+            await user.addTeams(team)
+            return res.status(201).send('equipo Agregado');
         } catch (error) {
             return res.send(error);
         }
@@ -16,10 +16,10 @@ module.exports = {
     deleteUT: async(req, res) => {
         try {
             let user = await User.findByPk(req.body.userId)
-            let teams = await user.getEquipos()
+            let teams = await user.getTeams()
             teams = req.body.teamId != null ? teams.filter(i => i.id != req.body.teamId) : []
-            await user.setEquipos(teams)
-            return res.status(204).send({ok:true});  
+            await user.setTeams(teams)
+            return res.status(201).send('Equipo Eliminado');  
         } catch (error) {
             return res.send(error); 
         }

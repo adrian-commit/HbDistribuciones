@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'teamId',
         otherKey:'userId',
         timestamps: false
-      })
+      });
     }
   };
 
