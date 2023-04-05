@@ -3,6 +3,6 @@ const {Router} = require('express');
 const router = Router();
 
 router.post('/create', create)
-router.get('/delete', deleteUT)
+router.delete('/delete', deleteUT)
 
 module.exports = router;

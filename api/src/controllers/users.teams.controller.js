@@ -9,9 +9,10 @@ module.exports = {
             await user.addEquipos(team)
             return res.status(201).send({ok:true});
         } catch (error) {
-            return res.status(404).send(error);
+            return res.send(error);
         }
     }, 
+    
     deleteUT: async(req, res) => {
         try {
             let user = await User.findByPk(req.body.userId)
@@ -20,7 +21,7 @@ module.exports = {
             await user.setEquipos(teams)
             return res.status(204).send({ok:true});  
         } catch (error) {
-            return res.status(404).send(error); 
+            return res.send(error); 
         }
     }
 

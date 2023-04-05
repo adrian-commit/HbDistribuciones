@@ -12,7 +12,7 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let user = await User.findByPk(req.params.id);
+            let user = await User.findByPk(req.params.id,{include:{all:true}});
             return res.send(user);           
         } catch (error) {
             return res.send(error);
