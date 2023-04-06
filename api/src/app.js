@@ -13,6 +13,8 @@ app.listen(PORT, (req,res)=>{
 app.set('view engine', 'pug');
 app.set('views', resolve(__dirname , './views'));
 
+app.use('/uploads', express.static(resolve(__dirname , '../uploads')));
+
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 

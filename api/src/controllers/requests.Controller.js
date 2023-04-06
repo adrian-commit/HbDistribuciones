@@ -1,9 +1,22 @@
-const {Request} = require('../database/models');
+const {Request, Item, Product, Client, User} = require('../database/models');
 
 module.exports = {
     list: async (req,res) => {
         try {
-            let requests = await Request.findAll({include:{ all:true }}); 
+            let requests = await Request.findAll({
+                attributes:{exclude:['clientId','UserId']},
+                include:[
+                    {
+                        as:'inventory',
+                        model: Item,
+                        attributes:{exclude:['requestId','productId']},
+                        include:[
+                            {as:'article',model: Product, attributes:['id','name']}
+                        ]
+                    },
+                    {as:'customer', model:Client},
+                    {as:'seller', model:User}
+            ]}); 
             return res.send(requests);           
         } catch (error) {
             return res.send(error);

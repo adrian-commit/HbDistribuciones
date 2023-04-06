@@ -1,18 +1,37 @@
-const {Warehouse} = require('../database/models');
+const {Warehouse, Quantity, Product} = require('../database/models');
 
 module.exports = {
     list: async (req,res) => {
         try {
-            let places = await Warehouse.findAll({include:{ all:true }}); 
+            let places = await Warehouse.findAll({include:[
+                {
+                    as:'units',
+                    model: Quantity,
+                    attributes:{exclude:['placeId','productId']},
+                    include:[
+                        {as:'object', model: Product, attributes:['name','sku']}
+                    ]
+                }
+            ]}); 
             return res.send(places);           
         } catch (error) {
+            console.log(error);
             return res.send(error);
         }
     },
 
     showOne: async (req,res) => {
         try {
-            let place = await Warehouse.findByPk(req.params.id);
+            let place = await Warehouse.findByPk(req.params.id,{include:[
+                {
+                    as:'units',
+                    model: Quantity,
+                    attributes:{exclude:['placeId','productId']},
+                    include:[
+                        {as:'object', model: Product, attributes:['name','sku']}
+                    ]
+                }
+            ]});
             return res.send(place);           
         } catch (error) {
             return res.send(error);

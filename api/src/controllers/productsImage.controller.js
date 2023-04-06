@@ -14,7 +14,7 @@ module.exports = {
     create: async (req,res) => {
         try {
             let newImg = await ProductImage.create({
-                img: req.file.filename,
+                img: 'http://localhost:5050/uploads/products/' + req.file.filename,
                 productId: Number(req.body.productId)
             })
             return res.send(newImg);
@@ -27,7 +27,7 @@ module.exports = {
         try {
             let image = await ProductImage.findByPk(req.params.id);
             image.update({
-                img: req.file && req.file.length > 0 ? req.file.filename : image.img
+                img: req.file ? 'http://localhost:5050/uploads/products/' + req.file.filename : image.img
             });
             return res.send('Imagen Actualizada');
         } catch (error) {

@@ -1,4 +1,4 @@
-const {ModelStock, Product,ProductImage} = require('../database/models');
+const {ModelStock, Product, ProductImage, Quantity, Warehouse} = require('../database/models');
 
 module.exports = {
     list: async (req,res) => {
@@ -15,6 +15,14 @@ module.exports = {
                             as:'image',
                             model:ProductImage,
                             attributes: ['img']
+                            },
+                            {
+                                as:'quantities',
+                                model: Quantity,
+                                attributes: {exclude:['productId', 'placeId']},
+                                include: [
+                                    {as:'stockHouses', model: Warehouse, attributes:['name']}
+                                ]
                             }
                         ]
                     }

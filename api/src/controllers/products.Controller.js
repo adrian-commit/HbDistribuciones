@@ -1,9 +1,26 @@
-const {Product} = require('../database/models');
+const {Product, ProductImage, Quantity, Warehouse} = require('../database/models');
 
 module.exports = {
     list: async (req,res) => {
         try {
-            let products = await Product.findAll({include:{ all:true }}); 
+            let products = await Product.findAll({
+                attributes: { exclude: ['discount', 'model']},
+                include: [
+                    {
+                        as:'image',
+                        model:ProductImage,
+                        attributes: ['img']
+                    },
+                    {
+                        as:'quantities',
+                        model: Quantity,
+                        attributes: {exclude:['id','productId', 'placeId']},
+                        include: [
+                            {as:'stockHouses', model: Warehouse, attributes:['name']}
+                        ]
+                    }
+                ]
+            }); 
             return res.send(products);           
         } catch (error) {
             return res.send(error);
@@ -12,7 +29,24 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let product = await Product.findByPk(req.params.id);
+            let product = await Product.findByPk(req.params.id,{
+                attributes: { exclude: ['discount', 'model']},
+                include: [
+                    {
+                        as:'image',
+                        model:ProductImage,
+                        attributes: ['img']
+                    },
+                    {
+                        as:'quantities',
+                        model: Quantity,
+                        attributes: {exclude:['id','productId', 'placeId']},
+                        include: [
+                            {as:'stockHouses', model: Warehouse, attributes:['name']}
+                        ]
+                    }
+                ]
+            });
             return res.send(product);           
         } catch (error) {
             return res.send(error);
