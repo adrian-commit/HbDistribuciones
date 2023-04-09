@@ -7,8 +7,11 @@ app.listen(PORT, (req,res)=>{
     console.log('SERVIDOR CORRIENDO EN http://localhost:'+PORT+'/users');
 });
 
+//declarando la carpeta public para que pueda ser utilizada
+app.use('/resources', express.static(resolve(__dirname,'./public')));
+
 //establecemos en motor de plantillas ejs
 app.set('view engine', 'pug');
 app.set('views', resolve(__dirname, './views'));
 
-//app.use('/users', require('./routes/users.routes'));
+app.use('/users', require('./routes/users.routes'));
