@@ -11,8 +11,9 @@ block content
                 input(type="password", name="contraseña")
             fieldset
                 button(type="submit") Ingresar
-    main  
-        h2 ACTIVIDAD EN EL DIA  
+    main
+        div  
+            h2 ACTIVIDAD EN EL DIA  
         section 
             article 
                 img(src="", alt="Pedidos")
@@ -26,5 +27,28 @@ block content
             a(href="/categories/") CATALOGO
             a(href="/clients/") CLIENTES 
             a(href="/requests/") PEDIDOS
+    main 
+        section 
+            article 
+                img(src="", alt="Envios")
+                p Envios en Zona 1 
+                p 6
+            article 
+                img(src="", alt="Retiros")
+                p Retiros en Zona 1 
+                p 4
+        section 
+            article 
+                img(src="", alt="Nuevo")
+                a(href="") Nuevo Producto
+            article 
+                img(src="", alt="Actualizar")
+                a(href="") Actualizar Precios
+            article 
+                img(src="", alt="Cliente")
+                a(href="") Nuevo Cliente
+            article 
+                img(src="", alt="Vendedor")
+                a(href="") Nuevo Vendedor
 include includes/footer.pug
     

@@ -1,0 +1,17 @@
+extends ../layout.pug
+block styles 
+    tittle Nuevo Cliente 
+block content 
+    div  
+        h2 Nuevo Cliente 
+    section 
+        form(action="" method="POST") 
+            fieldset 
+                input(type="number" name="phone")
+            fieldset
+                input(type="text" name="address")
+            fieldset
+                input(type="email" name="email")
+            fieldset
+                button Guardar
+include ../includes/footer.pug

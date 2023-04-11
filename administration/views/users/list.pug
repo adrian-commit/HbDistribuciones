@@ -1,0 +1,21 @@
+extends ../layout.pug
+block styles 
+    title Lista de Vendedores 
+block content
+    main 
+        section
+            h2 Vendedores
+            form(action="") 
+                input(type="search", name="search" placeholder="Busca un vendedor aquí")
+                button 
+                    img(src="", alt="Buscar")
+        table  
+            td imagen  
+            td nombre
+            td pedidos Hoy
+            td comision
+            td Zona 1
+            td ver
+            td Editar 
+            td Borrar
+include ../includes/footer.pug

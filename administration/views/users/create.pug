@@ -1,0 +1,21 @@
+extends ../layout.pug
+block styles 
+    tittle Nuevo Cliente 
+block content 
+    div  
+        h2 Nuevo Cliente 
+    section 
+        form(action="" method="POST") 
+            fieldset
+                input(type="text" name="name")
+            fieldset
+                input(type="email" name="email")
+            fieldset 
+                input(type="number" name="phone")
+            fieldset
+                input(type="image")
+            fieldset
+                input(type="text" name="comission")
+            fieldset
+                button Guardar
+include ../includes/footer.pug

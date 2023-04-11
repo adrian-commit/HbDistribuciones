@@ -18,5 +18,5 @@ app.use('/users', require('./routes/users.routes'));
 app.use('/clients', require('./routes/clients.routes'));
 app.use('/categories', require('./routes/categories.routes'));
 app.use('/models', require('./routes/models.routes'));
-// app.use('/products', require('./routes/products.routes'));
+app.use('/products', require('./routes/products.routes'));
 app.use('/requests', require('./routes/requests.routes'));

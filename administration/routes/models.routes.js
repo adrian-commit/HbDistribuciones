@@ -1,7 +1,9 @@
-const {one} = require('../controllers/models.controller');
+const {catalog, list, newModel} = require('../controllers/models.controller');
 const {Router} = require('express');
 const  router = Router();
 
-router.get('/', one)
+router.get('/', list)
+router.get('/new', newModel)
+router.get('/inventory', catalog)
 
 module.exports = router;

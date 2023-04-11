@@ -1,0 +1,21 @@
+extends ../layout.pug
+block styles 
+    tittle Actualizar Stock 
+block content 
+    div  
+        h2 Stock en Depositos 
+    section     
+        p Stock Total: 100000
+        p Sin Asignar: 80000
+    section 
+        form(action="") 
+            fieldset 
+                select(name="")
+                    option(value="") Zona 1 
+                input(type="number", name="stock")
+            img(src="", alt="Agregar campo")
+            fieldset
+                button Actualizar
+                button cancelar 
+
+include ../includes/footer.pug
