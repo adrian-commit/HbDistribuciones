@@ -1,0 +1,31 @@
+extends ../layout.pug
+block styles
+    title Nuevo Pedido
+block content   
+    h2 NUEVO PEDIDO
+    table 
+        tbody 
+                td 
+                    img(src="", alt="Sin Foto")
+                td Candado Bronceado Pesado 22MM 
+                td 1200 c/u 
+                td 250 UNIDADES 
+                td  
+                    img(src="", alt="Añadir al carrito")
+    section 
+        form(action="")
+            fieldset
+                label(for="subtotal") SUBTOTAL 
+                input(type="number", name="subtotal")
+            fieldset
+                label(for="client") CLIENTE 
+                select(name="client") 
+                    option(value="bucor ferreteria industrial") bucor ferreteria industrial
+            fieldset
+                input(type="checkbox", name="delivery" value="withdraw")
+                label(for="delivery") Retirar       
+                input(type="checkbox", name="delivery" value="send")
+                label(for="delivery") Enviar
+            fieldset
+                button FINALIZAR
+include ../includes/footer.pug

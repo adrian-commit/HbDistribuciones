@@ -1,9 +1,9 @@
-extends includes/head.pug
+extends layout.pug
 block styles
     title Inicio
-
-    body 
-        img(src="./resources/img/logo Hbdistribuciones2.png", alt="HBdistribuciones")
+block content
+    main 
+        img(src="/resources/img/logo Hbdistribuciones2.png", alt="HBdistribuciones")
         form(action="", method="post") 
             fieldset
                 input(type="text" name="nombre" placeholder="Nombre de Usuario")
@@ -11,4 +11,20 @@ block styles
                 input(type="password", name="contraseña")
             fieldset
                 button(type="submit") Ingresar
+    main  
+        h2 ACTIVIDAD EN EL DIA  
+        section 
+            article 
+                img(src="", alt="Pedidos")
+                p Pedidos 
+                p 2
+            article 
+                img(src="", alt="Comision")
+                p Comision 
+                p $30000
+        section 
+            a(href="/categories/") CATALOGO
+            a(href="/clients/") CLIENTES 
+            a(href="/requests/") PEDIDOS
+include includes/footer.pug
     

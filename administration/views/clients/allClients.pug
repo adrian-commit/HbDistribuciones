@@ -1,0 +1,20 @@
+extends ../layout.pug
+block styles 
+    title Lista de clientes 
+block content
+    main 
+        section
+            h2
+            form(action="") 
+                input(type="search", name="search" placeholder="Busca un cliente aquí")
+                button 
+                    img(src="", alt="Buscar")
+        section 
+            ul 
+                li 
+                    p BUCOR FERRETERIA INDUSTRIAL 
+                    p bucor_ferreteria@gmail.com
+                    p 03794123456
+                    p Av. Maipu 2305, Corrientes
+                    p Zona 1
+include ../includes/footer.pug

@@ -1,0 +1,17 @@
+extends ../layout.pug
+block styles
+    title Lista de productos  
+block content   
+    h2 CERRADURAS Y CANDADOS
+    section 
+        select(name="products") 
+            option(value="Candado Bronceado Pesado") Candado Bronceado Pesado     
+    section 
+        ol 
+            li 
+                img(src="", alt="Sin Foto")
+                p Candado Bronceado Pesado 22MM 
+                p 250 UNIDADES 
+                p 1200 c/u 
+                img(src="", alt="Añadir al carrito")
+include ../includes/footer.pug
