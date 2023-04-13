@@ -8,7 +8,7 @@ module.exports = {
       {
         id: 1,
         name: 'LIBRO HIERRO BRONZEADO',
-        categoryId: 1
+        categoryId: 2
       }
     ], {});
   

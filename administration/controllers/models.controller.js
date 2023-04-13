@@ -1,3 +1,4 @@
+const consult = require('../modules/query');
 module.exports = {
 
     list: async(req,res) => {
@@ -18,9 +19,13 @@ module.exports = {
 
     catalog: async(req,res) => {
         try {
-            return res.render('models/inventary');  
+            let response1 = await consult('get','models/'+req.params.id)
+            let response2 = await consult('get', 'categories/show/'+req.params.id)
+            let inventory = response1.data;
+            let mainCategory = response2.data;
+            return res.render('models/inventary', {inventory, main: mainCategory});  
         } catch (error) {
-            return res.render('error');
+            return res.render('error', {error});
         }
     }
 }

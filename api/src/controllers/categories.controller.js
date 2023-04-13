@@ -4,7 +4,8 @@ module.exports = {
     list: async (req,res) => {
         try {
             let categories = await Category.findAll({
-                attributes: { exclude:['mainCategory', 'sub']}
+                where:{sub:null},
+                attributes: { exclude:['sub']}
             });
             return res.send(categories);           
         } catch (error) {
@@ -15,7 +16,7 @@ module.exports = {
     showOne: async (req,res) => {
         try {
             let category = await Category.findByPk(req.params.id, {
-                attributes: { exclude:['mainCategory','sub']},
+                attributes: { exclude:['sub']},
                 include:[
                     {
                         as:'subcategories',

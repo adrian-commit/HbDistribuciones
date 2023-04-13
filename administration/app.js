@@ -24,6 +24,8 @@ app.use(require('express-session')({
     saveUninitialized: true
 }));
 
+// app.use(require('./middlewares/user'));
+
 app.use('/users', require('./routes/users.routes'));
 app.use('/clients', require('./routes/clients.routes'));
 app.use('/categories', require('./routes/categories.routes'));

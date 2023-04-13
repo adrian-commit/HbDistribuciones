@@ -19,26 +19,6 @@ module.exports = {
         }
     },
 
-    access: async (req,res) => {
-        try {
-            let header = 'application/json';
-            let response = await consult('post', 'users/login', {
-                name: req.body.name,
-                pass: req.body.password
-            },header);
-            let check = response.data;
-            console.log(check)
-            if (!check) {
-                return res.render('index')
-            }
-            const user = await consult('get', 'users/show/'+check)
-            req.session.user = user.data; 
-            console.log(req.session.user);
-            return res.redirect('/users/home')      
-        } catch (error) {
-            return res.send('error')
-        }
-    },
     
     newUser: async (req,res) => {
         try {
@@ -54,5 +34,33 @@ module.exports = {
         } catch (error) {
             return res.send('error');
         }
-    }
+    },
+
+    access: async (req,res) => {
+        try {
+            let header = 'application/json';
+            let response = await consult('post', 'users/login', {
+                email: req.body.email,
+                pass: req.body.password 
+            },header);
+            let check = response.data;
+            if (!check) {
+                return res.render('index')
+            }
+            const user = await consult('get', 'users/show/'+check)
+            //req.session.user = user.data; 
+            return res.redirect('/users/home')      
+        } catch (error) {
+            return res.send('error')
+        }
+    },
+
+    logout: async (req,res) => {
+        try {
+            req.session.destroy();
+            return res.redirect('home');      
+        } catch (error) {
+            return res.send('error');
+        }
+    },
 }

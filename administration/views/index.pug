@@ -6,12 +6,11 @@ block content
         img(src="/resources/img/logo Hbdistribuciones2.png", alt="HBdistribuciones")
         form(action="/users/login", method="post") 
             fieldset
-                input(type="text" name="name" placeholder="Nombre de Usuario")
+                input(type="email" name="email" placeholder="Correo")
             fieldset
                 input(type="password", name="password" placeholder="Contraseña")
             fieldset
                 button(type="submit") Ingresar
-    main
         div  
             h2 ACTIVIDAD EN EL DIA  
         section 
@@ -27,7 +26,7 @@ block content
             a(href="/categories/") CATALOGO
             a(href="/clients/") CLIENTES 
             a(href="/requests/") PEDIDOS
-    main 
+     
         section 
             span 
                 img(src="", alt="Envios")

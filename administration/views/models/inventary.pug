@@ -2,16 +2,18 @@ extends ../layout.pug
 block styles
     title Lista de productos  
 block content   
-    h2 CERRADURAS Y CANDADOS
+    h2 #{main.name}
     section 
-        select(name="products") 
-            option(value="Candado Bronceado Pesado") Candado Bronceado Pesado     
-    section 
-        ol 
-            li 
-                img(src="", alt="Sin Foto")
-                p Candado Bronceado Pesado 22MM 
-                p 250 UNIDADES 
-                p 1200 c/u 
-                img(src="", alt="Añadir al carrito")
+        select(name="models")
+            each inv in inventory 
+                option(value="") #{inv.name} 
+    table 
+        each item in inventory
+            each product in item.products 
+                tr
+                    td #{product.image.img}
+                    td #{product.name}
+                    td 250 unidades 
+                    td #{product.price} c/u
+                    td añadir al carrito
 include ../includes/footer.pug

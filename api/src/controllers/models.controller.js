@@ -4,6 +4,7 @@ module.exports = {
     list: async (req,res) => {
         try {
             let modelSs = await ModelStock.findAll({
+                where:{categoryId: req.params.id},
                 attributes: { exclude: ['categoryId','class']},
                 include: [
                     {
@@ -36,7 +37,31 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let model = await ModelStock.findByPk(req.params.id);
+            let model = await ModelStock.findByPk(req.params.id,{
+                attributes: { exclude: ['categoryId','class']},
+                include: [
+                    {
+                        as:'products',
+                        model: Product,
+                        attributes: { exclude: ['discount', 'model']},
+                        include: [
+                            {
+                            as:'image',
+                            model:ProductImage,
+                            attributes: ['img']
+                            },
+                            {
+                                as:'quantities',
+                                model: Quantity,
+                                attributes: {exclude:['productId', 'placeId']},
+                                include: [
+                                    {as:'stockHouses', model: Warehouse, attributes:['name']}
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            });
             return res.send(model);           
         } catch (error) {
             return res.send(error);

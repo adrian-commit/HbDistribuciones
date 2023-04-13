@@ -4,6 +4,6 @@ const  router = Router();
 
 router.get('/', list)
 router.get('/new', newModel)
-router.get('/inventory', catalog)
+router.get('/inventory/:id', catalog)
 
 module.exports = router;

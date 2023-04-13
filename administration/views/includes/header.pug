@@ -1,11 +1,15 @@
-nav 
-    section
-        a(href="/users/home") 
-            img(src="/resources/img/logo Hbdistribuciones2.png", alt="HBdistribuciones")
-    section
-        a(href="/requests/cart")  
-            img(src="/resources/img/shopping_cart.svg", alt="Carrito")
-        a(href="") 
-            img(src="/resources/img/menu.svg", alt="Menu")
-        img(src="/resources/img/users.svg", alt="Usuario")
+if user
+    nav 
+        section
+            a(href="/users/home") 
+                img(src="/resources/img/logo Hbdistribuciones2.png", alt="HBdistribuciones")
+        section
+            for team in user.teams 
+                if team.level == 2
+                    a(href="/requests/cart")  
+                        img(src="/resources/img/shopping_cart.svg", alt="Carrito")
+                if team.level == 1
+                    a(href="") 
+                        img(src="/resources/img/menu.svg", alt="Menu")
+            img(src="/resources/img/users.svg", alt="Usuario")
     

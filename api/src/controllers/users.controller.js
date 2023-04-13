@@ -88,8 +88,9 @@ module.exports = {
     },
 
     access: async (req,res) => {
-        let userByName = await User.findOne({where:{userName:req.body.name}});
-        let check = !userByName ? false : compareSync(req.body.pass, userByName.password) ? userByName.id : false;
+        console.log(req.body)
+        let userByEmail = await User.findOne({where:{email:req.body.email}});
+        let check = !userByEmail ? false : compareSync(req.body.pass, userByEmail.password) ? userByEmail.id : false;
         return res.send(`${check}`);
     }
 

@@ -1,20 +1,15 @@
 extends ../layout.pug
 block styles
     title Categorías 
-block content   
-    section 
-        a(href="") FERRETERÍA
-        a(href="") CORTINERIA
-        a(href="") HERRAJES
-        a(href="") SANITARIOS
-        a(href="") FORJADOS
-        a(href="") BULONERA Y TORNILLERIA 
-    section 
-        h2 HERRAJES 
-        article
-            a(href="") BISAGRAS
-            a(href="") CERRADURAS
-            a(href="") COLGADORES
-            a(href="") CARROS
-            a(href="") ESCUADRAS 
+block content
+    if categories && categories.length > 0
+        section
+            each category in categories 
+                a(href=`/categories/show/${category.id}`) #{category.name} 
+    if sub 
+        section 
+            h2 #{sub.name} 
+            article
+                each subCat in sub.subcategories
+                    a(href=`/models/inventory/${subCat.id}`) #{subCat.name}
 include ../includes/footer.pug
