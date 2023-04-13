@@ -1,5 +1,5 @@
 const {User, Team, Request} = require('../database/models');
-const {hashSync, compareSync, hash} = require('bcryptjs');
+const {hashSync, compareSync} = require('bcryptjs');
 
 module.exports = {
     list: async (req,res) => {
@@ -88,15 +88,9 @@ module.exports = {
     },
 
     access: async (req,res) => {
-        let userByEmail = await User.findOne({where:{email:req.body.email}});
-        if (!userByEmail) {
-            return res.send('Correo no registrado');
-        }
-        let checkPassword = compareSync(req.body.password, userByEmail.password);
-        if (!checkPassword) {
-            return res.send('Credenciales incorrectas');
-        } else {
-            return res.send('Acceso condecido');
-        }
+        let userByName = await User.findOne({where:{userName:req.body.name}});
+        let check = !userByName ? false : compareSync(req.body.pass, userByName.password) ? userByName.id : false;
+        return res.send(`${check}`);
     }
+
 }

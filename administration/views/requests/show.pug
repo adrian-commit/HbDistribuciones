@@ -1,0 +1,28 @@
+extends ../layout.pug
+block styles
+    title Pedido
+block content   
+    div 
+        h2 Detalle del Pedido
+    section
+        span      
+            img(src="", alt="send")
+        span
+            img(src="", alt="withdraw")
+        ul 
+            li ferreteria chacabuco
+            li bucor_ferreteria@gmail.com
+            li 03794123456
+            li Av. Maipu 2046, Corrientes
+        span
+            p Vendedor: Horacio B.
+        span 
+            p Fecha: 14/12/2022 - 10:24 AM
+    table 
+        td 
+            img(src="", alt="producto")
+        td nombre del producto 
+        td subtotal: 14000
+        td cantidad: 12 unidades 
+        td comision "(a implementar)"
+

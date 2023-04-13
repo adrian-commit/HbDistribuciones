@@ -18,6 +18,9 @@ app.use('/uploads', express.static(resolve(__dirname , '../uploads')));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
 //--RUTAS--//
 app.use('/api', require('./routes/index.routes'));
 app.use('/api/users', require('./routes/users.routes'));

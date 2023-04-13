@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true 
     },
+    userName:{
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
     email: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -34,7 +38,12 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.TEXT,
       allowNull: false
-    }
+    },
+    comission:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    }, 
   }, {
     sequelize,
     modelName: 'User',

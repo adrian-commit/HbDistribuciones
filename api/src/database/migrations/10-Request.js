@@ -13,10 +13,6 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
-      comission: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
       total: {
         type: Sequelize.BIGINT,
         allowNull: false

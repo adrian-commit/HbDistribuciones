@@ -14,6 +14,16 @@ app.use('/resources', express.static(resolve(__dirname,'./public')));
 app.set('view engine', 'pug');
 app.set('views', resolve(__dirname, './views'));
 
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.use(require('method-override')("m"));
+
+app.use(require('express-session')({
+    secret:'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
 app.use('/users', require('./routes/users.routes'));
 app.use('/clients', require('./routes/clients.routes'));
 app.use('/categories', require('./routes/categories.routes'));

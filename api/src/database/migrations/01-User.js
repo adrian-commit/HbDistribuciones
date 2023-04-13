@@ -9,6 +9,10 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
       },
+      userName:{
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
       email:{
         type: Sequelize.TEXT,
         allowNull: false,
@@ -17,7 +21,12 @@ module.exports = {
       password:{
         type: Sequelize.TEXT,
         allowNull: false
-      } 
+      },
+      comission:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+      }, 
     });
     await queryInterface.addIndex('users',['id'])
   },

@@ -1,8 +1,9 @@
-const {list,listBucket} = require('../controllers/requests.controller');
+const {list,listBucket, one} = require('../controllers/requests.controller');
 const {Router} = require('express');
 const  router = Router();
 
 router.get('/', list)
 router.get('/cart', listBucket)
+router.get('/show', one)
 
 module.exports = router;

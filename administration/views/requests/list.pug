@@ -1,0 +1,71 @@
+extends ../layout.pug
+block styles
+    title Mis Pedidos
+block content   
+    div 
+        h2 Mis Pedidos
+    section 
+        form(action="")
+            fieldset
+                input(type="date", name="date" placeholder="Fecha")
+            fieldset
+                select(name="client")
+                    option(value="" default) clientes 
+                    option(value="bucor ferreteria industrial") bucor ferreteria industrial
+            fieldset
+                select(name="delivery")
+                    option(value="" default) Entrega 
+                    option(value="send") Con Envio  
+                    option(value="withdraw") Retirar 
+            fieldset
+                button 
+                    img(src="", alt="Filtrar")
+    table 
+        tbody 
+                td BUCOR FERRETERIA INDUSTRIAL
+                td Precio: $14400
+                td Comision: %20
+                td Con envio
+                td 
+                    img(src="", alt="detalle")
+    div 
+        h2 Lista de Pedidos
+    section 
+        form(action="")
+            fieldset
+                input(type="date", name="date" placeholder="Fecha")
+            fieldset
+                select(name="client")
+                    option(value="" default) clientes 
+                    option(value="bucor ferreteria industrial") bucor ferreteria industrial
+            fieldset
+                select(name="delivery")
+                    option(value="" default) Entrega 
+                    option(value="send") Con Envio  
+                    option(value="withdraw") Retirar
+            fieldset
+                select(name="seller")
+                    option(value="" default) Vendedor 
+                    option(value="send") Horacio B.
+            fieldset 
+                input(type="date") 
+            fieldset 
+                input(type="date")
+            fieldset
+                button 
+                    img(src="", alt="Filtrar")
+    table 
+        tbody 
+                td BUCOR FERRETERIA INDUSTRIAL
+                td Precio: $14400
+                td Comision: %20
+                td Con envio
+                td pendiente
+                td 
+                    img(src="", alt="confirmar")
+                td 
+                    img(src="", alt="cancelar")
+                td 
+                    img(src="", alt="detalle")
+    
+include ../includes/footer.pug

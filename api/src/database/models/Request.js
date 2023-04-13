@@ -30,10 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false
     },
-    comission: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     total: {
       type: DataTypes.BIGINT,
       allowNull: false
