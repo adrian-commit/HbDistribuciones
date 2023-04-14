@@ -22,7 +22,6 @@ module.exports = {
             });
             return res.send(users);           
         } catch (error) {
-            console.log(error);
             return res.send(error);
         }
     },

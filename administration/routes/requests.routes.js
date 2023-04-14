@@ -1,4 +1,4 @@
-const {list,listBucket, one} = require('../controllers/requests.controller');
+const {listBucket, one, list} = require('../controllers/requests.controller');
 const {Router} = require('express');
 const  router = Router();
 

@@ -4,17 +4,19 @@ block styles
 block content
     main 
         section
-            h2
+            h2  Lista de Clientes
             form(action="") 
                 input(type="search", name="search" placeholder="Busca un cliente aquí")
                 button 
                     img(src="", alt="Buscar")
-        table  
-            td BUCOR FERRETERIA INDUSTRIAL 
-            td bucor_ferreteria@gmail.com
-            td 03794123456
-            td Av. Maipu 2305, Corrientes
-            td Zona 1
-            td Editar 
-            td Borrar
+        table 
+            if clients && clients.length > 0
+                for client in clients         
+                    td BUCOR FERRETERIA INDUSTRIAL 
+                    td #{client.email}
+                    td #{client.phone}
+                    td #{client.address}
+                    td Zona 1
+                    td Editar 
+                    td Borrar
 include ../includes/footer.pug

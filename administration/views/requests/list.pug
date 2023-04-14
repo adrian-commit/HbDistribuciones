@@ -21,13 +21,17 @@ block content
                 button 
                     img(src="", alt="Filtrar")
     table 
-        tbody 
-                td BUCOR FERRETERIA INDUSTRIAL
-                td Precio: $14400
-                td Comision: %20
-                td Con envio
-                td 
-                    img(src="", alt="detalle")
+        tbody
+            if requests && requests.length > 0
+                each req in requests 
+                    td BUCOR FERRETERIA INDUSTRIAL
+                    td Precio: $#{14400}
+                    td Comision: #{20}
+                    td #{req.send == true ? "Con Envio" : "Retirar por Sucursal"}
+                    td 
+                        img(src="", alt="detalle")
+            else    
+                td No se encontraron datos. Vuelva a intentar 
     div 
         h2 Lista de Pedidos
     section 

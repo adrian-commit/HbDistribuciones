@@ -1,8 +1,11 @@
+const consult = require('../modules/query');
 module.exports = {
 
     list: async(req,res) => {
         try {
-            return res.render('requests/list');  
+            let response = await consult('get', 'requests/')
+            let requests = response.data.filter(r=>r.seller.id == 2)
+            return res.render('requests/list', {requests});  
         } catch (error) {
             return res.render('error');
         }

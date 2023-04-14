@@ -15,7 +15,6 @@ module.exports = {
             ]}); 
             return res.send(places);           
         } catch (error) {
-            console.log(error);
             return res.send(error);
         }
     },

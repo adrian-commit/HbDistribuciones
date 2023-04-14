@@ -4,7 +4,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (req,res)=>{
-    console.log('SERVIDOR CORRIENDO EN http://localhost:'+PORT+'/users/home');
+    console.log('SERVIDOR CORRIENDO EN http://localhost:'+PORT+'/home');
 });
 
 //declarando la carpeta public para que pueda ser utilizada
@@ -26,6 +26,7 @@ app.use(require('express-session')({
 
 // app.use(require('./middlewares/user'));
 
+app.use('/home', require('./routes/index.routes'));
 app.use('/users', require('./routes/users.routes'));
 app.use('/clients', require('./routes/clients.routes'));
 app.use('/categories', require('./routes/categories.routes'));

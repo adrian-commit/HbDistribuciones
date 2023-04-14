@@ -12,7 +12,6 @@ module.exports = {
 
     show: async(req,res) => {
         try {
-            console.log(req.params.id)
             let response = await consult('get','categories/show/'+req.params.id);
             let sub = response.data
             return res.render('categories/category', {sub})
