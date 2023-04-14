@@ -44,6 +44,7 @@ module.exports = {
         try {
             let request = await consult('get', `products/show/${req.params.id}`)
             let product = request.data
+            console.log(product)
             let sinAsignar = unassigned(product)
             return res.render('products/updateStock', {product, sinAsignar});  
         } catch (error) {

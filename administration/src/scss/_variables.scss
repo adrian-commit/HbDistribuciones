@@ -1,0 +1,22 @@
+/* Archivo */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$font-main:'Archivo',sans-serif;
+
+/* Josefin Sans */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$font-text:'Josefin Sans',sans-serif;
+
+/* Color Scheme */
+$main: hsl(0, 95%, 38%);
+$dark-main: hsl(0, 96%, 20%);
+$light-main: hsl(0, 95%, 45%);
+$alter: rgb(252, 191, 73);
+$dark-alter: rgb(247, 127, 0);
+$light-alter: rgb(243, 209, 128);
+$black: rgb(22, 22, 22);
+$light: rgb(252, 252, 252);
+$error: rgb(249, 100, 133);
+$success: rgb(42, 157, 143);
+$gray: rgb(120,120,120)

@@ -1,0 +1,42 @@
+@mixin font($name,$weight:400, $style: 'normal') {
+    font-family: $name;
+    font-style: $style;
+    font-weight: $weight;
+}
+
+@mixin fxc ($justify:flex-start,$align:flex-start,$content:none,$wrap:nowrap,$direction:row,$row:0,$column:0) {
+    display: flex;
+    justify-content: $justify;
+    @if $content != none {
+        align-content: $content;
+    }@else{
+        align-items: $align;
+    }
+    flex-wrap: $wrap;
+    flex-direction: $direction;
+    row-gap: $row;
+    column-gap: $column;
+}
+
+@mixin fxi ($order:0,$grow:0,$shrink:0,$basis:auto,$align:flex-start){
+    order:$order;
+    flex: $grow $shrink $basis;
+    align-self:$align;
+}
+
+@mixin grid ($column:0,$row:0,$gap:0,$justify:start,$align:start) {
+    display: grid;
+    @if $column == 0 {
+        grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    }@else {
+        grid-template-columns: repeat($column,minmax(320px,1fr));
+    }
+    @if $row == 0 {
+        grid-template-rows: masonry;
+    }@else {
+        grid-template-rows: repeat($row,minmax(320px,1fr));
+    }
+    gap: $gap;
+    align-tracks: $align; 
+    justify-tracks: $justify;
+}
