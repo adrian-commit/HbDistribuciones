@@ -1,22 +1,32 @@
-const {ModelStock, Product, ProductImage, Quantity, Warehouse} = require('../database/models');
+const {ModelStock, Product, ModelImage, Quantity, Warehouse} = require('../database/models');
 
 module.exports = {
-    list: async (req,res) => {
+
+    list: async(req,res)=> {
+        try {
+            let models = await ModelStock.findAll();
+            return res.send(models);
+        } catch (error) {
+            return res.send(error);
+        }
+    },
+
+    listProducts: async (req,res) => {
         try {
             let modelSs = await ModelStock.findAll({
-                where:{categoryId: req.params.id},
+                where:{categoryId:req.params.id},
                 attributes: { exclude: ['categoryId','class']},
                 include: [
+                    {
+                        as:'image',
+                        model:ModelImage,
+                        attributes: ['img']
+                    },
                     {
                         as:'products',
                         model: Product,
                         attributes: { exclude: ['discount', 'model']},
                         include: [
-                            {
-                            as:'image',
-                            model:ProductImage,
-                            attributes: ['img']
-                            },
                             {
                                 as:'quantities',
                                 model: Quantity,
@@ -29,6 +39,7 @@ module.exports = {
                     }
                 ]
             });
+            console.log(modelSs)
             return res.send(modelSs);           
         } catch (error) {
             return res.send(error);
@@ -41,15 +52,15 @@ module.exports = {
                 attributes: { exclude: ['categoryId','class']},
                 include: [
                     {
+                        as:'image',
+                        model:ModelImage,
+                        attributes: ['img']
+                    },
+                    {
                         as:'products',
                         model: Product,
                         attributes: { exclude: ['discount', 'model']},
                         include: [
-                            {
-                            as:'image',
-                            model:ProductImage,
-                            attributes: ['img']
-                            },
                             {
                                 as:'quantities',
                                 model: Quantity,

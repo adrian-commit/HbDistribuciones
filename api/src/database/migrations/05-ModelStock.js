@@ -13,7 +13,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
         allowNull: false
-      },
+      }
     });
     await queryInterface.addColumn('modelss','categoryId',{
         type: Sequelize.BIGINT,

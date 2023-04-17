@@ -1,0 +1,36 @@
+extends ../layout.pug
+block styles 
+    title Actualizar Stock 
+block content 
+    div  
+        h2 Stock en Depositos 
+    section     
+        p Stock Total: #{product.total}
+        p Sin Asignar: #{sinAsignar}
+    section
+        if product.quantities.length > 0     
+            each item in product.quantities 
+                article    
+                    p #{item.stockHouses.name}
+                    p #{item.stock}
+            button Editar 
+        else
+            button Añadir
+        
+    section 
+        form(action="") 
+            if product.quantities.length > 0     
+                each item in product.quantities
+                    fieldset
+                        select(name="zone")
+                            option(value=`${item.stockHouses.id}`) #{item.stockHouses.name}
+                        input(type="number", name="stock" value=`${item.stock}`)
+            else 
+
+            fieldset 
+                i.fa-solid.fa-plus
+            fieldset
+                button Actualizar
+                button cancelar 
+
+include ../includes/footer.pug

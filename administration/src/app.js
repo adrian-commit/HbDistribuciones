@@ -1,14 +1,16 @@
 const {resolve} = require('path');
+const cors = require('cors');
 const express = require('express');
 const app = express();
 
+app.use(require('cors')());
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (req,res)=>{
     console.log('SERVIDOR CORRIENDO EN http://localhost:'+PORT+'/home');
 });
 
 //declarando la carpeta public para que pueda ser utilizada
-app.use('/resources', express.static(resolve(__dirname,'./public')));
+app.use('/resources', express.static(resolve(__dirname,'../public')));
 
 //establecemos en motor de plantillas ejs
 app.set('view engine', 'pug');
@@ -24,7 +26,7 @@ app.use(require('express-session')({
     saveUninitialized: true
 }));
 
-// app.use(require('./middlewares/user'));
+app.use(require('./middlewares/user'));
 
 app.use('/home', require('./routes/index.routes'));
 app.use('/users', require('./routes/users.routes'));

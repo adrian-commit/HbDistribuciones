@@ -1,9 +1,11 @@
 //requiriendo express 
 const {resolve} = require('path');
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const router = express.Router();
 
+app.use(require('cors')())
 //corriendo el puerto
 const PORT = process.env.PORT || 5050;
 app.listen(PORT, (req,res)=>{
@@ -29,7 +31,7 @@ app.use('/api/teams', require('./routes/teams.routes'));
 app.use('/api/categories', require('./routes/categories.routes'));
 app.use('/api/models', require('./routes/models.routes'));
 app.use('/api/products', require('./routes/products.routes'));
-app.use('/api/images', require('./routes/productsImage.routes'));
+app.use('/api/images', require('./routes/modelsImage.routes'));
 app.use('/api/warehouses', require('./routes/warehouses.routes'));
 app.use('/api/quantities', require('./routes/quantities.routes'));
 app.use('/api/items', require('./routes/items.routes'));

@@ -1,10 +1,10 @@
 if user
     nav 
         section
-            a(href="/users/home") 
+            a(href="/home") 
                 img(src="/resources/img/logo Hbdistribuciones2.png", alt="HBdistribuciones")
         section
-            for team in user.teams 
+            each team in user.teams 
                 if team.level == 2
                     a(href="/requests/cart")  
                         img(src="/resources/img/shopping_cart.svg", alt="Carrito")

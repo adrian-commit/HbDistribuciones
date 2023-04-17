@@ -9,7 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         as: 'class',
         foreignKey: 'categoryId'
       });
-
+      ModelStock.hasOne(models.ModelImage, {
+        as: 'image',
+        foreignKey: 'modelId'
+      });
       ModelStock.hasMany(models.Product, {
         as: 'products',
         foreignKey: 'model'

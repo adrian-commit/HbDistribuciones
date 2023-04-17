@@ -1,4 +1,4 @@
-const {showOne, create, update, deleteImg} = require('../controllers/productsImage.controller');
+const {showOne, create, update, deleteImg} = require('../controllers/modelsImage.controller');
 const {Router} = require('express');
 const router = Router();
 

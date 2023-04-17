@@ -23,7 +23,7 @@ module.exports = {
                 return res.render('index')
             }
             const user = await consult('get', 'users/show/'+check)
-            //req.session.user = user.data; 
+            req.session.user = user.data; 
             return res.redirect('/home')      
         } catch (error) {
             return res.send('error')

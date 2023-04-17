@@ -1,16 +1,16 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class ProductImage extends Model {
+  class ModelImage extends Model {
     static associate(models) {
-        ProductImage.belongsTo(models.Product, {
+      ModelImage.belongsTo(models.ModelStock, {
         as:'output',
-        foreignKey:'productId'
+        foreignKey:'modelId'
       })
     }
   };
 
-  ProductImage.init({
+  ModelImage.init({
     id: {
       type: DataTypes.BIGINT,
       autoIncrement: true,
@@ -19,14 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     img: {
       type: DataTypes.TEXT,
       allowNull: true,
-      defaultValue: 'defaultImage.png'
+      defaultValue: 'null'
     }
   }, {
     sequelize,
-    modelName: 'ProductImage',
-    tableName: 'productsImage',
+    modelName: 'ModelImage',
+    tableName: 'modelsImage',
     timestamps: false
   });
 
-  return ProductImage;
+  return ModelImage;
 };

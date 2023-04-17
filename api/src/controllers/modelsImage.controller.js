@@ -1,10 +1,10 @@
-const {ProductImage} = require('../database/models');
+const {ModelImage} = require('../database/models');
 
 module.exports = {
    
     showOne: async (req,res) => {
         try {
-            let image = await ProductImage.findByPk(req.params.id);
+            let image = await ModelImage.findByPk(req.params.id);
             return res.send(image);           
         } catch (error) {
             return res.send(error);
@@ -13,9 +13,9 @@ module.exports = {
 
     create: async (req,res) => {
         try {
-            let newImg = await ProductImage.create({
-                img: 'http://localhost:5050/uploads/products/' + req.file.filename,
-                productId: Number(req.body.productId)
+            let newImg = await ModelImage.create({
+                img: 'http://localhost:5050/uploads/models/' + req.file.filename,
+                modelId: Number(req.body.modelId)
             })
             return res.send(newImg);
         } catch (error) {
@@ -25,9 +25,9 @@ module.exports = {
 
     update: async (req,res) => {
         try {
-            let image = await ProductImage.findByPk(req.params.id);
+            let image = await ModelImage.findByPk(req.params.id);
             image.update({
-                img: req.file ? 'http://localhost:5050/uploads/products/' + req.file.filename : image.img
+                img: req.file ? 'http://localhost:5050/uploads/models/' + req.file.filename : image.img
             });
             return res.send('Imagen Actualizada');
         } catch (error) {
@@ -37,7 +37,7 @@ module.exports = {
 
     deleteImg: async (req,res) => {
         try {
-            let image = await ProductImage.findByPk(req.body.id);
+            let image = await ModelImage.findByPk(req.body.id);
             image.destroy();
             return res.send('Imagen eliminada');
         } catch (error) {

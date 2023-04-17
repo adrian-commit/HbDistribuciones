@@ -5,8 +5,14 @@ module.exports = {
         try {
             let categories = await Category.findAll({
                 where:{sub:null},
-                attributes: { exclude:['sub']}
-            });
+                attributes: { exclude:['sub']},
+                include:[
+                    {
+                        as:'subcategories',
+                        model: Category,
+                        attributes:{ exclude: ['sub']}
+                    }
+                ]});
             return res.send(categories);           
         } catch (error) {
             return res.send(error);
@@ -18,12 +24,19 @@ module.exports = {
             let category = await Category.findByPk(req.params.id, {
                 attributes: { exclude:['sub']},
                 include:[
+                    // {
+                    //     as:'subcategories',
+                    //     model: Category,
+                    //     attributes:{ exclude: ['sub']}
+                    // }
                     {
-                        as:'subcategories',
+                        as:'mainCategory',
                         model: Category,
                         attributes:{ exclude: ['sub']}
                     }
-                ]});
+
+                ]
+            });
             return res.send(category);           
         } catch (error) {
             return res.send(error);

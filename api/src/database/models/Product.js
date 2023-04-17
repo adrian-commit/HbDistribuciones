@@ -17,10 +17,6 @@ module.exports = (sequelize, DataTypes) => {
         as: 'items',
         foreignKey: 'productId'
       });
-      Product.hasOne(models.ProductImage, {
-        as: 'image',
-        foreignKey: 'productId'
-      });
     }
   };
 
@@ -45,6 +41,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     discount: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    total: {
+      type: DataTypes.BIGINT,
       allowNull: false,
       defaultValue: 0
     }

@@ -1,0 +1,51 @@
+extends ../layout.pug
+block styles 
+    tittle Lista de Productos
+block content 
+    div  
+        h2 Lista de Productos
+    section  
+            select#selectCat(name="cat")
+                option(value="category") Categoria
+                each cat in categories 
+                    option(value=`${cat.id}`) #{cat.name} 
+            select#selectSub(name="sub")
+                option(value="") SubCategoría
+            select#selectModel(name="model")
+                option(value="") Modelo
+    table
+        tbody#table
+            each product in products
+                tr    
+                    td 
+                        if product.template.image.img == 'null'
+                            i.fa-solid.fa-image 
+                        else 
+                            img(src="", alt=`${product.name}`)
+                    td #{product.name}
+                    td #{product.sku}
+                    td #{product.total} Unidades
+                    td $ #{product.price}/u
+                    td 
+                        a(href=`/products/show/${product.id}`) 
+                            i.fa-solid.fa-pen
+                    td 
+                        a(href="http://") 
+                            i.fa-solid.fa-trash
+                    td 
+                        a(href="http://") 
+                            i.fa-solid.fa-box
+                    td 
+                        a(href=`/products/show/stock/${product.id}`) 
+                            i.fa-solid.fa-boxes-stacked
+                    td  
+                        i.fa-solid.fa-chevron-right
+                tr
+                    each sa in sinAsignar
+                        if sa.id == product.id
+                            td Sin Asignar: #{sa.notAssigned}
+                    if product.quantities.length > 0
+                        each zone in product.quantities
+                            td #{zone.stockHouses.name}:#{zone.stock}
+    script(src="/resources/js/products/list.js") 
+include ../includes/footer.pug

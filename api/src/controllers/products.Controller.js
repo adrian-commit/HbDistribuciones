@@ -1,15 +1,18 @@
-const {Product, ProductImage, Quantity, Warehouse} = require('../database/models');
+const {Product, ModelStock, ModelImage, Quantity, Warehouse} = require('../database/models');
 
 module.exports = {
     list: async (req,res) => {
         try {
             let products = await Product.findAll({
-                attributes: { exclude: ['discount', 'model']},
+                attributes: { exclude: ['discount']},
                 include: [
                     {
-                        as:'image',
-                        model:ProductImage,
-                        attributes: ['img']
+                        as:'template',
+                        model:ModelStock,
+                        attributes: {exclude:['name','categoryId']},
+                        include: [
+                            {as:'image',model:ModelImage,attributes:['img']}
+                        ]
                     },
                     {
                         as:'quantities',
@@ -18,8 +21,9 @@ module.exports = {
                         include: [
                             {as:'stockHouses', model: Warehouse, attributes:['name']}
                         ]
-                    }
-                ]
+                    }   
+                ],
+                order:[['id','DESC']]
             }); 
             return res.send(products);           
         } catch (error) {
@@ -33,9 +37,11 @@ module.exports = {
                 attributes: { exclude: ['discount', 'model']},
                 include: [
                     {
-                        as:'image',
-                        model:ProductImage,
-                        attributes: ['img']
+                        as:'template',
+                        model:ModelStock,
+                        include: [
+                            {as:'image',model:ModelImage,attributes:['img']}
+                        ]
                     },
                     {
                         as:'quantities',
@@ -59,7 +65,8 @@ module.exports = {
                 name: req.body.name,
                 sku: req.body.sku,
                 price: Number(req.body.price),
-                model: Number(req.body.model) 
+                model: Number(req.body.model),
+                total: Number(req.body.stock)
             })
             return res.send(newProduct);
         } catch (error) {
@@ -69,13 +76,14 @@ module.exports = {
 
     update: async (req,res) => {
         try {
-            let product = await Product.findByPk(req.params.id);
+            let product = await Product.findByPk(req.body.id);
             product.update({
                 name: req.body.name ? req.body.name : product.name,
                 sku: req.body.sku ? req.body.sku : product.sku,
                 discount: req.body.discount ? req.body.discount : product.discount,
                 price: Number(req.body.price) ? Number(req.body.price): product.price,
-                model: Number(req.body.model) ? Number(req.body.model) : product.model
+                model: Number(req.body.model) ? Number(req.body.model) : product.model,
+                total: Number(req.body.stock) ? Number(req.body.stock) : product.total
             });
             return res.send('Producto Actualizado');
         } catch (error) {
