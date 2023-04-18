@@ -42,11 +42,13 @@ module.exports = {
 
     showStock: async(req,res) => {
         try {
-            let request = await consult('get', `products/show/${req.params.id}`)
-            let product = request.data
+            let request1 = await consult('get', 'warehouses/')
+            let zones = request1.data
+            let request2 = await consult('get', `products/show/${req.params.id}`)
+            let product = request2.data
             console.log(product)
             let sinAsignar = unassigned(product)
-            return res.render('products/updateStock', {product, sinAsignar});  
+            return res.render('products/updateStock', {zones,product, sinAsignar});  
         } catch (error) {
             return res.render('error');
         }

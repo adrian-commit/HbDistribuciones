@@ -48,7 +48,7 @@ module.exports = {
                         model: Quantity,
                         attributes: {exclude:['id','productId', 'placeId']},
                         include: [
-                            {as:'stockHouses', model: Warehouse, attributes:['name']}
+                            {as:'stockHouses', model: Warehouse, attributes:['id','name']}
                         ]
                     }
                 ]
