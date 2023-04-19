@@ -8,33 +8,43 @@ block content
         p Stock Total: #{product.total}
         p Sin Asignar: #{sinAsignar}
     section
-        form(action="")
             if product.quantities.length == 0 
                 each zone in zones 
-                    fieldset 
-                        input(type="hidden", name="idProduct" value=`${product.id}`)
-                        input(type="hidden", name="id" value=`${zone.id}`)
-                        label(for="stock") #{zone.name} 
-                        input(type="number", name="stock" value='0')
-
-            if product.quantities.length > 0
-                each zone in zones
-                    - let found = false; 
-                    fieldset 
-                        each item in product.quantities
-                            if zone.id == item.stockHouses.id
-                                input(type="hidden", name="idProduct" value=`${product.id}`)
-                                input(type="hidden", name="idPlace" value=`${item.stockHouses.id}`) 
-                                label(for="stock") #{item.stockHouses.name} 
-                                input(type="number", name="stock" value=`${item.stock}`)
-                                - found = true;
-                        if !found 
+                    form(action="/products/upgrade/stock?m=PUT" method="POST")
+                        fieldset
+                            input(type="hidden", name=`new` value='true') 
                             input(type="hidden", name="idProduct" value=`${product.id}`)
                             input(type="hidden", name="id" value=`${zone.id}`)
                             label(for="stock") #{zone.name} 
                             input(type="number", name="stock" value='0')
+                        fieldset
+                            button#update Actualizar
+                            button#cancel Cancelar
 
-            fieldset
-                button Actualizar
+            if product.quantities.length > 0
+                each zone in zones
+                    - let found = false; 
+                    each item in product.quantities
+                        if zone.id == item.stockHouses.id
+                            form(action="/products/upgrade/stock?m=PUT" method="POST")
+                                fieldset 
+                                    input(type="hidden", name="new" value='false')
+                                    input(type="hidden", name="idProduct" value=`${product.id}`)
+                                    input(type="hidden", name="idPlace" value=`${item.stockHouses.id}`) 
+                                    label(for="stock") #{item.stockHouses.name} 
+                                    input(type="number", name="stock" value=`${item.stock}`)
+                                    - found = true;
+                    if !found
+                        form(action="/products/upgrade/stock?m=PUT" method="POST")
+                        fieldset
+                            input(type="hidden", name=`new` value='true') 
+                            input(type="hidden", name="idProduct" value=`${product.id}`)
+                            input(type="hidden", name="id" value=`${zone.id}`)
+                            label(for="stock") #{zone.name} 
+                            input(type="number", name="stock" value='0')
+                    fieldset
+                        button#update Actualizar
+                        button#cancel Cancelar
+                                
 
 include ../includes/footer.pug

@@ -46,7 +46,6 @@ module.exports = {
             let zones = request1.data
             let request2 = await consult('get', `products/show/${req.params.id}`)
             let product = request2.data
-            console.log(product)
             let sinAsignar = unassigned(product)
             return res.render('products/updateStock', {zones,product, sinAsignar});  
         } catch (error) {
@@ -83,5 +82,20 @@ module.exports = {
         } catch (error) {
             return res.render('error', {error})
         }
-    }
+    },
+
+    upgradeStock: async (req,res)=>{
+        try {
+            return res.send(req.body)
+            let header = 'application/json'
+            await consult('put', 'products/update', {
+                id: req.body.id,
+                name: req.body.name,
+                price: req.body.price
+            }, header)
+            return res.redirect('/products')
+        } catch (error) {
+            return res.render('error', {error})
+        }
+    },
 }
