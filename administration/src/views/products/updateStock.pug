@@ -5,44 +5,22 @@ block content
     div  
         h2 Stock en Depositos 
     section     
-        p Stock Total: #{product.total}
-        p Sin Asignar: #{sinAsignar}
+        p Stock Total: 
+        p#total #{product.total}
+    section 
+        p Sin Asignar:
+        p#unassigned #{sinAsignar}
     section
-            if product.quantities.length == 0 
-                each zone in zones 
-                    form(action="/products/upgrade/stock?m=PUT" method="POST" id=`zone${zone.id}`)
-                        fieldset
-                            input(type="hidden", name=`new` value='true') 
-                            input(type="hidden", name="productId" value=`${product.id}`)
-                            input(type="hidden", name="placeId" value=`${zone.id}`)
-                            label(for="stock") #{zone.name} 
-                            input(type="number", name="stock" id=`stock${zone.id}` value='0')
-
-            if product.quantities.length > 0
-                each zone in zones
-                    - let found = false; 
-                    each item in product.quantities
-                        if zone.id == item.stockHouses.id
-                            form(action="/products/upgrade/stock?m=PUT" method="POST" id=`zone${item.stockHouses.id}`)
-                                fieldset 
-                                    input(type="hidden", name="new" value='false')
-                                    input(type="hidden", name="productId" value=`${product.id}`)
-                                    input(type="hidden", name="itemId" value=`${item.id}`)
-                                    input(type="hidden", name="placeId" value=`${item.stockHouses.id}`) 
-                                    label(for="stock") #{item.stockHouses.name} 
-                                    input(type="number", name="stock" id=`stock${item.stockHouses.id}` value=`${item.stock}`)
-                                    - found = true;
-                    if !found
-                        form(action="/products/upgrade/stock?m=PUT" method="POST" id=`zone${zone.id}`)
-                        fieldset
-                            input(type="hidden", name=`new` value='true') 
-                            input(type="hidden", name="productId" value=`${product.id}`)
-                            input(type="hidden", name="placeId" value=`${zone.id}`)
-                            label(for="stock") #{zone.name} 
-                            input(type="number", name="stock" id=`stock${zone.id}` value='0')
-            fieldset
-                button#update Actualizar
-                //- button(id=`cancel${zone.id}`) Cancelar
-                                
+            form#stockForm(action="/products/upgrade/stock?m=PUT" method="POST")
+                each item in product.quantities
+                    fieldset(id=`zone${item.id}`) 
+                        input(type="hidden", name=`id${item.id}` value=`${item.id}`) 
+                        label(for=`stock${item.stockHouses.id}`) #{item.stockHouses.name} 
+                        input(type="number", name=`stock${item.stockHouses.id}` id=`stock${item.stockHouses.id}` value=`${item.stock}`)
+                fieldset 
+                    button(type="submit") Actualizar 
+                    button Cancelar
+    section#error 
+        
     script(src="/resources/js/products/updateStock.js") 
 include ../includes/footer.pug
