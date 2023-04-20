@@ -86,7 +86,24 @@ module.exports = {
 
     upgradeStock: async (req,res)=>{
         try {
-            return res.send(req.body)
+            // return res.send(req.body)
+            // if (req.body && req.body.new === "true") {
+            //     await consult('post', 'quantities/create', {
+            //         stock: req.body.stock,
+            //         productId: req.body.idProduct,
+            //         placeId: req.body.idPlace
+            //     })
+            //     return res.redirect(`/products/show/stock/${idProduct}`)
+            // }
+            // if (req.body && req.body.new === "false") {
+            //     let updateStock = await consult('put', `quantities/update/${idProduct}`, {
+            //         stock: req.body.stock,
+            //         productId: req.body.idProduct,
+            //         placeId: req.body.idPlace
+            //     })
+            //     return res.send(updateStock)
+            //     return res.redirect(`/products/show/stock/${idProduct}`)
+            // }
             let header = 'application/json'
             await consult('put', 'products/update', {
                 id: req.body.id,

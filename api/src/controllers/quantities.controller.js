@@ -34,11 +34,12 @@ module.exports = {
 
     update: async (req,res) => {
         try {
+            console.log(req.body)
             let quantity = await Quantity.findByPk(req.params.id);
             quantity.update({
                 stock: Number(req.body.stock) ? Number(req.body.stock) : quantity.stock,
-                productId: Number(req.body.productId) ? Number(req.body.productId) : quantity.productId,
-                placeId: Number(req.body.placeId) ? Number(req.body.placeId) : quantity.placeId
+                // productId: Number(req.body.productId) ? Number(req.body.productId) : quantity.productId,
+                // placeId: Number(req.body.placeId) ? Number(req.body.placeId) : quantity.placeId
             });
             return res.send('Cantidad actualizada');
         } catch (error) {
