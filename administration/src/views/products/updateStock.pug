@@ -18,7 +18,7 @@ block content
                         label(for=`stock${item.stockHouses.id}`) #{item.stockHouses.name} 
                         input(type="number", name=`stock${item.stockHouses.id}` id=`stock${item.stockHouses.id}` value=`${item.stock}`)
                 fieldset 
-                    button(type="submit") Actualizar 
+                    button#update(type="submit") Actualizar 
                     button Cancelar
     section#error 
         
