@@ -54,6 +54,7 @@ module.exports = {
     create: async (req,res) => {
         try {
             let newUser = await User.create({
+                userName: req.body.userName,
                 email: req.body.email,
                 password: hashSync(req.body.password, 10) 
             })

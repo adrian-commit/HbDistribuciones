@@ -1,20 +1,24 @@
 extends ../layout.pug
 block styles 
-    tittle Nuevo Cliente 
+    title Nuevo Cliente 
 block content 
     div  
-        h2 Nuevo Cliente 
+        h2 Nuevo Usuario 
     section 
-        form(action="" method="POST") 
-            fieldset
-                input(type="text" name="name")
-            fieldset
-                input(type="email" name="email")
+        form(action="/users/create" method="POST") 
             fieldset 
-                input(type="number" name="phone")
+                select#selectUser(name="user")
+                    option(value="admin") Administración 
+                    option(value="seller") Vendedor 
             fieldset
+                input(type="text" name="name" placeholder="Nombre de Usuario")
+            fieldset
+                input(type="email" name="email" placeholder="Correo")
+            fieldset 
+                input(type="number" name="phone" placeholder="3794123456")
+            fieldset#image
                 input(type="image")
-            fieldset
+            fieldset#comission
                 input(type="text" name="comission")
             fieldset
                 button Guardar

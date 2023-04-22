@@ -26,5 +26,14 @@ module.exports = {
         } catch (error) {
             return res.send('error');
         }
-    }
+    },
+
+    create:  async (req,res) => {
+        try {
+            return res.send(req.body)
+            return res.render('users/show');      
+        } catch (error) {
+            return res.send('error');
+        }
+    },
 }
