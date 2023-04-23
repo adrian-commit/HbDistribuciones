@@ -12,7 +12,7 @@ module.exports = {
       },
       img: {
         type: Sequelize.TEXT,
-        allowNull: true,
+        allowNull: false,
         defaultValue: 'null'
       } 
     });

@@ -1,1 +1,34 @@
-h1 lista de modelos
+extends ../layout.pug
+block styles 
+    tittle Lista de Modelos
+block content 
+    div  
+        h2 Lista de Modelos
+    section  
+            select#selectCat(name="cat")
+                option(value="category") Categoria
+                each cat in categories 
+                    option(value=`${cat.id}`) #{cat.name} 
+            select#selectSub(name="sub")
+                option(value="") SubCategoría
+    table
+        tbody#table
+            each model in models
+                tr    
+                    td 
+                        if model.image.img == 'null'
+                            i.fa-solid.fa-image 
+                        else 
+                            img(src="", alt=`${model.id}`)
+                    td #{model.name}
+                    td 
+                        a(href="http://") 
+                            i.fa-solid.fa-percent
+                    td 
+                        a(href=`/products/show/${model.id}`) 
+                            i.fa-solid.fa-pen
+                    td 
+                        a(href="http://") 
+                            i.fa-solid.fa-trash
+    script(src="/resources/js/models/list.js") 
+include ../includes/footer.pug

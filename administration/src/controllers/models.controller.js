@@ -3,7 +3,11 @@ module.exports = {
 
     list: async(req,res) => {
         try {
-            return res.render('models/list');  
+            const request1 = await consult('get','categories/')
+            const categories = request1.data
+            const request2 = await consult('get','models/')
+            const models = request2.data
+            return res.render('models/list', {models,categories});  
         } catch (error) {
             return res.render('error');
         }

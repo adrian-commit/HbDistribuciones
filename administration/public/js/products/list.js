@@ -1,6 +1,5 @@
 const selectCat = document.querySelector('#selectCat')
 const selectSub = document.querySelector('#selectSub')
-const selectModel = document.querySelector('#selectModel')
 const table = document.querySelector('#table')
 
 selectCat.addEventListener('change',async(e)=>{

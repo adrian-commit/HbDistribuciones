@@ -1,10 +1,15 @@
-const {ModelStock, Product, ModelImage, Quantity, Warehouse} = require('../database/models');
+const {ModelStock, Product, ModelImage, Quantity, Warehouse, Category} = require('../database/models');
 
 module.exports = {
 
     list: async(req,res)=> {
         try {
-            let models = await ModelStock.findAll();
+            let models = await ModelStock.findAll({
+                include:[
+                    {as:'class',model:Category},
+                    {as:'image',model:ModelImage}
+                ]
+            });
             return res.send(models);
         } catch (error) {
             return res.send(error);
