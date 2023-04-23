@@ -7,38 +7,41 @@ block content
     article
         section  
             img(src="", alt="Perfil")
-            h2 Nombre de Vendedor 
-        section 
-            form(action="")     
-                select(name="area") 
-                    option(value="area1") area 1
+            h2 #{seller.userName}
+    article  
+        form(action=`/users/show/${seller.id}` method="GET") 
+            fieldset 
+                select(name="delivery") 
+                    option(value="send") Entrega
+                    option(value="withdraw") Sucursal
+            fieldset 
+                input(type="date" name="startDate" placeholder="Inicio") 
+            fieldset 
+                input(type="date" name="endDate" placeholder="Fin")
+            fieldset 
                 button 
-                    img(src="", alt="actualizar")
-    article 
-        section 
-            form(action="") 
-                fieldset 
-                    select(name="delivery") 
-                        option(value="sned") Entrega
-                        option(value="withdraw") Sucursal
-                fieldset 
-                    input(type="date") 
-                fieldset 
-                    input(type="date")
-                button 
-                    img(src="", alt="filtrar")
-        table 
-            td Ferreteria Chacabuco 
-            td precio
-            td comision 
-            td Retirar por sucursal 
-        section 
-            span 
-                img(src="", alt="Pedidos")
-                p Pedidos 
-                p 2
-            span 
-                img(src="", alt="Comision")
-                p Comision 
-                p $30000
+                    i.fa-solid.fa-filter
+        table
+            tbody
+                if orders && orders.length > 0 
+                    each order in orders 
+                        tr 
+                            td #{order.customer.name} 
+                            td Precio: $#{order.total}
+                            td Comision: #{seller.comission}% 
+                            td #{order.send == false ? 'Retirar por Sucursal' : 'Con Envío'} 
+                else
+                    tr  
+                        td No se encontraron Pedidos
+        article 
+            section 
+                i.fa-solid.fa-handshake
+                span
+                    p Pedidos 
+                    p #{seller.ordersLength}
+            section 
+                i.fa-solid.fa-money-will-wave
+                span
+                    p Comision 
+                    p $#{seller.total}
 include ../includes/footer.pug

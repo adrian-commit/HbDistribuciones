@@ -1,5 +1,6 @@
-const {User, Team, Request} = require('../database/models');
+const {User, Team, Request, Client} = require('../database/models');
 const {hashSync, compareSync} = require('bcryptjs');
+const {comission} = require('../modules/comission')
 const { Op } = require('sequelize');
 const moment = require('moment');
 
@@ -88,23 +89,30 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let user = await User.findByPk(req.params.id,{
+            let data = await User.findByPk(req.params.id,{
                 attributes: {exclude:['password']},
                 include:[ 
                     {
                         as: 'orders',
                         model: Request,
                         attributes: { exclude: ['clientId', 'UserId'] },
+                        include:[
+                            {as:'customer',model:Client,attributes:['name','zoneId']}
+                        ],
                         order: ['id', 'DESC']
-                    },
-                    {
-                        as: 'teams',
-                        model: Team,
-                        attributes: { exclude:['teamsUsers']},
-                        through: { attributes: []}
                     }
                 ]  
             });
+            const user = new Object({
+                id:data.id,
+                userName:data.userName,
+                email:data.email,
+                comission:data.comission,
+                ordersLength:data.orders.length,
+                total: comission(data.orders, data.comission),
+                orders: data.orders
+            })
+            
             return res.send(user);           
         } catch (error) {
             return res.send(error);

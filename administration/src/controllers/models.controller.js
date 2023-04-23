@@ -11,7 +11,9 @@ module.exports = {
 
     newModel: async(req,res) => {
         try {
-            return res.render('models/create');  
+            const request = await consult('get','categories/')
+            const categories = request.data
+            return res.render('models/create',{categories});  
         } catch (error) {
             return res.render('error');
         }
@@ -27,5 +29,32 @@ module.exports = {
         } catch (error) {
             return res.render('error', {error});
         }
-    }
+    },
+
+    create: async(req,res) => {
+        try {
+            const file = req.file
+            const request = await consult('post', 'models/create', {
+                name: req.body.name,
+                categoryId: req.body.sub
+            })
+            const model = request.data
+            if (file) {
+                let formdata = new FormData()
+                formdata.append("image",file)
+                formdata.append("modelId", model.id)
+                // let newImg = await axios({
+                //     method:'post',
+                //     url:'http://localhost:5050/api/image/create/',
+                //     formdata,
+                //     headers:{...formdata.getHeaders()}
+                //     // headers:{'Content-Type': 'multipart/form-data'}
+                // })
+                console.log(formdata)
+            }
+            return res.redirect('/models/');  
+        } catch (error) {
+            return res.render('error');
+        }
+    },
 }
