@@ -9,7 +9,6 @@ selectCat.addEventListener('change',async(e)=>{
         if (!(valor == 'category')) {
             let require = await axios.get(`http://localhost:5050/api/categories/show/${valor}`)
             let subs = require.data.subcategories;
-            //selectSub.innerHTML = ''
             subs.forEach(cat => {
                 let option = new Option(cat.name, cat.id)
                 selectSub.options.add(option)

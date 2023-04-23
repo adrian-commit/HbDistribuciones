@@ -1,17 +1,23 @@
 extends ../layout.pug
 block styles 
-    tittle Nuevo Cliente 
+    title Nuevo Cliente 
 block content 
     div  
         h2 Nuevo Cliente 
     section 
-        form(action="" method="POST") 
+        form(action="/clients/create" method="POST")
             fieldset 
-                input(type="number" name="phone")
+                select(name="zone") 
+                    each zone in zones 
+                        option(value=`${zone.id}`) #{zone.name}  
+            fieldset 
+                input(type="number" name="phone" placeholder="Teléfono")
             fieldset
-                input(type="text" name="address")
+                input(type="text" name="address" placeholder="Dirección")
             fieldset
-                input(type="email" name="email")
+                input(type="email" name="email" placeholder="Correo")
+            fieldset
+                input(type="text" name="name" placeholder="Cliente")
             fieldset
                 button Guardar
 include ../includes/footer.pug

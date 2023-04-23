@@ -1,6 +1,31 @@
+const { Op } = require('sequelize');
 const {Client} = require('../database/models')
 
 module.exports = {
+
+    search: async (req, res) => {
+        try {
+            const {search, zoneId} = req.query;
+    
+            const whereConditions = {};
+            if (search) {
+                whereConditions.name = { [Op.like]: '%' + search + '%' };
+            }
+            if (zoneId) {
+                whereConditions.zoneID = { [Op.like]: zoneId };
+            }
+    
+            const response = await Client.findAll({
+                where: whereConditions
+            });
+
+            return res.send(response);
+        } catch (error) {
+            res.status(500).send({ message: "Error al realizar la búsqueda" });
+        }
+    },
+    
+
     list: async (req,res) => {
         try {
             let clients = await Client.findAll();
@@ -22,10 +47,13 @@ module.exports = {
     create: async (req,res) => {
         try {
             let newClient = await Client.create({
+                name: req.body.name,
                 email: req.body.email,
                 address: req.body.address,
-                phone: Number(req.body.phone)
+                phone: Number(req.body.phone),
+                zoneId: Number(req.body.zoneId)
             })
+            console.log('cliente creado')
             return res.send(newClient);
         } catch (error) {
             return res.send(error);

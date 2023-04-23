@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         as: 'requests',
         foreignKey: 'clientId'
       });
+      Client.belongsTo(models.Warehouse, {
+        as:'warehouse',
+        foreignKey: 'zoneId'
+      })
     }
   };
 

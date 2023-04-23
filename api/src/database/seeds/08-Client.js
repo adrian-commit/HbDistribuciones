@@ -9,7 +9,8 @@ module.exports = {
         name: 'Cliente',
         email: 'pruebaCliente@prueba.com',
         address: '1234',
-        phone: 3624123456
+        phone: 3624123456,
+        zoneId: 1
       }
     ], {});
   

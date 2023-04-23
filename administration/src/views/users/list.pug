@@ -4,18 +4,33 @@ block styles
 block content
     main 
         section
-            h2 Vendedores
-            form(action="") 
-                input(type="search", name="search" placeholder="Busca un vendedor aquí")
-                button 
-                    img(src="", alt="Buscar")
-        table  
-            td imagen  
-            td nombre
-            td pedidos Hoy
-            td comision
-            td Zona 1
-            td ver
-            td Editar 
-            td Borrar
+            h2  Lista de Vendedores
+        search
+            form(action="/users/search" method="GET") 
+                fieldset 
+                    input(type="search", name="search" placeholder="Buscar vendedor") 
+                    button 
+                        i.fa-solid.fa-search
+        table
+            tbody 
+                each user in users 
+                    tr 
+                        td 
+                            i.fa-solid.fa-image 
+                        td #{user.userName}
+                        section 
+                            i.fa-solid.fa-box-archive
+                            span 
+                                td pedidos Hoy
+                                td #{user.ordersLength}
+                        td Comision: #{user.comission}% 
+                        td 
+                            a(href="") 
+                                i.fa-solid.fa-eye      
+                        td 
+                            a(href="") 
+                                i.fa-solid.fa-pen
+                        td 
+                            a(href="") 
+                                i.fa-solid.fa-trash
 include ../includes/footer.pug

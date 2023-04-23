@@ -66,7 +66,7 @@ module.exports = {
                 sku: req.body.sku,
                 price: Number(req.body.price),
                 model: Number(req.body.model),
-                total: Number(req.body.stock)
+                total: Number(req.body.total)
             })
             return res.send(newProduct);
         } catch (error) {

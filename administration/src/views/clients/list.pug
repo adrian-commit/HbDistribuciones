@@ -5,18 +5,32 @@ block content
     main 
         section
             h2  Lista de Clientes
-            form(action="") 
-                input(type="search", name="search" placeholder="Busca un cliente aquí")
-                button 
-                    img(src="", alt="Buscar")
+        search
+            form(action="/clients/search" method="GET")
+                fieldset 
+                    select(name="zone")
+                        each zone in zones 
+                            option(value=`${zone.id}`) #{zone.name}  
+                fieldset 
+                    input(type="search", name="search" placeholder="Busca un cliente aquí") 
+                    button 
+                        i.fa-solid.fa-search
         table 
-            if clients && clients.length > 0
-                for client in clients         
-                    td BUCOR FERRETERIA INDUSTRIAL 
-                    td #{client.email}
-                    td #{client.phone}
-                    td #{client.address}
-                    td Zona 1
-                    td Editar 
-                    td Borrar
+            tbody
+                if clients && clients.length > 0
+                    each client in clients 
+                        tr
+                            td #{client.name} 
+                            td #{client.email}
+                            td #{client.phone}
+                            td #{client.address}
+                            td ZONA#{client.zoneId}
+                            td 
+                                a(href="") 
+                                    i.fa-solid.fa-pen
+                            td 
+                                a(href="") 
+                                    i.fa-solid.fa-trash
+                else
+                     p No se encontraron resultados
 include ../includes/footer.pug

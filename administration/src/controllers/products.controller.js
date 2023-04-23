@@ -54,6 +54,7 @@ module.exports = {
     create: async (req,res)=>{
         try {
             let header = 'application/json'
+            let requestsZones = await consult('get', 'warehouses/')
             let request = await consult('post', 'products/create', {
                 name: req.body.name,
                 sku: req.body.sku,
@@ -61,8 +62,15 @@ module.exports = {
                 model: req.body.model,
                 total: req.body.stock
             }, header)
-            let product = request.data
-            return res.redirect('products/')
+            const product = request.data
+            const zones = requestsZones.data
+            for (let i = 0; i < zones.length; i++) {
+                await consult('post', 'quantities/create',{
+                    productId: product.id,
+                    placeId: zones[i]
+                },header)
+            }
+            return res.redirect('/products')
         } catch (error) {
             return res.render('error', {error})
         }
@@ -84,13 +92,22 @@ module.exports = {
 
     upgradeStock: async (req,res)=>{
         try {
-            return res.send(req.body)
-            // let header = 'application/json'
-            // await consult('put', 'products/update', {
-            //     id: req.body.id,
-            //     name: req.body.name,
-            //     price: req.body.price
-            // }, header)
+            let header = 'application/json'
+            if (req.body.stock1) {
+                await consult('put',`quantities/update/${req.body.id1}`,
+                {stock: req.body.stock1},
+                header)
+            }
+            if (req.body.stock2) {
+                await consult('put',`quantities/update/${req.body.id2}`,
+                {stock: req.body.stock2},
+                header)
+            }
+            if (req.body.stock3) {
+                await consult('put',`quantities/update/${req.body.id3}`,
+                {stock: req.body.stock3},
+                header)
+            }
             return res.redirect('/products')
         } catch (error) {
             return res.render('error', {error})

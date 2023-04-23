@@ -5,21 +5,30 @@ block content
     div  
         h2 Nuevo Usuario 
     section 
-        form(action="/users/create" method="POST") 
-            fieldset 
-                select#selectUser(name="user")
-                    option(value="admin") Administración 
-                    option(value="seller") Vendedor 
+        fieldset 
+            select#selectUser(name="user")
+                option(value="admin") Administración 
+                option(value="seller") Vendedor 
+        form#formCreate(action="/users/create" method="POST") 
             fieldset
                 input(type="text" name="name" placeholder="Nombre de Usuario")
-            fieldset
-                input(type="email" name="email" placeholder="Correo")
             fieldset 
                 input(type="number" name="phone" placeholder="3794123456")
-            fieldset#image
-                input(type="image")
+            fieldset
+                input(type="email" name="email" placeholder="Correo")
+            fieldset
+                input(type="password" name="password" placeholder="Contraseña")
+            fieldset
+                div#imagePreview
+                select#imageSelect(name="image") 
+                    option(value="") Seleccione una imagen
+                    option(value="avatar-female.svg") avatar 1
+                    option(value="avatar-male.svg") avatar 2 
+                    option(value="avatar-seller-female.svg") avatar 3
+                    option(value="avatar-seller-male.svg") avatar 4
             fieldset#comission
-                input(type="text" name="comission")
+                input(type="text" name="comission" placeholder="comision")
             fieldset
                 button Guardar
+    script(src="/resources/js/users/create.js") 
 include ../includes/footer.pug

@@ -24,11 +24,11 @@ module.exports = {
             let category = await Category.findByPk(req.params.id, {
                 attributes: { exclude:['sub']},
                 include:[
-                    // {
-                    //     as:'subcategories',
-                    //     model: Category,
-                    //     attributes:{ exclude: ['sub']}
-                    // }
+                    {
+                        as:'subcategories',
+                        model: Category,
+                        attributes:{ exclude: ['sub']}
+                    },
                     {
                         as:'mainCategory',
                         model: Category,

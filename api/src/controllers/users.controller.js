@@ -1,7 +1,42 @@
 const {User, Team, Request} = require('../database/models');
 const {hashSync, compareSync} = require('bcryptjs');
+const { Op } = require('sequelize');
+const moment = require('moment');
 
 module.exports = {
+
+    search: async (req, res) => {
+        try {
+            const {search} = req.query;
+            const day = moment().startOf('day')
+
+            const response = await User.findAll({
+                where:{
+                    userName:{[Op.like]: '%' + search + '%'}
+                },
+                attributes:{exclude:['password']},
+                include:[
+                    {as:'orders',model:Request},
+                    {as:'teams',model:Team,where:{level:2}}
+                ]
+            });
+
+            const users = response.map(user=> new Object({
+                id:user.id,
+                userName:user.userName,
+                email:user.email,
+                comission:user.comission,
+                ordersLength:user.orders.filter(order=>{
+                    moment(order.track).isAfter(day) == true
+                }).length
+            }))
+
+            return res.send(users);
+        } catch (error) {
+            res.status(500).send({ message: "Error al realizar la búsqueda" });
+        }
+    },
+
     list: async (req,res) => {
         try {
             let users = await User.findAll({
@@ -20,6 +55,31 @@ module.exports = {
                     }
                 ]
             });
+            return res.send(users);           
+        } catch (error) {
+            return res.send(error);
+        }
+    },
+
+    sellers:  async (req,res) => {
+        try {
+            const day = moment().startOf('day')
+            let data = await User.findAll({
+                attributes: {exclude:['password']},
+                include:[ 
+                    {as: 'orders',model: Request},
+                    {as: 'teams',model: Team,where:{level:2}}
+                ]
+            });
+            const users = data.map(user=> new Object({
+                id:user.id,
+                userName:user.userName,
+                email:user.email,
+                comission:user.comission,
+                ordersLength:user.orders.filter(order=>{
+                    moment(order.track).isAfter(day) == true
+                }).length
+            }))
             return res.send(users);           
         } catch (error) {
             return res.send(error);
@@ -56,7 +116,8 @@ module.exports = {
             let newUser = await User.create({
                 userName: req.body.userName,
                 email: req.body.email,
-                password: hashSync(req.body.password, 10) 
+                password: hashSync(req.body.password, 10),
+                comission: req.body.comission ? Number(req.body.comission) : 0
             })
             return res.send(newUser);
         } catch (error) {

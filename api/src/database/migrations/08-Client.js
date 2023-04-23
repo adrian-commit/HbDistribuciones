@@ -29,11 +29,22 @@ module.exports = {
         unique: true
       }
     });
+    await queryInterface.addColumn('clients','zoneId',{
+      type: Sequelize.BIGINT,
+      allowNull: true,
+      references: {
+        model:'warehouses',
+        key:'id'
+      },
+      onUpdate:'set null',
+      onDelete:'set null'
+    })
     await queryInterface.addIndex('clients',['id'])
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.removeIndex('clients',['clients_id'])
+    await queryInterface.removeColumn('quantities','zoneId');
     await queryInterface.dropTable('clients');
   }
 };

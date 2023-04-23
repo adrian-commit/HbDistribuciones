@@ -5,10 +5,14 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => { 
   class Warehouse extends Model {
     static associate(models) {
-        Warehouse.hasMany(models.Quantity, {
+      Warehouse.hasMany(models.Quantity, {
         as: 'units',
         foreignKey: 'placeId',
       });
+      Warehouse.hasMany(models.Client, {
+        as:'customers',
+        foreignKey: 'zoneId'
+      })
     }
   }
 
