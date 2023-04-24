@@ -6,23 +6,25 @@ block content
         h2 Detalle del Pedido
     section
         span      
-            img(src="", alt="send")
-        span
-            img(src="", alt="withdraw")
-        ul 
-            li ferreteria chacabuco
-            li bucor_ferreteria@gmail.com
-            li 03794123456
-            li Av. Maipu 2046, Corrientes
-        span
-            p Vendedor: Horacio B.
+            i.fa-solid.fa-truck-fast
+            i.fa-solid.fa-person-walking
         span 
-            p Fecha: 14/12/2022 - 10:24 AM
-    table 
-        td 
-            img(src="", alt="producto")
-        td nombre del producto 
-        td subtotal: 14000
-        td cantidad: 12 unidades 
-        td comision "(a implementar)"
+            p #{request.customer.name}
+            p #{request.customer.email}
+            p #{request.customer.address}
+            p #{request.customer.phone}
+        span 
+            p #{request.seller.name}
+        span 
+            p #{request.track}
+    table
+        tbody 
+            each item in request.inventory 
+                tr 
+                    td 
+                        i.fa-solid.fa-image
+                    td #{item.article.name}
+                    td subtotal: $#{item.price}
+                    td cantidad: #{item.quantity}Unidades
+                     
 

@@ -4,6 +4,6 @@ const  router = Router();
 
 router.get('/', list)
 router.get('/cart', listBucket)
-router.get('/show', one)
+router.get('/show/:id', one)
 
 module.exports = router;

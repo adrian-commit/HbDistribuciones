@@ -25,7 +25,20 @@ module.exports = {
 
     showOne: async (req,res) => {
         try {
-            let request = await Request.findByPk(req.params.id);
+            let request = await Request.findByPk(req.params.id,{
+                attributes:{exclude:['clientId','UserId']},
+                include:[
+                    {
+                        as:'inventory',
+                        model: Item,
+                        attributes:{exclude:['requestId','productId']},
+                        include:[
+                            {as:'article',model: Product, attributes:['id','name']}
+                        ]
+                    },
+                    {as:'customer', model:Client},
+                    {as:'seller', model:User}
+            ]});
             return res.send(request);           
         } catch (error) {
             return res.send(error);

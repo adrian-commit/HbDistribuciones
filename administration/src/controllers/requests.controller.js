@@ -21,7 +21,9 @@ module.exports = {
 
     one: async (req,res)=> {
         try {
-            return res.render('requests/show');
+            const info = await consult('get', `requests/show/${req.params.id}`)
+            const request = info.data
+            return res.render('requests/show', {request});
         } catch (error) {
             return res.render('error');
         }
