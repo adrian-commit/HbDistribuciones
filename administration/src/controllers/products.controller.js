@@ -1,5 +1,6 @@
 const consult = require('../modules/query');
 const {unassigned} = require('../modules/stock');
+const session = require('express-session');
 module.exports = {
 
     list: async(req,res) => {
@@ -111,6 +112,35 @@ module.exports = {
             return res.redirect('/products')
         } catch (error) {
             return res.render('error', {error})
+        }
+    },
+
+    bucket: async (req,res) => {
+        try {
+            // return res.send(req.body)
+            // const userId = req.session.user.id
+            const data = new Object({
+                id: req.body.id,
+                img: req.body.img == null ? 'null' : req.body.img,
+                name: req.body.name,
+                total: req.body.total,
+                price: req.body.price,
+                quantity: req.body.quantity
+            })
+            let itemExist = true
+            req.session.cart.forEach(item => {
+                if (item.id == data.id) {
+                    itemExist = false
+                }
+            });
+            if (!itemExist) {
+                return res.json({ error: 'El ítem ya existe en el carrito.' });
+            } else {
+                req.session.cart.push(data)
+            }
+            return res.send(req.session.cart);           
+        } catch (error) {
+            return res.send(error);
         }
     },
 }

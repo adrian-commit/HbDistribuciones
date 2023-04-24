@@ -30,7 +30,7 @@ module.exports = {
                     {
                         as:'products',
                         model: Product,
-                        attributes: { exclude: ['discount', 'model']},
+                        attributes: { exclude: ['model']},
                         include: [
                             {
                                 as:'quantities',
@@ -44,7 +44,6 @@ module.exports = {
                     }
                 ]
             });
-            console.log(modelSs)
             return res.send(modelSs);           
         } catch (error) {
             return res.send(error);

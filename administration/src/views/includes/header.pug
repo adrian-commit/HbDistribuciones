@@ -7,9 +7,13 @@ if user
             each team in user.teams 
                 if team.level == 2
                     a(href="/requests/cart")  
-                        img(src="/resources/img/shopping_cart.svg", alt="Carrito")
+                        i.fa-solid.fa-cart-shopping
+                    span
                 if team.level == 1
                     a(href="") 
-                        img(src="/resources/img/menu.svg", alt="Menu")
+                        i.fa-solid.fa-bars
             img(src="/resources/img/users.svg", alt="Usuario")
+        section 
+            p #{user.userName}
+            a(href="/home/logout") Cerrar Sesion
     

@@ -100,7 +100,8 @@ module.exports = {
                             {as:'customer',model:Client,attributes:['name','zoneId']}
                         ],
                         order: ['id', 'DESC']
-                    }
+                    },
+                    {as:'teams',model:Team}
                 ]  
             });
             const user = new Object({
@@ -108,6 +109,7 @@ module.exports = {
                 userName:data.userName,
                 email:data.email,
                 comission:data.comission,
+                teams: data.teams,
                 ordersLength:data.orders.length,
                 total: comission(data.orders, data.comission),
                 orders: data.orders

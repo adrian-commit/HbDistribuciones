@@ -4,28 +4,35 @@ block styles
 block content   
     h2 NUEVO PEDIDO
     table 
-        tbody 
-                td 
-                    img(src="", alt="Sin Foto")
-                td Candado Bronceado Pesado 22MM 
-                td 1200 c/u 
-                td 250 UNIDADES 
-                td  
-                    img(src="", alt="Añadir al carrito")
-    section 
-        form(action="")
-            fieldset
-                label(for="subtotal") SUBTOTAL 
-                input(type="number", name="subtotal")
-            fieldset
-                label(for="client") CLIENTE 
-                select(name="client") 
-                    option(value="bucor ferreteria industrial") bucor ferreteria industrial
-            fieldset
-                input(type="checkbox", name="delivery" value="withdraw")
-                label(for="delivery") Retirar       
-                input(type="checkbox", name="delivery" value="send")
-                label(for="delivery") Enviar
-            fieldset
-                button FINALIZAR
+        tbody
+            each item in items 
+                tr(id=`${item.id}`)
+                    td 
+                        if item.img == 'null'
+                            i.fa-solid.fa-image 
+                        else 
+                    td #{item.name} 
+                    td #{item.price} 
+                    td#cant #{item.quantity} 
+                    td 
+                        a(href="http://") 
+                            i.fa-solid.fa-trash 
+    form#formRequest(action="/requests/create" method="POST")
+        fieldset
+            label(for="subtotal") TOTAL 
+            input#subtotalInput(type="hidden", name="total" value="")
+            p#subtotal 4000
+        fieldset
+            label(for="client") CLIENTE 
+            select(name="client")
+                each client in clients 
+                    option(value=`${client.id}`) #{client.name}  
+        fieldset
+            input(type="radio", name="delivery" value="withdraw")
+            label(for="delivery") Retirar       
+            input(type="radio", name="delivery" value="send")
+            label(for="delivery") Enviar
+        fieldset
+            button FINALIZAR
+    script(src="/resources/js/requests/bucket.js") 
 include ../includes/footer.pug

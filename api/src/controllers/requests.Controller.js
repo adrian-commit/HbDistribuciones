@@ -49,7 +49,6 @@ module.exports = {
         try {
             let newRequest = await Request.create({
                 track: req.body.track,
-                comission: Number(req.body.comission),
                 total: Number(req.body.total),
                 send: req.body.send,
                 status: Number(req.body.status),

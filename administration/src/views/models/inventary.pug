@@ -7,13 +7,22 @@ block content
         select(name="models")
             each inv in inventory 
                 option(value="") #{inv.name} 
-    table 
-        each item in inventory
-            each product in item.products 
-                tr
-                    td #{product.image.img}
-                    td #{product.name}
-                    td 250 unidades 
-                    td #{product.price} c/u
-                    td añadir al carrito
+    table#table 
+        tbody 
+            each item in inventory
+                each product in item.products 
+                    tr(id=product.id)
+                        td    
+                            if item.image.img == 'null' 
+                                i.fa-solid.fa-image
+                            else 
+                                img#img(src="", alt="imagen")
+                        td#name #{product.name}
+                        td#total #{product.total} 
+                        td#price #{product.price} c/u
+                        td  
+                            input#quantity(type="number", name="quantity")
+                        td 
+                            i#addCart.fa-solid.fa-plus
+    script(src="/resources/js/models/inventory.js") 
 include ../includes/footer.pug

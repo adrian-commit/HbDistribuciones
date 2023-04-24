@@ -23,10 +23,15 @@ app.use(require('method-override')("m"));
 app.use(require('express-session')({
     secret:'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie:{
+        secure:false,
+        maxAge:60*60*1000
+    }
 }));
 
 app.use(require('./middlewares/user'));
+// app.use(require('./middlewares/listCart'));
 
 app.use('/home', require('./routes/index.routes'));
 app.use('/users', require('./routes/users.routes'));
