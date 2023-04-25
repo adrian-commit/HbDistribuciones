@@ -37,39 +37,26 @@ module.exports = {
     create: async (req,res)=> {
         try {
             // return res.send(req.body);
-            const orderId = req.body.newOrderId
-            const request = await consult('get', `requests/show/${orderId}`)
+            const request = await consult('get', `requests/show/${req.body.newOrderId}`)
             const newRequest = request.data
             const items = newRequest.inventory
-            if (newRequest.send == true) {
-                for (let i = 0; i < items.length; i++) {
-                    const request = await consult('get', `products/show/${items[i].article.id}`)
-                    const product = request.data
-                    let totalStock = product.total
-                    let center = product.quantities.find(z=> z.stockHouses.id === 1)
-                    let centerStock = center.stock
-                    totalStock = totalStock - items[i].quantity
-                    centerStock = centerStock - items[i].quantity
-                    const request1 = await consult('put', `products/update/${product.id}`,{total: totalStock})
-                    const request2 = await consult('put', `quantities/update/${center.id}`,{stock: centerStock})
-                    console.log(request1)
-                    console.log(request2)
+            for (const item of items) {
+                const request = await consult('get', `products/show/${item.article.id}`)
+                const product = request.data
+                let totalStock = product.total
+                let center;
+                if (newRequest.send == true) {
+                    center = product.quantities.find(z=> z.stockHouses.id === 1)
+                } else {
+                    center = product.quantities.find(z=> z.stockHouses.id === newRequest.customer.zoneId)
                 }
-            }
-            if (newRequest.send == false) {
-                for (let i = 0; i < items.length; i++) {
-                    const request = await consult('get', `products/show/${items[i].article.id}`)
-                    const product = request.data
-                    let totalStock = product.total
-                    let center = product.quantities.find(z=> z.stockHouses.id === newRequest.customer.zoneId)
-                    let centerStock = center.stock
-                    totalStock = totalStock - items[i].quantity
-                    centerStock = centerStock - items[i].quantity
-                    const request1 = await consult('put', `products/update/${product.id}`,{total: totalStock})
-                    const request2 = await consult('put', `quantities/update/${center.id}`,{stock: centerStock})
-                    console.log(request1.data)
-                    console.log(request2.data)
-                }
+                let centerStock = center.stock
+                totalStock = totalStock - item.quantity
+                centerStock = centerStock - item.quantity
+                await Promise.all([
+                    consult('put', `products/update/${product.id}`,{total: totalStock}),
+                    consult('put', `quantities/update/${center.id}`,{stock: centerStock})
+                ])
             }
             req.session.cart = []
             return res.redirect('/requests')
