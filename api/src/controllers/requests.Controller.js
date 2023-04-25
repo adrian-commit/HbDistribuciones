@@ -1,4 +1,5 @@
 const {Request, Item, Product, Client, User} = require('../database/models');
+const moment = require('moment');
 
 module.exports = {
     list: async (req,res) => {
@@ -48,10 +49,10 @@ module.exports = {
     create: async (req,res) => {
         try {
             let newRequest = await Request.create({
-                track: req.body.track,
+                track: moment(),
                 total: Number(req.body.total),
-                send: req.body.send,
-                status: Number(req.body.status),
+                send: req.body.send == 'send' ? true : false,
+                status: 0,
                 clientId : Number(req.body.clientId),
                 UserId: Number(req.body.userId)
             })

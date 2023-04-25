@@ -18,10 +18,12 @@ block content
                         a(href="http://") 
                             i.fa-solid.fa-trash 
     form#formRequest(action="/requests/create" method="POST")
+        input(type="hidden", name="userId" value=`${user.id}`)
+        input#newOrderId(type="hidden", name="newOrderId" value='')
         fieldset
             label(for="subtotal") TOTAL 
             input#subtotalInput(type="hidden", name="total" value="")
-            p#subtotal 4000
+            p#subtotal 0
         fieldset
             label(for="client") CLIENTE 
             select(name="client")
@@ -30,7 +32,7 @@ block content
         fieldset
             input(type="radio", name="delivery" value="withdraw")
             label(for="delivery") Retirar       
-            input(type="radio", name="delivery" value="send")
+            input(type="radio", name="delivery" value="send" checked)
             label(for="delivery") Enviar
         fieldset
             button FINALIZAR

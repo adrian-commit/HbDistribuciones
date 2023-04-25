@@ -36,20 +36,42 @@ module.exports = {
 
     create: async (req,res)=> {
         try {
-            return res.send(req.body);
-            const request = await consult('post', 'requests/create',{
-                total: req.body.total,
-                clientId: req.body.client,
-                send: req.body.delivery == 'send' ? true : false
-            })
+            // return res.send(req.body);
+            const orderId = req.body.newOrderId
+            const request = await consult('get', `requests/show/${orderId}`)
             const newRequest = request.data
-            const items = req.session.cart
-            const userId = req.session.user.id
-            for (let i = 0; i < items.length; i++) {
-                const request1 = await consult('get', `products/show/${items[i].id}`)
-                const product = request1.data
-
-            }
+            const items = newRequest.inventory
+            // if (newRequest.send == true) {
+            //     for (let i = 0; i < items.length; i++) {
+            //         const request = await consult('get', `products/show/${items[i].article.id}`)
+            //         const product = request.data
+            //         let totalStock = product.total
+            //         let center = product.quantities.find(z=> z.stockHouses.id = 1)
+            //         let centerStock = center.stock
+            //         totalStock = totalStock - items[i].quantity
+            //         centerStock = centerStock - items[i].quantity
+            //         await consult('put', `products/update/${product.id}`,{total: totalStock})
+            //         await consult('put', `quantities/update/${center.id}`,{stock: centerStock})
+            //     }
+            // }
+            // if (newRequest.send == false) {
+            //     for (let i = 0; i < items.length; i++) {
+            //         const request = await consult('get', `products/show/${items[i].article.id}`)
+            //         const product = request.data
+            //         let totalStock = product.total
+            //         let center = product.quantities.find(z=> z.stockHouses.id = newRequest.customer.zoneId)
+            //         let centerStock = center.stock
+            //         totalStock = totalStock - items[i].quantity
+            //         centerStock = centerStock - items[i].quantity
+            //         const request1 = await consult('put', `products/update/${product.id}`,{total: totalStock})
+            //         const request2 = await consult('put', `quantities/update/${center.id}`,{stock: centerStock})
+            //         console.log(request1.data)
+            //         console.log(request2.data)
+            //     }
+            // }
+            // req.session.cart = []
+            // console.log(req.session.cart)
+            return res.send(newRequest)
             return res.redirect('/requests')
         } catch (error) {
             return res.render('error');
