@@ -17,34 +17,14 @@ module.exports = {
       },
       {
         id: 3,
-        name: 'FORJADOS',
-        sub: null
+        name: 'BISAGRAS',
+        sub: 1
       },
       {
         id: 4,
-        name: 'FERRETERÍA',
-        sub: null
-      },
-      {
-        id: 5,
-        name: 'SANITARIOS',
-        sub: null
-      },
-      {
-        id: 6,
-        name: 'FORJADOS',
-        sub: null
-      },
-      {
-        id: 7,
-        name: 'FORJADOS',
-        sub: null
-      },
-      {
-        id: 8,
-        name: 'BISAGRAS',
+        name: 'BISAGRAS2',
         sub: 1
-      }
+      },
 
       
     ], {});

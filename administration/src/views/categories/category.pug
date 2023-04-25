@@ -5,11 +5,13 @@ block content
     if categories && categories.length > 0
         section
             each category in categories 
-                a(href=`/categories/show/${category.id}`) #{category.name} 
+                a(href=`/categories/show/${category.id}`) 
+                    p #{category.name} 
     if sub 
         section 
             h2 #{sub.name} 
             article
                 each subCat in sub.subcategories
-                    a(href=`/models/inventory/${subCat.id}`) #{subCat.name}
+                    a(href=`/models/inventory/${subCat.id}`) 
+                        p #{subCat.name}
 include ../includes/footer.pug
