@@ -16,10 +16,7 @@ block content
             each model in models
                 tr    
                     td 
-                        if model.image.img == 'null'
-                            i.fa-solid.fa-image 
-                        else 
-                            img(src="", alt=`${model.id}`)
+                        i.fa-solid.fa-image
                     td #{model.name}
                     td 
                         a(href="http://") 
