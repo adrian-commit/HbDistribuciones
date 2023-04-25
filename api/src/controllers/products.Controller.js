@@ -76,14 +76,14 @@ module.exports = {
 
     update: async (req,res) => {
         try {
-            let product = await Product.findByPk(req.body.id);
+            let product = await Product.findByPk(req.params.id);
             product.update({
                 name: req.body.name ? req.body.name : product.name,
                 sku: req.body.sku ? req.body.sku : product.sku,
                 discount: req.body.discount ? req.body.discount : product.discount,
                 price: Number(req.body.price) ? Number(req.body.price): product.price,
                 model: Number(req.body.model) ? Number(req.body.model) : product.model,
-                total: Number(req.body.stock) ? Number(req.body.stock) : product.total
+                total: Number(req.body.total) ? Number(req.body.total) : product.total
             });
             return res.send('Producto Actualizado');
         } catch (error) {
