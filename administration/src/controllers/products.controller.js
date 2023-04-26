@@ -65,12 +65,14 @@ module.exports = {
             }, header)
             const product = request.data
             const zones = requestsZones.data
-            for (let i = 0; i < zones.length; i++) {
-                await consult('post', 'quantities/create',{
+            const promises = [];
+            for (const zone of zones) {
+                promises.push(await consult('post', 'quantities/create',{
                     productId: product.id,
-                    placeId: zones[i]
-                },header)
+                    placeId: zone.id
+                },header))
             }
+            await Promise.all(promises);
             return res.redirect('/products')
         } catch (error) {
             return res.render('error', {error})
@@ -80,8 +82,7 @@ module.exports = {
     upgrade: async (req,res)=>{
         try {
             let header = 'application/json'
-            await consult('put', 'products/update', {
-                id: req.body.id,
+            await consult('put', `products/update/${req.body.id}`, {
                 name: req.body.name,
                 price: req.body.price
             }, header)
@@ -143,4 +144,12 @@ module.exports = {
             return res.send(error);
         }
     },
+
+    deleteProduct: async(req,res) => {
+        try {
+            
+        } catch (error) {
+            
+        }
+    }
 }

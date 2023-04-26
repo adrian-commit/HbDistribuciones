@@ -1,0 +1,80 @@
+body{
+    overflow-x: hidden;
+    padding-top: 5vh;
+    transition: all .3s ;
+    &.content{
+        padding-top: 5vh;
+        padding-left: 15vw;
+    }
+}
+header{
+    position: fixed;
+    top: 0vh;
+    left: 0vw;
+    display: flex;
+    flex-wrap: wrap;
+    height: 5vh;
+    width: 100vw;
+    background-color: $light;
+    z-index: 10;
+    #brand{
+        flex-basis: 15vw;
+        height: 5vh;
+        img{
+            height: 100%;
+            max-width: none;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    #action{
+        display: flex;
+        flex-grow: 1;
+        height: 5vh;
+        justify-content: flex-end;
+        gap: 1rem;
+        padding: 0 1rem;
+        a[href="#sidebar"] {
+            align-self: center;
+        }
+        img{
+            height: 100%;
+            max-width: none;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    #sidebar {
+        position: fixed;
+        top: 5vh;
+        left: 0vw;
+        height: 95vh;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        width: 25vw;
+        background-color: $main;
+        align-content: center;
+        padding: 1rem;
+        gap: 1rem;
+        transform: translateX(-100%);
+        transition: all .3s;
+        &.active{
+            transform:none;
+        }
+        a{
+            color: $light;
+            height: 50px;
+            text-transform: uppercase;
+            text-align: center;
+            @include font($font-main,700,'normal')
+        }
+    }
+
+    @media (min-width: 475px){
+        #sidebar{
+            width: 15vw;
+        } 
+    }
+}

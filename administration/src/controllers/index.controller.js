@@ -5,6 +5,17 @@ module.exports = {
 
     home: async (req,res) => {
         try {
+            // if (req.session.user) {
+
+            //     const admin = req.session.user.teams.find(t=>t.level = 1)
+            //     if (admin) {
+            //         const request = await consult('get', `users/show/${seller.id}`)
+            //         const user = request.data
+            //         return res.render('index') 
+            //     } else {
+                    
+            //     }
+            // }
             return res.render('index')      
         } catch (error) {
             return res.send('error')

@@ -108,6 +108,7 @@ module.exports = {
                 id:data.id,
                 userName:data.userName,
                 email:data.email,
+                avatar:data.avatar,
                 comission:data.comission,
                 teams: data.teams,
                 ordersLength:data.orders.length,

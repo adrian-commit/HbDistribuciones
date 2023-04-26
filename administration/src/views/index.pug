@@ -2,56 +2,78 @@ extends layout.pug
 block styles
     title Inicio
 block content
-    main 
-        img(src="/resources/img/logo Hbdistribuciones2.png", alt="HBdistribuciones")
-        form(action="/home/login", method="post") 
-            fieldset
-                input(type="email" name="email" placeholder="Correo")
-            fieldset
-                input(type="password", name="password" placeholder="Contraseña")
-            fieldset
-                button(type="submit") Ingresar
-        div  
-            h2 ACTIVIDAD EN EL DIA  
-        section 
-            span 
-                img(src="", alt="Pedidos")
-                p Pedidos 
-                p 2
-            span 
-                img(src="", alt="Comision")
-                p Comision 
-                p $30000
-        section 
-            a(href="/categories/") CATALOGO
-            a(href="/clients/") CLIENTES 
-            a(href="/requests/") PEDIDOS
-     
-        section 
-            span 
-                img(src="", alt="Envios")
-                p Envios en Zona 1 
-                p 6
-            span 
-                img(src="", alt="Retiros")
-                p Retiros en Zona 1 
-                p 4
-        section 
-            article 
-                a(href="/products/new") 
-                    i.fa-solid.fa-plus
-                    p Nuevo Producto
-            article 
-                a(href="") 
-                    i.fa-solid.fa-percent
-                    p Actualizar Precios
-            article 
-                a(href="/clients/new") 
-                    i.fa-solid.fa-store
-                    p Nuevo Cliente
-            article 
-                a(href="/users/new")
-                    i.fa-solid.fa-person-walking 
-                    p Nuevo Usuario
+    main
+        if !user
+            section
+                img(src="/resources/img/logo Hbdistribuciones2.png", alt="HBdistribuciones")
+            form(action="/home/login", method="post") 
+                fieldset
+                    input(type="email" name="email" placeholder="Correo")
+                fieldset
+                    input(type="password", name="password" placeholder="Contraseña")
+                fieldset
+                    button(type="submit") Ingresar
+        else    
+            each team in user.teams 
+                    if team.level == 2
+                        div  
+                            h2 ACTIVIDAD EN EL DIA  
+                        section 
+                            span 
+                                i.fa-solid.fa-shop
+                                p Pedidos 
+                                p #{user.ordersLength}
+                            span 
+                                i.fa-solid.fa-money-will-wave
+                                p Comision 
+                                p $#{user.total}
+                        section 
+                            a(href="/categories/") CATALOGO
+                            a(href="/clients/") CLIENTES 
+                            a(href="/requests/") PEDIDOS
+            each team in user.teams 
+                    if team.level == 1
+                            section 
+                                span 
+                                    i.fa-solid.fa-truck-fast
+                                    p Envios en Zona 1 
+                                    p 6
+                                span 
+                                    i.fa-solid.fa-shop
+                                    p Retiros en Zona 1 
+                                    p 4
+                                span 
+                                    i.fa-solid.fa-truck-fast
+                                    p Envios en Zona 2 
+                                    p 6
+                                span 
+                                    i.fa-solid.fa-shop
+                                    p Retiros en Zona 2 
+                                    p 4
+                                span 
+                                    i.fa-solid.fa-truck-fast
+                                    p Envios en Zona 3 
+                                    p 6
+                                span 
+                                    i.fa-solid.fa-shop
+                                    p Retiros en Zona 3 
+                                    p 4
+                            section 
+                                article 
+                                    a(href="/products/new") 
+                                        i.fa-solid.fa-plus
+                                        p Nuevo Producto
+                                article 
+                                    a(href="") 
+                                        i.fa-solid.fa-percent
+                                        p Actualizar Precios
+                                article 
+                                    a(href="/clients/new") 
+                                        i.fa-solid.fa-store
+                                        p Nuevo Cliente
+                                article 
+                                    a(href="/users/new")
+                                        i.fa-solid.fa-person-walking 
+                                        p Nuevo Usuario
 include includes/footer.pug
     

@@ -19,7 +19,7 @@ module.exports = {
 
     list: async(req,res) => {
         try {
-            let response1 = await consult('get', 'users/')
+            let response1 = await consult('get', 'clients/')
             const response2 = await consult('get', 'warehouses/')
             const clients = response1.data
             const zones = response2.data

@@ -4,13 +4,17 @@ block footer
             section
                 each team in user.teams
                     if team.level == 2
-                        a(href="/users/home") Inicio
+                        a(href="/home") Inicio
                         a(href="/categories/") Catalogo
                         a(href="/clients/") Clientes
                         a(href="/requests/") Pedidos 
                     if team.level == 1
-                        a(href="") Catalogo
-                        a(href="") Clientes
-                        a(href="") Pedidos
-                        a(href="") Vendedores
-                        a(href="") Modelos
+                        a(href="/home") Inicio
+                        a(href="/products/") Lista
+                        a(href="/clients/") Clientes
+                        a(href="/clients/new") Nuevo Cliente
+                        a(href="/requests/") Pedidos
+                        a(href="/users/") Vendedores
+                        a(href="/users/new") Nuevo Usuario
+                        a(href="/models/") Modelos
+                        a(href="/requests/") Pedidos 

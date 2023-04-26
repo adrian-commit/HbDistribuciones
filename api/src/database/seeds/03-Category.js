@@ -7,14 +7,50 @@ module.exports = {
     await queryInterface.bulkInsert('categories', [
       {
         id: 1,
-        name: 'BISAGRAS',
+        name: 'HERRAJES',
         sub: null
       },
       {
         id: 2,
-        name: 'BISAGRAS CURVAS PLATEADAS',
+        name: 'BULONERÍA Y TORNILLERÍA',
+        sub: null
+      },
+      {
+        id: 3,
+        name: 'FORJADOS',
+        sub: null
+      },
+      {
+        id: 4,
+        name: 'FERRETERÍA',
+        sub: null
+      },
+      {
+        id: 5,
+        name: 'SANITARIOS',
+        sub: null
+      },
+      {
+        id: 6,
+        name: 'FORJADOS',
+        sub: null
+      },
+      {
+        id: 7,
+        name: 'FORJADOS',
+        sub: null
+      },
+      {
+        id: 8,
+        name: 'BISAGRAS',
         sub: 1
       },
+      {
+        id: 9,
+        name: 'CARROS PARA PORTONES',
+        sub: 1
+      }
+
       
     ], {});
   

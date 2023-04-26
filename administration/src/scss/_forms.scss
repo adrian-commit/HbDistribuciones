@@ -1,0 +1,39 @@
+form{
+    @include fxc(flex-start,flex-start,none,wrap,row,1rem,1rem);
+    fieldset{
+        height: 2rem;
+        input{
+            &[type="radio"],&[type="checkbox"]{
+                @include fxi(0,0,0,2rem,auto);
+                align-self: stretch;
+                border: .05rem solid $alter;
+                transform: scale(.75);
+                border-radius: 50%;
+                &:checked{
+                    border-color: transparent;
+                    background-color: $alter
+                }
+            }
+            &[type="text"]{
+                @include fxi(0,1,0,auto,auto);
+            }
+            border-bottom: 1px solid $alter;
+        }
+        &:not(.btns){
+            padding: 0 1rem;
+            background: $main;
+            color: $light;
+            @include fxc(flex-start,center,none,wrap,row,1rem,1rem);
+            @include fxi(0,0,0,100%,auto);
+        }
+        &.btns{
+            @include fxc(center,flex-start,none,wrap,row,1rem,1rem);
+            @include fxi(0,0,0,100%,auto);
+            button{
+                text-transform: uppercase;
+                padding: 1rem 1.25rem;
+
+            }
+        }
+    } 
+}

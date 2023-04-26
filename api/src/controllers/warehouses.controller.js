@@ -1,4 +1,4 @@
-const {Warehouse, Quantity, Product} = require('../database/models');
+const {Warehouse, Quantity, Product, Client, Request} = require('../database/models');
 
 module.exports = {
     list: async (req,res) => {
@@ -29,7 +29,8 @@ module.exports = {
                     include:[
                         {as:'object', model: Product, attributes:['name','sku']}
                     ]
-                }
+                },
+                {as:'customers',model:Client,include:[{as:'requests',model:Request}]}
             ]});
             return res.send(place);           
         } catch (error) {

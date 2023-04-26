@@ -22,7 +22,7 @@ module.exports = {
     create: async (req,res) => {
         try {
             let NewQuantity = await Quantity.create({
-                stock: Number(req.body.stock),
+                stock: Number(req.body.stock) ? Number(req.body.stock) : 0,
                 productId: Number(req.body.productId),
                 placeId: Number(req.body.placeId) 
             })

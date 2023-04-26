@@ -1,4 +1,4 @@
-const {list, newProduct, show, showStock, create, upgrade, upgradeStock, bucket} = require('../controllers/products.controller');
+const {list, newProduct, show, showStock, create, upgrade, upgradeStock, bucket, deleteProduct} = require('../controllers/products.controller');
 const cart = require('../middlewares/cart');
 const {Router} = require('express');
 const  router = Router();
@@ -14,4 +14,6 @@ router.post('/bucket',[cart], bucket)
 
 router.put('/upgrade', upgrade)
 router.put('/upgrade/stock', upgradeStock)
+
+router.delete('/delete', deleteProduct)
 module.exports = router;

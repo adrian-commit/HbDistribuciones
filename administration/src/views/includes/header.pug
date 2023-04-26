@@ -8,12 +8,12 @@ if user
                 if team.level == 2
                     a(href="/requests/cart")  
                         i.fa-solid.fa-cart-shopping
-                    span
+                    span#counter
                 if team.level == 1
                     a(href="") 
                         i.fa-solid.fa-bars
-            img(src="/resources/img/users.svg", alt="Usuario")
+            img(src=`${user.avatar}`, alt="Usuario")
         section 
             p #{user.userName}
             a(href="/home/logout") Cerrar Sesion
-    
+    //- script(src="/resources/js/includes/header.js") 

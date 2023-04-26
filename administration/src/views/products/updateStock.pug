@@ -14,7 +14,7 @@ block content
             form#stockForm(action="/products/upgrade/stock?m=PUT" method="POST")
                 each item in product.quantities
                     fieldset(id=`zone${item.id}`) 
-                        input(type="hidden", name=`id${item.id}` value=`${item.id}`) 
+                        input(type="hidden", name=`id${item.stockHouses.id}` value=`${item.id}`) 
                         label(for=`stock${item.stockHouses.id}`) #{item.stockHouses.name} 
                         input(type="number", name=`stock${item.stockHouses.id}` id=`stock${item.stockHouses.id}` value=`${item.stock}`)
                 fieldset 

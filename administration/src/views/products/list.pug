@@ -17,20 +17,17 @@ block content
         tbody#table
             each product in products
                 tr    
-                    td 
-                        if product.template.image.img == 'null'
-                            i.fa-solid.fa-image 
-                        else 
-                            img(src="", alt=`${product.name}`)
-                    td #{product.name}
                     td #{product.sku}
+                    td #{product.name}
                     td #{product.total} Unidades
                     td $ #{product.price}/u
                     td 
                         a(href=`/products/show/${product.id}`) 
                             i.fa-solid.fa-pen
-                    td 
-                        a(href="http://") 
+                    td  
+                        form(action="/products/delete?m=DELETE", method="POST")
+                        input(type="hidden", name="productId" value=`${product.id}`) 
+                        button(type="submit") 
                             i.fa-solid.fa-trash
                     td 
                         a(href="http://") 
