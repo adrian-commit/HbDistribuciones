@@ -39,6 +39,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
+    phone: {
+      type: DataTypes.BIGINT,
+      allowNull: true
+    },
+    avatar: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
     comission:{
       type: DataTypes.INTEGER,
       allowNull: false,

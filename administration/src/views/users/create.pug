@@ -5,11 +5,11 @@ block content
     div  
         h2 Nuevo Usuario 
     section 
-        fieldset 
-            select#selectUser(name="user")
-                option(value="admin") Administración 
-                option(value="seller") Vendedor 
         form#formCreate(action="/users/create" method="POST") 
+            fieldset 
+                select#selectUser(name="team")
+                    option(value="admin") Administración 
+                    option(value="seller") Vendedor 
             fieldset
                 input(type="text" name="name" placeholder="Nombre de Usuario")
             fieldset 

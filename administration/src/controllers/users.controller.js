@@ -70,7 +70,26 @@ module.exports = {
 
     create:  async (req,res) => {
         try {
-            // const file = req.file
+            const request = await consult('post', 'users/create', {
+                userName: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                avatar: req.body.image,
+                phone: req.body.phone,
+                comission: req.body.comission
+            })
+            const newUser = request.data
+            if (req.body.team == 'seller') {
+                await consult('post', 'users/teams/create', {
+                    userId:newUser.id,
+                    teamId:2
+                })
+            } else {
+                await consult('post', 'users/teams/create', {
+                    userId:newUser.id,
+                    teamId:1
+                })
+            }
             // const model = await consult('post', 'models/create', {
             //     name: req.body.name,
             //     categoryId: req.body.sub
@@ -79,7 +98,7 @@ module.exports = {
                 
             // }
             // return res.send(file)
-            return res.render('users/list');      
+            return res.redirect('/users');      
         } catch (error) {
             return res.send('error');
         }

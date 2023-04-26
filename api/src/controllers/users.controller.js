@@ -127,6 +127,8 @@ module.exports = {
                 userName: req.body.userName,
                 email: req.body.email,
                 password: hashSync(req.body.password, 10),
+                avatar: req.body.avatar ? req.body.avatar : 'avatar-male.svg',
+                phone: Number(req.body.phone) ? Number(req.body.phone) : 0,
                 comission: req.body.comission ? Number(req.body.comission) : 0
             })
             return res.send(newUser);
