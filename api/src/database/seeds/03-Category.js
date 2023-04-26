@@ -44,11 +44,6 @@ module.exports = {
         id: 8,
         name: 'BISAGRAS',
         sub: 1
-      },
-      {
-        id: 9,
-        name: 'CARROS PARA PORTONES',
-        sub: 1
       }
 
       
