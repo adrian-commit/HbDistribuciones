@@ -38,16 +38,20 @@ block content
                 p 4
         section 
             article 
-                img(src="", alt="Nuevo")
-                a(href="") Nuevo Producto
+                a(href="/products/new") 
+                    i.fa-solid.fa-plus
+                    p Nuevo Producto
             article 
-                img(src="", alt="Actualizar")
-                a(href="") Actualizar Precios
+                a(href="") 
+                    i.fa-solid.fa-percent
+                    p Actualizar Precios
             article 
-                img(src="", alt="Cliente")
-                a(href="") Nuevo Cliente
+                a(href="/clients/new") 
+                    i.fa-solid.fa-store
+                    p Nuevo Cliente
             article 
-                img(src="", alt="Vendedor")
-                a(href="") Nuevo Vendedor
+                a(href="/users/new")
+                    i.fa-solid.fa-person-walking 
+                    p Nuevo Usuario
 include includes/footer.pug
     

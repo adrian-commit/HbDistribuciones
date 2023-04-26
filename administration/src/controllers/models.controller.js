@@ -1,4 +1,6 @@
 const consult = require('../modules/query');
+const axios = require('axios');
+const FormData = require('form-data');
 module.exports = {
 
     list: async(req,res) => {
@@ -44,20 +46,23 @@ module.exports = {
             })
             const model = request.data
             if (file) {
-                let formdata = new FormData()
-                formdata.append("image",file)
-                formdata.append("modelId", model.id)
-                // let newImg = await axios({
-                //     method:'post',
-                //     url:'http://localhost:5050/api/image/create/',
-                //     formdata,
-                //     headers:{...formdata.getHeaders()}
-                //     // headers:{'Content-Type': 'multipart/form-data'}
-                // })
-                console.log(formdata)
+                let formData = new FormData()
+                formData.append("image",file.buffer, {filename: file.originalname})
+                formData.append("modelId", model.id)
+                let newImg = await axios({
+                    method:'post',
+                    url:'http://localhost:5050/api/images/create',
+                    data: formData,
+                    headers:{
+                        ...formData.getHeaders(),
+                        'Accept':'application/json'
+                    }
+                })
+                console.log(newImg)
             }
             return res.redirect('/models/');  
         } catch (error) {
+            console.log('Error: ', error)
             return res.render('error');
         }
     },

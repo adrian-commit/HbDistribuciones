@@ -13,12 +13,15 @@ module.exports = {
 
     create: async (req,res) => {
         try {
+            console.log(req.file)
+            console.log(req.body)
             let newImg = await ModelImage.create({
-                img: 'http://localhost:5050/uploads/models/' + req.file.filename,
+                img: req.file ? 'http://localhost:5050/uploads/models/' + req.file.filename : 'empty',
                 modelId: Number(req.body.modelId)
             })
             return res.send(newImg);
         } catch (error) {
+            console.error('Error: ', error)
             return res.send(error);
         }
     },

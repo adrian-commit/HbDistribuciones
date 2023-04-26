@@ -13,7 +13,7 @@ module.exports = {
       img: {
         type: Sequelize.TEXT,
         allowNull: false,
-        defaultValue: 'null'
+        defaultValue: 'empty'
       } 
     });
     await queryInterface.addColumn('modelsImage','modelId',{
