@@ -12,19 +12,9 @@ module.exports = {
       },
       {
         id: 2,
-        name: 'BULONERÍA Y TORNILLERÍA',
-        sub: null
-      },
-      {
-        id: 3,
         name: 'BISAGRAS',
         sub: 1
-      },
-      {
-        id: 4,
-        name: 'BISAGRAS2',
-        sub: 1
-      },
+      }
 
       
     ], {});

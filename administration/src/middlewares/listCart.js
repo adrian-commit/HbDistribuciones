@@ -1,7 +1,4 @@
 module.exports = (req,res,next) => {
-    if (res.locals.user) {
-        const userId = req.session.user.id
-        res.locals.userId = req.session && req.session[userId] ? req.session[userId] : null;  
-    }
+    res.locals.cart = req.session && req.session.cart ? req.session.cart : null;  
     next()
 }

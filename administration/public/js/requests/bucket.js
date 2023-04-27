@@ -1,5 +1,6 @@
 form = document.forms.formRequest
 trTags = document.querySelectorAll('tr')
+trashButtons = document.querySelectorAll('#outCart')
 inputTotal = form.querySelector('#subtotalInput')
 pTotal = form.querySelector('#subtotal')
 
@@ -29,6 +30,18 @@ Promise.all(requests).then((responses) => {
 }).catch((error) => {
   console.error(error);
 });
+
+trashButtons.forEach(button=> {
+  button.addEventListener('click', async(e)=>{
+    const tr = button.parentNode.parentNode
+    const trId = tr.id
+    const request = await axios.post('http://localhost:3000/products/outItemBucket', {
+      id: trId
+    })
+    const confirm = request.data
+    location.reload()
+  })
+})
 
 form.addEventListener('submit',async(e)=>{
   try {

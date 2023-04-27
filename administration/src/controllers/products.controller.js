@@ -151,5 +151,24 @@ module.exports = {
         } catch (error) {
             
         }
-    }
+    },
+
+    outItemBucket:  async(req,res) => {
+        try {
+            // res.send(req.body)
+            const trObject = {
+                id: req.body.id
+            }
+            const item = req.session.cart.filter(item => item.id === trObject.id)
+            if (item !== -1) {
+                req.session.cart.splice(item,1)
+                res.send({ok:true})
+            }else{
+                res.send({ error: 'Item not found' })
+            }
+        } catch (error) {
+            console.log({error})
+            res.send(error)
+        }
+    },
 }

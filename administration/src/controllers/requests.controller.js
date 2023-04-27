@@ -13,7 +13,7 @@ module.exports = {
 
     listBucket: async(req,res) => {
         try {
-            if (!req.session.cart) {
+            if (!req.session.cart || req.session.cart.length === 0) {
                 return res.redirect('/categories')
             }
             const request = await consult('get', 'clients/')

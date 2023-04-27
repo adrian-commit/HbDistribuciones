@@ -31,7 +31,7 @@ app.use(require('express-session')({
 }));
 
 app.use(require('./middlewares/user'));
-// app.use(require('./middlewares/listCart'));
+app.use(require('./middlewares/listCart'));
 
 app.use('/home', require('./routes/index.routes'));
 app.use('/users', require('./routes/users.routes'));

@@ -1,7 +1,6 @@
 const selectCat = document.querySelector('#selectCat')
 const selectSub = document.querySelector('#selectSub')
 const table = document.querySelector('#table')
-
 selectCat.addEventListener('change',async(e)=>{
     try {
         let valor = e.target.value;

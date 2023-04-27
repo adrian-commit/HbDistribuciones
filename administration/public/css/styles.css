@@ -85,10 +85,10 @@ form, input, textarea, select, button, label {
 }
 
 /* Reseteamos las tablas */
-table, tr, td {
+/* table, tr, td {
   border-collapse: collapse;
   border-spacing: 0;
-}
+} */
 
 /* Evitamos problemas con los SVG */
 svg {
@@ -115,8 +115,16 @@ body {
 /* CSS */
 
 body {
-  padding-top : 10vh;
+  overflow-x: hidden;
+  padding-top: 15vh;
+  transition: all .3s ;
+  color: black;
 }
+
+/* body.content{
+  padding-top: 5vh;
+  padding-left: 15vw;
+} */
 
 header {
   display: flex;
@@ -160,14 +168,28 @@ header #action img {
   background-color: #ff8200;
 }
 header #action a i {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 header section#user {
   display: none;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 20px;
+  width: 200px;
+  max-width: 100%;
+  margin: 20px;
 }
 header section#user.visible {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 75%;
   animation: slideDown 0.5s;
+}
+header section#user.visible p{
+  color: black;
 }
 @keyframes slideDown {
   0% {
@@ -175,5 +197,12 @@ header section#user.visible {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section#user.visible {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

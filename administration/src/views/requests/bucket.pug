@@ -14,8 +14,8 @@ block content
                     td #{item.name} 
                     td #{item.price} 
                     td#cant #{item.quantity} 
-                    td 
-                        a(href="http://") 
+                    td
+                        button#outCart   
                             i.fa-solid.fa-trash 
     form#formRequest(action="/requests/create" method="POST")
         input(type="hidden", name="userId" value=`${user.id}`)
