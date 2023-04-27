@@ -1,25 +1,22 @@
+@use '_variables';
 body{
-    overflow-x: hidden;
-    padding-top: 5vh;
-    transition: all .3s ;
-    &.content{
-        padding-top: 5vh;
-        padding-left: 15vw;
-    }
+    padding-top:10vh;
 }
-header{
-    position: fixed;
-    top: 0vh;
-    left: 0vw;
+header {
     display: flex;
-    flex-wrap: wrap;
-    height: 5vh;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
-    background-color: $light;
+    height: auto;
+    background-color: variables.$light;
     z-index: 10;
+    transition: 0.5s;
     #brand{
         flex-basis: 15vw;
-        height: 5vh;
+        height: 10vh;
         img{
             height: 100%;
             max-width: none;
@@ -30,51 +27,50 @@ header{
     #action{
         display: flex;
         flex-grow: 1;
-        height: 5vh;
+        height: 0vh;
         justify-content: flex-end;
         gap: 1rem;
         padding: 0 1rem;
-        a[href="#sidebar"] {
-            align-self: center;
+        a{
+            background-color: black;
+            color: lightblue;
+            position: relative
         }
         img{
-            height: 100%;
+            height: 3rem;
             max-width: none;
-            width: 100%;
+            width: 3rem;
             object-fit: contain;
+            border-radius: 50%;
+            background-color: variables.$icon-alter;
+        };
+        a[href="/requests/cart"]{
+            position:fixed;
+            background: variables.$black;
+            color: variables.$black;
+            font-size: 1rem;
+            padding: .25rem;
+            i{
+                color: variables.$icon;
+            }
         }
     }
-    #sidebar {
-        position: fixed;
-        top: 5vh;
-        left: 0vw;
-        height: 95vh;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        width: 25vw;
-        background-color: $main;
-        align-content: center;
-        padding: 1rem;
-        gap: 1rem;
-        transform: translateX(-100%);
-        transition: all .3s;
-        &.active{
-            transform:none;
-        }
-        a{
-            color: $light;
-            height: 50px;
-            text-transform: uppercase;
-            text-align: center;
-            @include font($font-main,700,'normal')
-        }
+    section#user {
+      display: none;
     }
-
-    @media (min-width: 475px){
-        #sidebar{
-            width: 15vw;
-        } 
+    section#user.visible {
+      display: block;
+      animation: slideDown 0.5s;
     }
-}
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  }
+  
+  
+  

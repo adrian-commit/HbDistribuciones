@@ -47,7 +47,7 @@ html {
 }
 
 /* Desactivamos estilos por defecto de las principales etiquetas de texto */
-h1 , h2 , h3 , h4 , h5 , h6 , p ,span , a , strong , blockquote , i , b , u , em {
+h1 , h2 , h3 , h4 , h5 , h6 , p ,span , a , strong , blockquote , b , u , em {
   font-size: 1.1em;
   padding: 2px;
   font-weight: inherit;
@@ -64,8 +64,8 @@ blockquote:before, blockquote:after, q:before, q:after {
 
 /* Configuramos el texto que seleccionamos */
 ::selection {
-  background-color: $black;
-  color: $light;
+  background-color: variables.$black;
+  color: variables.$light;
 }
 
 /* Nivelamos problemas de tipografías y colocación de formularios */
@@ -96,13 +96,13 @@ svg{
 body {
   min-height  : 100vh;
   font-size   : 100%;
-  background: linear-gradient(#c4c4c4, #e0dfdf);
+  background: variables.$light;
   line-height: 1.4em;
   hyphens: auto;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $light;
-  color: $black;
-  font-family: $font-text;
+  background-color: variables.$light;
+  color: variables.$black;
+  font-family: variables.$font-main;
 }

@@ -11,11 +11,13 @@ module.exports = (sequelize, DataTypes) => {
       });
       ModelStock.hasOne(models.ModelImage, {
         as: 'image',
-        foreignKey: 'modelId'
+        foreignKey: 'modelId',
+        constraints: false
       });
       ModelStock.hasMany(models.Product, {
         as: 'products',
-        foreignKey: 'model'
+        foreignKey: 'model',
+        constraints: false
       });
     }
   };

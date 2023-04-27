@@ -1,19 +1,19 @@
 if user
-    nav 
+    header
         section
-            a(href="/home") 
-                img(src="/resources/img/logo Hbdistribuciones2.png", alt="HBdistribuciones")
-        section
-            each team in user.teams 
-                if team.level == 2
-                    a(href="/requests/cart")  
+            a#brand(href="/home") 
+                img(src="/resources/img/logo_Hbdistribuciones_1.png", alt="HBdistribuciones")
+        section#action
+            
+                    a(href="/requests/cart") 
                         i.fa-solid.fa-cart-shopping
                     span#counter
-                if team.level == 1
-                    a(href="") 
+                
+                    a(href="/layout") 
                         i.fa-solid.fa-bars
-            img(src=`${user.avatar}`, alt="Usuario")
-        section 
+                    figure 
+                        img(src=`${user.avatar}`, alt="Usuario")
+        section#user.hidden
             p #{user.userName}
             a(href="/home/logout") Cerrar Sesion
     //- script(src="/resources/js/includes/header.js") 
