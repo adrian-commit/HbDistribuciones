@@ -8,15 +8,19 @@ block content
     section 
         form#filterRequest(action="/requests/" method="GET")
             fieldset
+                button(type="submit") 
+                    i.fa-solid.fa-filter
+            fieldset
+                input(type="date", name="oneDate")
+            fieldset
                 select(name="delivery")
+                    option(value="") ENTREGA
                     option(value="send") Con Envio  
                     option(value="withdraw") Retirar Por Sucursal
             fieldset
                 select(name="client")
-                    option(value="" default) clientes 
+                    option(value="" default) CLIENTES 
                     option(value="bucor ferreteria industrial") bucor ferreteria industrial
-            fieldset
-                input(type="date", name="date")
             fieldset
                 select(name="zone")
                     option(value="" default) Zona 
@@ -28,8 +32,9 @@ block content
             fieldset
                 input(type="date", name="endDate")
             fieldset
-                button 
+                button(type="submit") 
                     i.fa-solid.fa-filter
+            a(href="/requests") Reestablecer
     table#table
         tbody
             if requests && requests.length > 0

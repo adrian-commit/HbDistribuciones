@@ -1,10 +1,25 @@
 const consult = require('../modules/query');
+const moment = require('moment');
 module.exports = {
 
     list: async(req,res) => {
         try {
+            // return res.send(req.body)
             let response = await consult('get', 'requests/')
             let requests = response.data.filter(r=>r.seller.id == 2)
+
+            if (req.query) {
+                if (req.query.delivery === 'send') {
+                    requests = requests.filter(r=>r.send === true)
+                }
+                if (req.query.delivery === 'withdraw') {
+                    requests = requests.filter(r=>r.send === false)
+                }
+                if (req.query.onlyDate && req.query.onlyDate !== "") {
+                    let date = req.query.onlyDate
+                    requests = requests.filter(r=>moment(r.track).isSame(date,'day'))
+                }
+            }
             return res.render('requests/list', {requests});  
         } catch (error) {
             return res.render('error');
