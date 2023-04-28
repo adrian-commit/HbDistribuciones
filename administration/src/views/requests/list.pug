@@ -3,37 +3,46 @@ block styles
     title Mis Pedidos
 block content   
     div 
-        h2 Mis Pedidos
-        h2 Lista de Pedidos
+        each team in user.teams 
+            if team.id === 2
+                h2 Mis Pedidos
+            if team.id === 1
+                h2 Lista de Pedidos
     section 
         form#filterRequest(action="/requests/" method="GET")
-            fieldset
-                button(type="submit") 
-                    i.fa-solid.fa-filter
-            fieldset
-                input(type="date", name="oneDate")
-            fieldset
-                select(name="delivery")
-                    option(value="") ENTREGA
-                    option(value="send") Con Envio  
-                    option(value="withdraw") Retirar Por Sucursal
-            fieldset
-                select(name="client")
-                    option(value="" default) CLIENTES 
-                    option(value="bucor ferreteria industrial") bucor ferreteria industrial
-            fieldset
-                select(name="zone")
-                    option(value="" default) Zona 
-            fieldset
-                select(name="seller")
-                    option(value="" default) Vendedor 
-            fieldset
-                input(type="date", name="startDate")
-            fieldset
-                input(type="date", name="endDate")
-            fieldset
-                button(type="submit") 
-                    i.fa-solid.fa-filter
+            each team in user.teams 
+                if team.id === 2
+                    section#formSeller 
+                        fieldset
+                            input(type="date", name="oneDate")
+                        fieldset
+                            select(name="delivery")
+                                option(value="") ENTREGA
+                                option(value="send") Con Envio  
+                                option(value="withdraw") Retirar Por Sucursal
+                        fieldset
+                            select(name="client")
+                                option(value='0' default) CLIENTES 
+                                each client in clients 
+                                    option(value=`${client.id}`) #{client.name}
+                        fieldset
+                            button(type="submit") 
+                                i.fa-solid.fa-filter
+                if team.id === 1  
+                    section#formAdmin          
+                        //- fieldset
+                        //-     select(name="zone")
+                        //-         option(value="" default) Zona 
+                        fieldset
+                            select(name="seller")
+                                option(value="" default) Vendedor 
+                        fieldset
+                            input(type="date", name="startDate")
+                        fieldset
+                            input(type="date", name="endDate")
+                        fieldset
+                            button(type="submit") 
+                                i.fa-solid.fa-filter
             a(href="/requests") Reestablecer
     table#table
         tbody
@@ -45,14 +54,18 @@ block content
                             td Precio: $#{req.total}
                             td Comision: #{req.seller.comission}%
                         td #{req.send == true ? "Con Envio" : "Retirar por Sucursal"}
-                        td Pendiente
-                        td 
-                            a(href="http://") 
-                                i.fa-solid.fa-check
-                        td Finalizado
-                        td 
-                            a(href="http://") 
-                                i.fa-solid.fa-xmark
+                        each team in user.teams 
+                            if team.id === 1
+                                if req.status === 0
+                                    td Pendiente
+                                    td 
+                                        a(href="http://") 
+                                            i.fa-solid.fa-check
+                                else
+                                    td Finalizado
+                                    td 
+                                        a(href="http://") 
+                                            i.fa-solid.fa-xmark
                         td 
                             a(href=`/requests/show/${req.id}`) 
                                 i.fa-solid.fa-eye

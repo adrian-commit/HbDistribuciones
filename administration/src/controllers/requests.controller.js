@@ -4,10 +4,43 @@ module.exports = {
 
     list: async(req,res) => {
         try {
-            // return res.send(req.body)
+            let userTeams = req.session.user.teams
+            let isAdmin = userTeams.find(t=>t.level === 1)
             let response = await consult('get', 'requests/')
-            let requests = response.data.filter(r=>r.seller.id == 2)
-
+            let requests = response.data
+            if (isAdmin !== undefined) {
+                // const requestWar = await consult('get','warehouses/')
+                // const zones = requestWar.data
+                const requestSeller = await consult('get','users/')
+                const sellers = requestSeller.data
+                requests;
+                if (req.query) {
+                    // if (req.query.zone !== '0') {
+                    //     requests = requests.filter(r=>r.customer.zoneId === Number(req.query.zone))
+                    // }
+                    if (req.query.seller && req.query.seller != '0') {
+                        requests = requests.filter(r=>r.seller === Number(req.query.seller))
+                    }
+                    if (req.query.startDate && req.query.startDate !== "") {
+                        let date = req.query.startDate
+                        requests = requests.filter(r=>moment(r.track).isAfter(date,'day'))
+                    }
+                    if (req.query.endDate && req.query.endDate !== "") {
+                        let date = req.query.endDate
+                        requests = requests.filter(r=>moment(r.track).isBefore(date,'day'))
+                    }
+                    if (req.query.startDate && req.query.startDate !== "" && req.query.endDate && req.query.endDate !== "") {
+                        let dateStart = req.query.startDate
+                        let dateEnd = req.query.endDate
+                        requests = requests.filter(r=>moment(r.track).isAfter(dateStart,'day'))
+                        requests = requests.filter(r=>moment(r.track).isBefore(dateEnd,'day'))
+                    }
+                }
+                return res.render('requests/list', {requests, sellers});  
+            }
+            const requestClient = await consult('get','clients/')    
+            const clients = requestClient.data
+            requests = response.data.filter(r=>r.seller.id == 2)
             if (req.query) {
                 if (req.query.delivery === 'send') {
                     requests = requests.filter(r=>r.send === true)
@@ -19,9 +52,14 @@ module.exports = {
                     let date = req.query.onlyDate
                     requests = requests.filter(r=>moment(r.track).isSame(date,'day'))
                 }
+                if (req.query.client && req.query.client != '0') {
+                    requests = requests.filter(r=>r.customer.id === Number(req.query.client))
+                }
             }
-            return res.render('requests/list', {requests});  
+            return res.render('requests/list', {requests, clients});  
+            // return res.render('requests/list', {requests});  
         } catch (error) {
+            console.log({error})
             return res.render('error');
         }
     },

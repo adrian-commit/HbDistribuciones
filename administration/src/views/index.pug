@@ -3,6 +3,7 @@ block styles
     title Inicio
 block content
     main
+        if !user
             section
                 img(src="/resources/img/logo_Hbdistribuciones_1.png", alt="HBdistribuciones")
             form(action="/home/login", method="post") 
@@ -12,64 +13,66 @@ block content
                     input(type="password", name="password" placeholder="CONTRASEÑA")
                 fieldset
                     button(type="submit") INGRESAR
-
-                        div  
-                            h2 ACTIVIDAD EN EL DIA  
-                        section 
-                            span 
-                                i.fa-solid.fa-shop
-                                p Pedidos 
-                                //- p #{user.ordersLength}
-                            span 
-                                i.fa-solid.fa-money-bill-wave
-                                p Comision 
-                                //- p $#{user.total}
-                        section 
-                            a(href="/categories/") CATALOGO
-                            a(href="/clients/") CLIENTES 
-                            a(href="/requests/") PEDIDOS
-
-                            section 
-                                span 
-                                    i.fa-solid.fa-truck-fast
-                                    p Envios en Zona 1 
-                                    p 6
-                                span 
-                                    i.fa-solid.fa-shop
-                                    p Retiros en Zona 1 
-                                    p 4
-                                span 
-                                    i.fa-solid.fa-truck-fast
-                                    p Envios en Zona 2 
-                                    p 6
-                                span 
-                                    i.fa-solid.fa-shop
-                                    p Retiros en Zona 2 
-                                    p 4
-                                span 
-                                    i.fa-solid.fa-truck-fast
-                                    p Envios en Zona 3 
-                                    p 6
-                                span 
-                                    i.fa-solid.fa-shop
-                                    p Retiros en Zona 3 
-                                    p 4
-                            section 
-                                article 
-                                    a(href="/products/new") 
-                                        i.fa-solid.fa-plus
-                                        p Nuevo Producto
-                                article 
-                                    a(href="") 
-                                        i.fa-solid.fa-percent
-                                        p Actualizar Precios
-                                article 
-                                    a(href="/clients/new") 
-                                        i.fa-solid.fa-store
-                                        p Nuevo Cliente
-                                article 
-                                    a(href="/users/new")
-                                        i.fa-solid.fa-person-walking 
-                                        p Nuevo Usuario
+        else
+            each team in user.teams
+                if team.id === 2
+                    div  
+                        h2 ACTIVIDAD EN EL DIA  
+                    section 
+                        span 
+                            i.fa-solid.fa-shop
+                            p Pedidos 
+                            //- p #{user.ordersLength}
+                        span 
+                            i.fa-solid.fa-money-bill-wave
+                            p Comision 
+                            //- p $#{user.total}
+                    section 
+                        a(href="/categories/") CATALOGO
+                        a(href="/clients/") CLIENTES 
+                        a(href="/requests/") PEDIDOS
+                if team.id === 1
+                    section 
+                        span 
+                            i.fa-solid.fa-truck-fast
+                            p Envios en Zona 1 
+                            p 6
+                        span 
+                            i.fa-solid.fa-shop
+                            p Retiros en Zona 1 
+                            p 4
+                        span 
+                            i.fa-solid.fa-truck-fast
+                            p Envios en Zona 2 
+                            p 6
+                        span 
+                            i.fa-solid.fa-shop
+                            p Retiros en Zona 2 
+                            p 4
+                        span 
+                            i.fa-solid.fa-truck-fast
+                            p Envios en Zona 3 
+                            p 6
+                        span 
+                            i.fa-solid.fa-shop
+                            p Retiros en Zona 3 
+                            p 4
+                    section 
+                        article 
+                            a(href="/products/new") 
+                                i.fa-solid.fa-plus
+                                p Nuevo Producto
+                        article 
+                            a(href="") 
+                                i.fa-solid.fa-percent
+                                p Actualizar Precios
+                        article 
+                            a(href="/clients/new") 
+                                i.fa-solid.fa-store
+                                p Nuevo Cliente
+                        article 
+                            a(href="/users/new")
+                                i.fa-solid.fa-person-walking 
+                                p Nuevo Usuario
 include includes/footer.pug
     

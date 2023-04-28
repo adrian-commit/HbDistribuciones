@@ -25,12 +25,14 @@ block content
                             td #{client.phone}
                             td #{client.address}
                             td ZONA#{client.zoneId}
-                            td 
-                                a(href="") 
-                                    i.fa-solid.fa-pen
-                            td 
-                                a(href="") 
-                                    i.fa-solid.fa-trash
+                            each team in user.teams 
+                                if team.id === 1
+                                    td 
+                                        a(href="") 
+                                            i.fa-solid.fa-pen
+                                    td 
+                                        a(href="") 
+                                            i.fa-solid.fa-trash
                 else
                      p No se encontraron resultados
 include ../includes/footer.pug
