@@ -1,36 +1,38 @@
 extends layout.pug
 block styles
     title Inicio
+    link(rel="stylesheet", href="/resources/css/home.css")
 block content
     main
         if !user
-            section
+            section#login
                 img(src="/resources/img/logo_Hbdistribuciones_1.png", alt="HBdistribuciones")
-            form(action="/home/login", method="post") 
-                fieldset
-                    input(type="email" name="email" placeholder="CORREO")
-                fieldset
-                    input(type="password", name="password" placeholder="CONTRASEÑA")
-                fieldset
-                    button(type="submit") INGRESAR
+                form#formLogin(action="/home/login", method="post") 
+                    fieldset
+                        input(type="email" name="email" placeholder="CORREO")
+                    fieldset
+                        input(type="password", name="password" placeholder="CONTRASEÑA")
+                    fieldset.btns
+                        button(type="submit") INGRESAR
         else
             each team in user.teams
                 if team.id === 2
-                    div  
-                        h2 ACTIVIDAD EN EL DIA  
-                    section 
-                        span 
-                            i.fa-solid.fa-shop
-                            p Pedidos 
-                            //- p #{user.ordersLength}
-                        span 
-                            i.fa-solid.fa-money-bill-wave
-                            p Comision 
-                            //- p $#{user.total}
-                    section 
-                        a(href="/categories/") CATALOGO
-                        a(href="/clients/") CLIENTES 
-                        a(href="/requests/") PEDIDOS
+                    section#sellerHome
+                        article#activity
+                            h2 ACTIVIDAD EN EL DIA  
+                            section 
+                                span 
+                                    i.fa-solid.fa-shop
+                                    p Pedidos 
+                                    p #{user.ordersLength}
+                                span 
+                                    i.fa-solid.fa-money-bill-wave
+                                    p Comision 
+                                    p $#{user.total}
+                        section#options 
+                            a(href="/categories/") CATALOGO
+                            a(href="/clients/") CLIENTES 
+                            a(href="/requests/") PEDIDOS
                 if team.id === 1
                     section 
                         span 
