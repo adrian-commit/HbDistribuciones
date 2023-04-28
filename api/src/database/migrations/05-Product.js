@@ -43,7 +43,7 @@ module.exports = {
       onUpdate:'set null',
       onDelete:'set null'
     })
-    await queryInterface.addIndex('products',['id'])
+    await queryInterface.addIndex('products',['id'],{length:255})
   },
 
   async down (queryInterface, Sequelize) {

@@ -18,17 +18,19 @@ block content
             each team in user.teams
                 if team.id === 2
                     section#sellerHome
-                        article#activity
+                        article
                             h2 ACTIVIDAD EN EL DIA  
-                            section 
-                                span 
-                                    i.fa-solid.fa-shop
-                                    p Pedidos 
-                                    p #{user.ordersLength}
-                                span 
-                                    i.fa-solid.fa-money-bill-wave
-                                    p Comision 
-                                    p $#{user.total}
+                            section#activity 
+                                span#card 
+                                    i#icon.fa-solid.fa-shop
+                                    section#textBox
+                                        p#p1 Pedidos 
+                                        p#p2 #{user.ordersLength}
+                                span#card 
+                                    i#icon.fa-solid.fa-money-bill-wave
+                                    section#textBox
+                                        p Comision 
+                                        p $#{user.total}
                         section#options 
                             a(href="/categories/") CATALOGO
                             a(href="/clients/") CLIENTES 

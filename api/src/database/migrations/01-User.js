@@ -38,7 +38,9 @@ module.exports = {
         defaultValue: 0
       }, 
     });
-    await queryInterface.addIndex('users',['id'])
+    await queryInterface.addIndex('users',['id'],{
+      length: 255
+    })
   },
 
   async down (queryInterface, Sequelize) {

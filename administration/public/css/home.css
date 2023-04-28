@@ -56,6 +56,76 @@ main {
   margin-left: auto;
 }
 
-/* #sellerHome{
+#sellerHome{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
 
+#sellerHome article{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+#activity{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+#activity span{
+  width: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: #ab2328;
+  color: #f8f8f8;
+  padding: 0.2rem 0.4rem;
+  border-radius: 50px;
+}
+/* 
+#activity span section{
+  text-align: center; */
+
+
+/* #activity span i{
+  background-color: #f0f0f0;
+  color: #e35205;
+  border-radius: 50px;
+  height: 100%;
+  max-width: none;
+  width: 30%;
+  text-align: center;
 } */
+
+#card{
+  width: 100%;
+  max-width: 290px;
+  height: 3rem;
+  background: #ab2328;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.icon{
+  width: 50%;
+  height: 50%;
+  /* margin-left: 10px; */
+  border-radius: 10px;
+}
+
+.textBox {
+  width: calc(100% - 90px);
+  margin-left: 10px;
+  color: #f8f8f8;
+  font-family: 'Josefin Sans' sans-serif;
+}
