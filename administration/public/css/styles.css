@@ -117,6 +117,7 @@ body {
 body {
   overflow-x: hidden;
   padding-top: 15vh;
+  padding-bottom: 10vh;
   transition: all .3s ;
   color: black;
 }

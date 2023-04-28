@@ -1,9 +1,11 @@
 extends ../layout.pug
 block styles
     title Lista de productos  
-block content   
-    h2 #{main.name}
-    section 
+    link(rel="stylesheet", href="/resources/css/inventary.css")
+block content
+    article#title
+        h2 #{main.name}
+    section#select 
         select(name="models")
             each inv in inventory 
                 option(value="") #{inv.name} 
@@ -13,13 +15,11 @@ block content
                 each product in item.products 
                     tr(id=product.id)
                         td    
-                            if item.image.img == 'null' 
-                                i.fa-solid.fa-image
-                            else 
-                                img#img(src="", alt="imagen")
-                        td#name #{product.name}
-                        td#total #{product.total} 
-                        td#price #{product.price} c/u
+                            img(src=`${item.image.img}`, alt="Producto")
+                        section 
+                            td#name #{product.name}
+                            td#total #{product.total} 
+                            td#price #{product.price} c/u
                         td  
                             input#quantity(type="number", name="quantity")
                         td 

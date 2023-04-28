@@ -1,0 +1,39 @@
+#title{
+    width: 100vw;
+    text-align: center;
+    padding: 3vh 0;
+    background-color: #ab2328;
+    color: #f8f8f8
+}
+
+#select{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 5vh 5vh;
+}
+
+#select select{
+    background-color: #e35205;
+   color: #f8f8f8;
+   padding: 0.4rem 0.6rem;
+   border-radius: 30px;
+}
+
+#table {
+    width: 80vw;
+    padding: 0 5vh;
+    margin: auto;
+    border: 0.25rem solid rgb(120, 120, 120);
+  }
+
+#table tr{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#table img {
+    width: 100px;
+    height: 100px;
+}
