@@ -1,16 +1,26 @@
 @charset "UTF-8";
-/* Archivo */
-@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-/* Josefin Sans */
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-/* Color Scheme */
-/* Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
+
+:root{
+  --light: rgb(255,255,255);
+  --light-two:#f8f8f8;
+  --light-alter:#f0f0f0;
+  --content:#ab2328;
+  --content-alter: #bf0d3e;
+  --icon: #e35205;
+  --icon-alter: #ff8200;
+  --black: #0000;
+  --dark-alter: #202020;
+  --success:#40ba40;
+
+  --font1:'Archivo', sans-serif;
+  --font2:'Josefin Sans', sans-serif;
+
+  --padding-input: 0.25rem 1rem;
+  --padding-btn: 0.25rem 1.25rem;
+  --padding-cart: 40px 20px;
+  --padding-container: 20px 20px;
 }
+
 /* Reseteamos los margin y paddings de todas las etiquetas */
 * {
   margin: 0;
@@ -29,49 +39,6 @@ img, picture, video, iframe, figure {
   object-position: center center;
 }
 
-/* Reseteamos los enlaces para funcionar como cajas...
-a {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  font-size: inherit;
-}
-
-p a {
-  display: inline;
-}
-
-li {
-  list-style-type: none;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-*/
-/* Desactivamos estilos por defecto de las principales etiquetas de texto 
-h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, b, u, em {
-  font-size: 1.1em;
-  padding: 2px;
-  font-weight: inherit;
-  font-style: inherit;
-  text-decoration: none;
-  color: inherit;
-  text-align: center;
-}*/
-
-/* Evitamos problemas con los pseudoelementos de quotes 
-blockquote:before, blockquote:after, q:before, q:after {
-  content: "";
-  content: none;
-}*/
-
-/* Configuramos el texto que seleccionamos 
-::selection {
-  background-color: rgba(0, 0, 0, 0);
-  color: rgb(255, 255, 255);
-} */
-
 /* Nivelamos problemas de tipografías y colocación de formularios */
 form, input, textarea, select, button, label {
   font-family: inherit;
@@ -84,12 +51,6 @@ form, input, textarea, select, button, label {
   appearance: none;
 }
 
-/* Reseteamos las tablas */
-/* table, tr, td {
-  border-collapse: collapse;
-  border-spacing: 0;
-} */
-
 /* Evitamos problemas con los SVG */
 svg {
   width: 100%;
@@ -101,33 +62,101 @@ svg {
 body {
   min-height: 100vh;
   font-size: 100%;
-  background: rgb(255, 255, 255);
+  background: var(--light);
   line-height: 1.4em;
   hyphens: auto;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--light);
   color: rgba(0, 0, 0, 0);
-  font-family: "Archivo", sans-serif;
+  font-family: var(--font1);
+  margin: 0 auto;
 }
 
 /* CSS */
 
-body {
-  overflow-x: hidden;
-  padding-top: 15vh;
-  padding-bottom: 10vh;
-  transition: all .3s ;
-  color: black;
+body *{
+  outline: 2px solid crimson;
 }
 
-/* body.content{
-  padding-top: 5vh;
-  padding-left: 15vw;
-} */
+body {
+  overflow: hidden;
+  padding-top: 15vh;
+  padding-bottom: 10vh;
+}
 
-header {
+header{
+  /* --padding-container: 0.5rem 1rem; */
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+  padding: 0.5rem 1.25em;
+  background-color: var(--light);
+  flex: 1 0 0;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#brand {
+  flex-basis: 4em;
+  height: 10vh;
+}
+
+.header__img{
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  margin: 0 auto;
+}
+
+.header__actions{
+  width: max-content;
+  margin-left: auto;
+}
+
+.header__cart{
+  display: flex;
+  justify-content: center;
+  gap: 0.1em;
+}
+
+.header__icon{
+  width: max-content;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.header__userImg{
+  flex-basis: 4em;
+}
+
+.userImg{
+  margin: 0 auto;
+}
+
+.header__user{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__hidden{
+  display: none;
+}
+
+
+/* header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -141,10 +170,7 @@ header {
   z-index: 10;
   transition: 0.5s;
 }
-header #brand {
-  flex-basis: 15vw;
-  height: 10vh;
-}
+
 header #brand img {
   height: 100%;
   max-width: none;
@@ -206,4 +232,4 @@ header section#user.visible p{
     left: 50%;
     transform: translateX(-50%);
   }
-}
+} */

@@ -1,22 +1,24 @@
 if user
     header
-        section
+        figure.header__figure
             a#brand(href="/home") 
-                img(src="/resources/img/logo_Hbdistribuciones_1.png", alt="HBdistribuciones")
-        section#action
+                img.header__img(src="/resources/img/logo_Hbdistribuciones_1.png", alt="HBdistribuciones")
+        section.header__actions
             each team in user.teams 
                 if team.id === 2
-                    a(href="/requests/cart") 
-                        i.fa-solid.fa-cart-shopping
-                    span#counter
-                        if cart
-                            #{Number(cart.length)}
+                    article.header__cart
+                        a.header__icon(href="/requests/cart") 
+                            i.fa-solid.fa-cart-shopping
+                        span#counter.header__counter
+                            if cart
+                                #{Number(cart.length)}
                 if team.id === 1
-                    a(href="/layout") 
+                    a.header__icon(href="/layout") 
                         i.fa-solid.fa-bars
-            figure#user-image 
-                img(src=`${user.avatar}`, alt="Usuario")
-        section#user.hidden
-            p #{user.userName}
-            a(href="/home/logout") Cerrar Sesion
+        section.header__user 
+            figure.header__userImg
+                img.header__img.userImg(src=`${user.avatar}`, alt="Usuario")
+            div.header__hidden
+                p #{user.userName}
+                a(href="/home/logout") Cerrar Sesion
     script(src="/resources/js/includes/header.js") 

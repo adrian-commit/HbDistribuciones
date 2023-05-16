@@ -5,14 +5,15 @@ block styles
 block content
     main
         if !user
-            section#login
-                img(src="/resources/img/logo_Hbdistribuciones_1.png", alt="HBdistribuciones")
-                form#formLogin(action="/home/login", method="post") 
-                    fieldset
+            section#login.login
+                figure.login__picture 
+                    img.login__img(src="/resources/img/logo_Hbdistribuciones_1.png", alt="HBdistribuciones")
+                form#formLogin.formLogin(action="/home/login", method="post") 
+                    fieldset.fieldset
                         input(type="email" name="email" placeholder="CORREO")
-                    fieldset
+                    fieldset.fieldset
                         input(type="password", name="password" placeholder="CONTRASEÑA")
-                    fieldset.btns
+                    fieldset.btn
                         button(type="submit") INGRESAR
         else
             each team in user.teams

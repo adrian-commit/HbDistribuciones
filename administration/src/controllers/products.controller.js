@@ -71,7 +71,7 @@ module.exports = {
                     productId: product.id,
                     placeId: zone.id
                 },header))
-            }
+            } 
             await Promise.all(promises);
             return res.redirect('/products')
         } catch (error) {
