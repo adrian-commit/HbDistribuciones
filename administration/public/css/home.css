@@ -164,4 +164,8 @@ main{
     margin: 0;
     margin-left: auto;
   }
+
+  .login__picture{
+    max-width: 500px;
+  }
 }

@@ -1,24 +1,25 @@
 if user
-    header
-        figure.header__figure
-            a#brand(href="/home") 
-                img.header__img(src="/resources/img/logo_Hbdistribuciones_1.png", alt="HBdistribuciones")
-        section.header__actions
-            each team in user.teams 
-                if team.id === 2
-                    article.header__cart
-                        a.header__icon(href="/requests/cart") 
-                            i.fa-solid.fa-cart-shopping
-                        span#counter.header__counter
-                            if cart
-                                #{Number(cart.length)}
-                if team.id === 1
-                    a.header__icon(href="/layout") 
-                        i.fa-solid.fa-bars
+    header.header
+        
+        a.header__figure(href="/home") 
+            img.header__img(src="/resources/img/logo_Hbdistribuciones_1.png", alt="HBdistribuciones")
+        each team in user.teams 
+            if team.id === 2
+                article.header__cart
+                    a.header__icon(href="/requests/cart") 
+                        i.fa-solid.fa-cart-shopping
+                    span#counter.header__counter
+                        if cart
+                            - let number = Number(cart.length)
+                            | #{number}
         section.header__user 
             figure.header__userImg
                 img.header__img.userImg(src=`${user.avatar}`, alt="Usuario")
             div.header__hidden
                 p #{user.userName}
-                a(href="/home/logout") Cerrar Sesion
+                a.header__logout(href="/home/logout") Cerrar Sesion
+            div.header__cancel
+                i.fa-solid.fa-xmark
+        a(href="#header")#header__menu.header__menu 
+            i.fa-solid.fa-bars
     script(src="/resources/js/includes/header.js") 
