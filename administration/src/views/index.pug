@@ -18,24 +18,24 @@ block content
         else
             each team in user.teams
                 if team.id === 2
-                    section#sellerHome
-                        article
+                    section.sellerHome
+                        div.sellerHome__activity
                             h2 ACTIVIDAD EN EL DIA  
-                            section#activity 
-                                span#card 
-                                    i#icon.fa-solid.fa-shop
-                                    section#textBox
+                            article.sellerHome__miniActivity 
+                                span.sellerHome__miniBox 
+                                    i.icon.fa-solid.fa-shop
+                                    section.sellerHome__textBox
                                         p#p1 Pedidos 
                                         p#p2 #{user.ordersLength}
-                                span#card 
-                                    i#icon.fa-solid.fa-money-bill-wave
-                                    section#textBox
+                                span.sellerHome__miniBox 
+                                    i.icon.fa-solid.fa-money-bill-wave
+                                    section.sellerHome__textBox
                                         p Comision 
                                         p $#{user.total}
-                        section#options 
-                            a(href="/categories/") CATALOGO
-                            a(href="/clients/") CLIENTES 
-                            a(href="/requests/") PEDIDOS
+                        nav.sellerHome__options 
+                            a.sellerHome__option(href="/categories/") CATALOGO
+                            a.sellerHome__option(href="/clients/") CLIENTES 
+                            a.sellerHome__option(href="/requests/") PEDIDOS
                 if team.id === 1
                     section 
                         span 

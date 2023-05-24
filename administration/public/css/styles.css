@@ -60,6 +60,7 @@ form, input, textarea, select, button, label {
 
 /* Configuramos la tipografía para toda la web */
 body {
+  min-width: 375px;
   min-height: 100vh;
   font-size: 100%;
   line-height: 1.4em;
@@ -80,7 +81,7 @@ body {
 
 
 body{
-  padding-top: 15em;
+  padding-top: 10em;
   padding-bottom: 10em;
 }
 

@@ -85,16 +85,27 @@ main{
 }
 
 /* Seller view */
-#sellerHome{
-  width: 100vw;
+.sellerHome{
+  width: 90vw;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  gap: 1.4rem;
+  gap: 3em;
 }
 
-#sellerHome article{
+.sellerHome__activity{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.sellerHome__activity h2 {
+  font-size: 1.5rem;
+}
+
+/* #sellerHome article{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,7 +129,7 @@ main{
   color: #f8f8f8;
   padding: 0.2rem 0.4rem;
   border-radius: 50px;
-} */
+} */ */
 /* 
 #activity span section{
   text-align: center; */
