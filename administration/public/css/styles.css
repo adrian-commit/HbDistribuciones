@@ -74,9 +74,9 @@ body {
 }
 
 /* CSS */ 
-body *{
+/* body *{
   outline: 2px solid crimson;
-}
+} */
 
 
 body{
@@ -126,6 +126,7 @@ header{
 
 
 .header__counter{
+  display: none;
   width: 20px;
   height: 20px;
   background-color: var(--content);
@@ -159,20 +160,20 @@ header{
   z-index: 11;
   
   transform: var(--state-menu);
-  transition: 0.3s transform;
+  transition: 0.6s transform;
 }
 
-.header:target{
+.header__menu--active {
   --state-menu: translate(0%);
 }
 
 .header__userImg{
-  width: 150px;
+  width: 100px;
 }
 
 .userImg{
-  max-width: 150px;
-  height: 150px;
+  max-width: 100px;
+  height: 100px;
   margin: 0 auto;
   background-color: var(--light);
   border-radius: 50%;

@@ -12,13 +12,13 @@ if user
                         if cart
                             - let number = Number(cart.length)
                             | #{number}
-        section.header__user 
+        section#header__user.header__user
             figure.header__userImg
                 img.header__img.userImg(src=`${user.avatar}`, alt="Usuario")
             div.header__hidden
                 p #{user.userName}
                 a.header__logout(href="/home/logout") Cerrar Sesion
-            div.header__cancel
+            div#header__cancel.header__cancel
                 i.fa-solid.fa-xmark
         a(href="#header")#header__menu.header__menu 
             i.fa-solid.fa-bars
