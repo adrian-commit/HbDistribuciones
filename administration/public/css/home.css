@@ -109,7 +109,7 @@ main{
 }
 
 .sellerHome__miniBox{
-  width: 250px;
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,7 +126,7 @@ main{
   border-radius: 50%;
   background-color: #f0f0f0;
   margin-right: auto;
-  margin-left: 5px;
+  margin-left: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,6 +135,60 @@ main{
 .sellerHome__miniBox .icon i{
   color: #e35205;
   font-size: 25px;
+}
+
+.sellerHome__textBox{
+  width: 50%;
+  text-align: center;
+  margin-right: 1.5rem;
+  font-size: 0.9em;
+}
+
+.sellerHome__options{
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.sellerHome__option{
+  width: 200px;
+  display: block;
+  background-color: var(--content);
+  padding: 1.8rem 2rem;
+  border-radius: .4rem;
+  color: var(--light);
+  font-family: inherit;
+  text-decoration: none;
+}
+
+@media(min-width: 768px){
+  .btn button{
+    margin: 0;
+    margin-left: auto;
+  }
+
+  .login__picture{
+    max-width: 500px;
+  }
+
+  .sellerHome__miniActivity{
+    width: max-content;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .sellerHome__options{
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+  }
 }
 
 
@@ -162,7 +216,7 @@ main{
   color: #f8f8f8;
   padding: 0.2rem 0.4rem;
   border-radius: 50px;
-} */ */
+} */
 /* 
 #activity span section{
   text-align: center; */
@@ -178,7 +232,7 @@ main{
   text-align: center;
 } */
 
-#card{
+/* #card{
   width: 100%;
   max-width: 290px;
   height: 3rem;
@@ -187,29 +241,12 @@ main{
   display: flex;
   align-items: center;
   justify-content: left;
-}
-
-.icon{
-  width: 50%;
-  height: 50%;
-  /* margin-left: 10px; */
-  border-radius: 10px;
-}
-
+} */
+/* 
 .textBox {
   width: calc(100% - 90px);
   margin-left: 10px;
   color: #f8f8f8;
   font-family: 'Josefin Sans' sans-serif;
-}
+} */
 
-@media(min-width: 768px){
-  .btn button{
-    margin: 0;
-    margin-left: auto;
-  }
-
-  .login__picture{
-    max-width: 500px;
-  }
-}
