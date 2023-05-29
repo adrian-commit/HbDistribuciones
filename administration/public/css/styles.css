@@ -2,6 +2,7 @@
 
 :root{
   --light: rgb(255,255,255);
+  --grey: rgba(235, 213, 213, 0.5);
   --light-two:#f8f8f8;
   --light-alter:#f0f0f0;
   --content:#ab2328;
@@ -75,9 +76,9 @@ body {
 }
 
 /* CSS */ 
-/* body *{
-  outline: 2px solid crimson;
-} */
+body *{
+  outline: 2px solid blue;
+}
 
 
 body{
@@ -101,7 +102,6 @@ header{
   padding: 1.5vw 3vh;
   /* border-bottom: 1px solid var(--dark-alter); */
   z-index: 10;
-  transition: openSlider .3s;
 }
 
 .header__img{
@@ -161,7 +161,7 @@ header{
   z-index: 11;
   
   transform: var(--state-menu);
-  transition: 0.6s transform;
+  transition: 0.8s transform;
 }
 
 .header__menu--active {
@@ -195,9 +195,23 @@ header{
 
 .header__logout,
 .header__cancel{
-  display: inline-block;
   text-decoration: none;
   color: inherit;
+}
+
+.header__cancel{
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.header__cancel i{
+  display: block;
+  text-align: center;
+}
+
+.header__cancel:hover{
+  background-color: var(--grey);
 }
 
 .header__logout{
