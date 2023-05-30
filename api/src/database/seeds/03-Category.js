@@ -17,7 +17,7 @@ module.exports = {
       },
       {
         id: 3,
-        name: 'fORJADOS',
+        name: 'FORJADOS',
         sub: null
       },
       {

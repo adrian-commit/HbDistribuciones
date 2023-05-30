@@ -82,8 +82,8 @@ body {
 
 
 body{
-  padding-top: 9em;
-  padding-bottom: 2em;
+  padding-top: 6em;
+  padding-bottom: 6em;
 }
 
 header{
@@ -246,9 +246,9 @@ header{
 
 @media(min-width:768px){
   .header{
-    padding: 0 3vh;
-    top: 1em;
+    padding: 2vh 3vw;
   }
+  
   .header__user{
     height: auto;
     width: max-content;
