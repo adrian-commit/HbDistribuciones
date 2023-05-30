@@ -3,8 +3,8 @@ const userSection = document.querySelector("#header__hidden");
 const menu = document.querySelector('#header__menu');
 const menuDeploy = document.querySelector('#header__user');
 const cancelBtn = document.querySelector('#header__cancel');
-
-
+const contador = document.querySelector('#counter').value;
+const cart = sessionStorage;
 //opciones para menu en mobile
 menu.addEventListener('click', function() {
   menuDeploy.classList.toggle('header__menu--active');
@@ -22,12 +22,17 @@ document.addEventListener("click", function(event) {
 
 
 //opciones para menu en tablet en adelante
-userImage.addEventListener("click", function() {
-  userSection.style.display="flex";
-});
+if (window.innerWidth >= 768) {
+  userImage.addEventListener("click", function() {
+    userSection.style.display="flex";
+  });
+  
+  document.addEventListener("click", function(event) {
+      if (!userSection.contains(event.target) && !userImage.contains(event.target)) {
+        userSection.style.display="none";
+      }
+  }); 
+}
 
-document.addEventListener("click", function(event) {
-    if (!userSection.contains(event.target) && !userImage.contains(event.target)) {
-      userSection.style.display="none";
-    }
-});
+//estilos para el contador del carrito
+console.log(contador)
