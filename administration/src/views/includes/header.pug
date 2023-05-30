@@ -8,9 +8,10 @@ if user
                 article.header__cart
                     a.header__icon(href="/requests/cart") 
                         i.fa-solid.fa-cart-plus
-                    span#counter.header__counter(value=cart.length)
-                        - let number = Number(cart.length)
-                        | #{number}
+                    span#header__counter.header__counter
+                        if cart
+                            - let number = Number(cart.length)
+                            | #{number}
         section#header__user.header__user
             figure#header__img.header__userImg
                 img.header__img.userImg(src=`${user.avatar}`, alt="Usuario")

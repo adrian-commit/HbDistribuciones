@@ -133,7 +133,7 @@ header{
 
 
 .header__counter{
-  display: block;
+  display: none;
   width: 20px;
   height: 20px;
   background-color: var(--content);
@@ -145,6 +145,16 @@ header{
   top: -40%;
   right: -50%;
   text-align: center;
+  animation: slideUp .3s;
+}
+
+@keyframes slideUp{
+  0%{
+    transform: translateY(0%);
+  }
+  100%{
+    transform: translateY(-10%);
+  }
 }
 
 
@@ -259,6 +269,10 @@ header{
     --state-menu: 0;
   }
 
+  .header__cart{
+    margin-right: 1em;
+  }
+
   .header__icon{
     font-size: 1.5em;
   }
@@ -300,6 +314,10 @@ header{
     border-color: transparent transparent var(--content-alter) transparent;
     left: 86%;
     transform: translateX(-50%);
+  }
+
+  .header__hidden p{
+    font-size: .9em;
   }
 
   @keyframes slideDown {

@@ -3,8 +3,9 @@ const userSection = document.querySelector("#header__hidden");
 const menu = document.querySelector('#header__menu');
 const menuDeploy = document.querySelector('#header__user');
 const cancelBtn = document.querySelector('#header__cancel');
-const contador = document.querySelector('#counter').value;
-const cart = sessionStorage;
+const contador = document.querySelector('#header__counter');
+
+
 //opciones para menu en mobile
 menu.addEventListener('click', function() {
   menuDeploy.classList.toggle('header__menu--active');
@@ -35,4 +36,13 @@ if (window.innerWidth >= 768) {
 }
 
 //estilos para el contador del carrito
-console.log(contador)
+console.log(contador.textContent)
+function updateCounter() {
+  if (Number(contador.textContent) > 0) {
+    contador.style.display="block"
+  } else {
+    contador.style.display="none"
+  }
+}
+
+document.addEventListener("DOMContentLoaded", updateCounter);
