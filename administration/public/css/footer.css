@@ -9,15 +9,17 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: #f0f0f0;
-    padding: 1rem;
+    padding: .6rem;
     transition: 0.5s;
   }
   
+
   footer section {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: .6rem;
   }
   
   footer section a {
@@ -28,4 +30,10 @@ footer {
     font-style: 'Josefin Sans',sans-serif;
   }
 
-  
+  @media(width >= 768px){
+
+    footer section {
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
