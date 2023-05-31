@@ -9,10 +9,10 @@ block content
                 a.category__option(href=`/categories/show/${category.id}`) 
                     p.category__name #{category.name} 
     if sub 
-        section 
-            h2 #{sub.name} 
-            article
+        section
+            h2.sub__title #{sub.name} 
+            article.sub__options 
                 each subCat in sub.subcategories
-                    a(href=`/models/inventory/${subCat.id}`) 
+                    a.sub__option(href=`/models/inventory/${subCat.id}`) 
                         p #{subCat.name}
 include ../includes/footer.pug
