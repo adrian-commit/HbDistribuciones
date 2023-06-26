@@ -6,15 +6,20 @@ block content
     h2.inventary__title #{main.name}
     section.inventary__items
         each item in inventory
-            article.inventary__item
-                p.inventary__itemTitle #{item.name}
-                .inventary__itemCard 
-                    figure.inventary__itemPicture 
-                        img.inventary__itemImg(src=`${item.image.img}`, alt="Producto")
-                    .inventary__itemTexts 
-                        select#inventary__itemSelect.inventary__itemSelect(name="packs") 
-                            each product in item.products
-                                option(value=`${product.name}`) 
+            each product in item.products
+                article.inventary__item
+                    p.inventary__itemTitle #{item.name}
+                    .inventary__itemCard 
+                        figure.inventary__itemPicture 
+                            img.inventary__itemImg(src=`${item.image.img}`, alt="Producto")
+                        .inventary__itemTexts 
+                            p#inventary__itemName.inventary__itemName #{product.name}
+                            .inventary__quantityReq
+                                i.inventary__icon.fa-solid.fa-plus
+                                input#inventary__quantityNum(type="number", name="quantityNum" placeholder="1")
+                                i.inventary__icon.fa-solid.fa-minus
+                            button#inventary__addToCart.inventary__addToCart Añadir al Carrito
+                                i.inventary__iconCart.fa-solid.fa-cart-arrow-down 
                     //- tr(id=product.id)
                     //-     td    
                     //-         img(src=`${item.image.img}`, alt="Producto")

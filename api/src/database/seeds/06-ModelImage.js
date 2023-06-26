@@ -7,7 +7,7 @@ module.exports = {
     await queryInterface.bulkInsert('modelsImage', [
       {
         id: 1,
-        img:'http://localhost:3000/resources/img/not-image.svg',
+        img:'http://localhost:3000/resources/img/sinfoto.jpeg',
         modelId: 1
       }
     ], {});

@@ -6,34 +6,104 @@
     color: #f8f8f8
 }
 
-/* #select{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin: 5vh 5vh;
-}
-
-#select select{
-    background-color: #e35205;
-   color: #f8f8f8;
-   padding: 0.4rem 0.6rem;
-   border-radius: 30px;
-}
-
-#table {
-    width: 80vw;
-    padding: 0 5vh;
-    margin: auto;
-    border: 0.25rem solid rgb(120, 120, 120);
-  }
-
-#table tr{
+.inventary__item{
+    width: 90%;
+    max-width: 350px;
+    margin: 2em auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.inventary__itemTitle{
+    width: 90%;
+    background-color: var(--light-alter);
+    color: black;
+    font-weight: 500;
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 0.4em;
+    padding: 0.5em 0;
+    border-radius: .5em;
+}
+
+.inventary__itemCard{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5em;
+    /* border: .2px solid black; */
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.inventary__itemPicture{
+    width: 100%;
+    max-width: none;
+    
+}
+
+.inventary__itemImg{
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.inventary__itemTexts{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+    padding: 0.5em;
+    background-color: var(--light-alter);
+}
+
+.inventary__itemName{
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.inventary__quantityReq{
+    display: flex;
+    justify-content: space-evenly;
+    padding: .5em 0;
+}
+
+.inventary__quantityReq input{
+   text-align: center;
+   width: 100px;
+   background-color: white;
+   border: black 1px solid;
+}
+
+.inventary__icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: var(--light-alter);
+    background-color: #e35205;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-#table img {
-    width: 100px;
-    height: 100px;
-} */
+.inventary__icon i {
+    font-size: 30px;
+}
+
+.inventary__addToCart{
+    width: 50%;
+    margin: 0 auto;
+    padding: .5em .3em;
+    border-radius: 1em;
+    color:var(--light-alter);
+    background-color: var(--success);
+}
+
+.inventary__iconCart{
+    margin-left: .5em;
+}
