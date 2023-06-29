@@ -4,32 +4,22 @@ block styles
     link(rel="stylesheet", href="/resources/css/inventary.css")
 block content
     h2.inventary__title #{main.name}
-    section.inventary__items
+    section#inventary__items.inventary__items
         each item in inventory
             each product in item.products
-                article.inventary__item
+                article#inventary__item.inventary__item
                     p.inventary__itemTitle #{item.name}
                     .inventary__itemCard 
                         figure.inventary__itemPicture 
                             img.inventary__itemImg(src=`${item.image.img}`, alt="Producto")
                         .inventary__itemTexts 
                             p#inventary__itemName.inventary__itemName #{product.name}
+                            p#inventary__itemPrice.inventary__itemPrice #{product.price} c/u
                             .inventary__quantityReq
-                                i.inventary__icon.fa-solid.fa-plus
+                                i.inventary__icon.inventary__icon--increment.fa-solid.fa-plus
                                 input#inventary__quantityNum(type="number", name="quantityNum" placeholder="1")
-                                i.inventary__icon.fa-solid.fa-minus
+                                i.inventary__icon.inventary__icon--decrement.fa-solid.fa-minus
                             button#inventary__addToCart.inventary__addToCart Añadir al Carrito
                                 i.inventary__iconCart.fa-solid.fa-cart-arrow-down 
-                    //- tr(id=product.id)
-                    //-     td    
-                    //-         img(src=`${item.image.img}`, alt="Producto")
-                    //-     section 
-                    //-         td#name #{product.name}
-                    //-         td#total #{product.total} 
-                    //-         td#price #{product.price} c/u
-                    //-     td  
-                    //-         input#quantity(type="number", name="quantity")
-                    //-     td 
-                    //-         i#addCart.fa-solid.fa-plus
     script(src="/resources/js/models/inventory.js") 
 include ../includes/footer.pug

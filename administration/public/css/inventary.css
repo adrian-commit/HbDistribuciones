@@ -1,3 +1,10 @@
+.inventary__items{
+    display: grid;
+    gap: 1em;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
 .inventary__title{
     width: 100vw;
     text-align: center;
@@ -40,6 +47,12 @@
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.inventary__itemCard:hover{
+   transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
 .inventary__itemPicture{
     width: 100%;
     max-width: none;
@@ -62,9 +75,14 @@
     background-color: var(--light-alter);
 }
 
-.inventary__itemName{
+.inventary__itemName,
+.inventary__itemPrice{
     font-weight: 500;
     font-size: 1.2em;
+}
+
+.inventary__itemPrice{
+    margin-top: 5px;
 }
 
 .inventary__quantityReq{
@@ -78,6 +96,7 @@
    width: 100px;
    background-color: white;
    border: black 1px solid;
+   cursor: pointer;
 }
 
 .inventary__icon{
@@ -90,6 +109,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.inventary__icon:hover{
+    transform: scale(1.2);
+    transition: background-color 0.3s ease-in-out;
+}
+
 
 .inventary__icon i {
     font-size: 30px;
@@ -106,4 +131,10 @@
 
 .inventary__iconCart{
     margin-left: .5em;
+}
+
+@media(width >= 768px){
+
+    
+
 }
